@@ -142,46 +142,56 @@ textarea::placeholder, input::placeholder {
   transform: scale(1.03);
 }
 
-/* ===== RESUMO ===== */
-#listaCarrinho {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#listaCarrinho li {
-  background-color: #111;
-  border-left: 4px solid #ff7b00;
-  padding: 8px;
-  border-radius: 8px;
-  margin-bottom: 8px;
-}
-
-.total {
-  text-align: right;
-  color: #ff7b00;
-  font-size: 18px;
-  font-weight: bold;
-  border-top: 1px solid #333;
-  margin-top: 15px;
-  padding-top: 10px;
-}
-
-/* ===== RODAPÉ ===== */
-footer {
-  text-align: center;
-  padding: 15px;
-  background-color: #000;
-  color: #ff7b00;
-  font-weight: bold;
-  border-top: 2px solid #ff7b00;
-  letter-spacing: 1px;
-  margin-top: 40px;
-}
-
-/* ===== RESPONSIVO ===== */
-@media (max-width: 900px) {
-  .info-pedido, .resumo-pedido {
-    width: 90%;
+// Mostrar/ocultar caixa de endereço
+function mostrarEndereco() {
+  const tipo = document.getElementById('tipoEntrega').value;
+  const box = document.getElementById('enderecoBox');
+  if (tipo === 'entrega') {
+    box.style.display = 'block';
+  } else {
+    box.style.display = 'none';
   }
 }
+
+// Função simples para enviar pedido pelo WhatsApp
+function enviarWhatsApp() {
+  // Pegue os dados do pedido (adapte conforme sua lógica de carrinho)
+  const lista = document.getElementById('listaCarrinho');
+  let itens = [];
+  lista.querySelectorAll('li').forEach(li => itens.push(li.innerText.trim()));
+  const observacao = document.getElementById('observacao').value || '';
+  const pagamento = document.getElementById('pagamento').value;
+  const tipoEntrega = document.getElementById('tipoEntrega').value;
+  const endereco = document.getElementById('endereco').value || '---';
+
+  // Monta a mensagem
+  let msg = `Pedido Pumbas Burguer:%0A`;
+  if (itens.length) {
+    msg += `Itens:%0A- ${itens.join('%0A- ')}%0A`;
+  } else {
+    msg += `Itens: (vazio)%0A`;
+  }
+  msg += `Forma pagamento: ${pagamento}%0A`;
+  msg += `Tipo entrega: ${tipoEntrega}%0A`;
+  if (tipoEntrega === 'entrega') {
+    msg += `Endereço: ${encodeURIComponent(endereco)}%0A`;
+  }
+  if (observacao) {
+    msg += `Observações: ${encodeURIComponent(observacao)}%0A`;
+  }
+
+  // Número de telefone do restaurante (coloque no formato internacional sem +, ex: 5511999999999)
+  const telefone = '55758218314'; // <-- altere para o número real
+
+  // Abre o WhatsApp Web / App
+  const url = `https://wa.me/${telefone}?text=${msg}`;
+  window.open(url, '_blank');
+}
+
+// Botão voltar ao topo (opcional): insira um botão <button id="btnTopo">↑</button> no HTML se quiser
+window.addEventListener('scroll', function () {
+  const btn = document.getElementById('btnTopo');
+  if (!btn) return;
+  if (document.documentElement.scrollTop > 100) btn.style.display = 'block';
+  else btn.style.display = 'none';
+});
