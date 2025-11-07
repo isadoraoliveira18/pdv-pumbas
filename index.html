@@ -7,28 +7,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <!-- CABEÇALHO -->
   <header class="cabecalho">
-    <img src="imagens/logo.png" class="logo-lateral" alt="Logo Pumbas Burguer">
+    <img src="imagens/logo.png" class="logo-lateral" id="logo-esquerda" alt="Logo Pumbas Burguer">
     <div class="titulo-site">
       <h1 class="titulo-principal">PUMBAS</h1>
       <h2 class="subtitulo">BURGUER</h2>
     </div>
-    <img src="imagens/logo.png" class="logo-lateral" alt="Logo Pumbas Burguer">
-    
-    <!-- MENU SUPERIOR -->
-    <nav class="menu">
-      <ul>
-        <li><a href="#hamburguer">Hambúrguer</a></li>
-        <li><a href="#batata">Batata</a></li>
-        <li><a href="#bebida">Bebida</a></li>
-      </ul>
-    </nav> 
+    <img src="imagens/logo.png" class="logo-lateral" id="logo-direita" alt="Logo Pumbas Burguer">
   </header>
+
+  <!-- MENU SUPERIOR -->
+  <nav class="menu">
+    <ul>
+      <li><a href="#hamburguer">Hambúrguer</a></li>
+      <li><a href="#batata">Batata</a></li>
+      <li><a href="#bebida">Bebida</a></li>
+    </ul>
+  </nav> 
 
   <!-- CONTEÚDO PRINCIPAL -->
   <main>
     <section class="menu-lateral">
+
       <!-- HAMBÚRGUERES -->
       <section id="hamburguer">
         <h2>🍔 Hambúrgueres</h2>
@@ -41,22 +43,22 @@
           <div class="item" onclick="addToCart('Nala Burguer', 18)">
             <img src="imagens/burguer2.jpg" alt="Nala Burguer">
             <p class="nome">Nala Burguer - R$18,00</p>
-            <small>Pão brioche, 90g de carne artesanal, queijo, alface americano, Molho da casa e Cebola caramelizada </small>
+            <small>Pão brioche, 90g de carne artesanal, queijo, alface americano, molho da casa e cebola caramelizada.</small>
           </div>
           <div class="item" onclick="addToCart('Timão Burguer', 20)">
             <img src="imagens/burguer3.jpg" alt="Timão Burguer">
             <p class="nome">Timão Burguer - R$20,00</p>
-            <small>Pão brioche, 90g de carne artesanal, queijo, alface americano e tomate, Molho da casa e Bacon.</small>
+            <small>Pão brioche, 90g de carne artesanal, queijo, alface americano e tomate, Molho da casa e Bacon</small>
           </div>
           <div class="item" onclick="addToCart('Kiara Burguer', 24)">
             <img src="imagens/burguer4.jpg" alt="Kiara Burguer">
             <p class="nome">Kiara Burguer - R$24,00</p>
-            <small>Pão brioche, 100g de carne artesanal, queijo lanche, Barbecue, Bacon com cebola chapeada ao molho </small>
+            <small>Pão brioche, 100g de carne artesanal, queijo lanche, Barbecue, Bacon com cebola chapeada ao molho</small>
           </div>
           <div class="item" onclick="addToCart('Mufasa Burguer', 25)">
             <img src="imagens/burguer5.jpg" alt="Mufasa Burguer">
             <p class="nome">Mufasa Burguer - R$25,00</p>
-            <small>Pão brioche, 100g de carne artesanal, queijo chapeado, molho da casa, queijo lanche e cebola caramelizada </small>
+            <small>Pão brioche, 100g de carne artesanal, queijo chapeado, molho da casa, queijo lanche e cebola caramelizada</small>
           </div>
         </div>
       </section>
@@ -67,13 +69,18 @@
         <div class="grid">
           <div class="item" onclick="addToCart('Batata Pequena', 10)">
             <img src="imagens/batata.jpg" alt="Batata Pequena">
-            <p>Batata Pequena - R$10,00</p>
-            <small>Porção pequena, ideal para acompanhar seu lanche.</small>
+            <p>Batata Pequena  - R$10,00</p>
+            <small>Porção pequena de 150g.</small>
           </div>
-          <div class="item" onclick="addToCart('Batata Média', 14)">
+          <div class="item" onclick="addToCart('Batata Média', 15)">
             <img src="imagens/batata.jpg" alt="Batata Média">
-            <p>Batata Média - R$14,00</p>
-            <small>Porção média, crocante e dourada.</small>
+            <p>Batata Média - R$15,00</p>
+            <small>Porção grande 400g.</small>
+          </div>
+           <div class="item" onclick="addToCart('Batata Média', 25)">
+            <img src="imagens/batata.jpg" alt="Batata Média">
+            <p>Batata Grande - R$25,00</p>
+            <small>Porção Grande 350g.</small>
           </div>
         </div>
       </section>
@@ -115,9 +122,10 @@
           </div>
         </div>
       </section>
+
     </section>
 
-    <!-- CARRINHO LATERAL -->
+    <!-- CARRINHO FIXO -->
     <aside class="carrinho"></aside>
   </main>
 
