@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pumbas Burguer - Finalizar Pedido</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Finalizar Pedido</h1>
+  </header>
+
+  <main>
+    <div class="conteudo">
+      <section class="pedido">
+        <h2>🧾 Seu Pedido</h2>
+        <div id="resumo"></div>
+
+        <h2>💳 Forma de Pagamento</h2>
+        <select id="pagamento">
+          <option>Dinheiro</option>
+          <option>Cartão</option>
+          <option>Pix</option>
+        </select>
+
+        <h2>🚚 Entrega ou Retirada?</h2>
+        <select id="tipoEntrega" onchange="mostrarEndereco()">
+          <option value="retirada">Retirada</option>
+          <option value="entrega">Entrega</option>
+        </select>
+
+        <div id="enderecoBox" style="display:none;">
+          <h3>Endereço para entrega</h3>
+          <input type="text" id="endereco" placeholder="Rua, número, bairro...">
+        </div>
+
+        <button onclick="enviarWhatsApp()">📲 Enviar Pedido pelo WhatsApp</button>
+      </section>
+  
+      <aside class="carrinho" id="carrinho">
+        <h2>🛒 Carrinho</h2>
+        <ul id="listaCarrinho"></ul>
+        
+      </aside>
+    </div>
+  </main>
+
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+   
+
