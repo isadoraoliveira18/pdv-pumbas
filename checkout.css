@@ -1,0 +1,187 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0e0e0e;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== CABEÇALHO ===== */
+.cabecalho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 20px 40px;
+  background-color: #000;
+  border-bottom: 3px solid #ff7b00;
+  flex-wrap: wrap;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-principal {
+  width: 140px; /* logo maior e destacada */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 123, 0, 0.4);
+}
+
+.titulo-site {
+  text-align: center;
+}
+
+.titulo-principal {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  color: #ff7b00;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.subtitulo {
+  font-size: 22px;
+  color: #ffae42;
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+
+/* ===== BOTÃO VOLTAR ===== */
+.voltar {
+  text-align: center;
+  margin: 20px;
+}
+
+.voltar a {
+  color: #ff7b00;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+  border: 2px solid #ff7b00;
+  padding: 8px 20px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.voltar a:hover {
+  background-color: #ff7b00;
+  color: #000;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.checkout-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px 5%;
+  flex-wrap: wrap;
+}
+
+.info-pedido, .resumo-pedido {
+  background-color: #1a1a1a;
+  border: 2px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 30px;
+  width: 45%;
+  box-shadow: 0 0 15px rgba(255, 123, 0, 0.3);
+}
+
+.info-pedido h2, .resumo-pedido h2 {
+  color: #ff7b00;
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+select, input, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #111;
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+textarea::placeholder, input::placeholder {
+  color: #aaa;
+}
+
+.endereco-box {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== BOTÃO FINALIZAR ===== */
+.btn-finalizar {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff7b00;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-finalizar:hover {
+  background-color: #ff5500;
+  transform: scale(1.03);
+}
+
+/* ===== RESUMO ===== */
+#listaCarrinho {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#listaCarrinho li {
+  background-color: #111;
+  border-left: 4px solid #ff7b00;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.total {
+  text-align: right;
+  color: #ff7b00;
+  font-size: 18px;
+  font-weight: bold;
+  border-top: 1px solid #333;
+  margin-top: 15px;
+  padding-top: 10px;
+}
+
+/* ===== RODAPÉ ===== */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #000;
+  color: #ff7b00;
+  font-weight: bold;
+  border-top: 2px solid #ff7b00;
+  letter-spacing: 1px;
+  margin-top: 40px;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+  .info-pedido, .resumo-pedido {
+    width: 90%;
+  }
+}

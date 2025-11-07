@@ -3,53 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <title>Pumbas Burguer - Finalizar Pedido</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="checkout.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Finalizar Pedido</h1>
+  <!-- CABEÇALHO -->
+  <header class="cabecalho">
+    <img src="imagens/logo.png" alt="Logo Pumbas Burguer" class="logo-lateral">
+    <div class="titulo-site">
+      <h1 class="titulo-principal">PUMBAS</h1>
+      <h2 class="subtitulo">BURGUER</h2>
+    </div>
+    <img src="imagens/logo.png" alt="Logo Pumbas Burguer" class="logo-lateral">
   </header>
 
-  <main>
-    <div class="conteudo">
-      <section class="pedido">
-        <h2>🧾 Seu Pedido</h2>
-        <div id="resumo"></div>
+  <!-- BOTÃO VOLTAR -->
+  <div class="voltar">
+    <a href="index.html">⬅ Voltar para o Cardápio</a>
+  </div>
 
-        <h2>💳 Forma de Pagamento</h2>
-        <select id="pagamento">
-          <option>Dinheiro</option>
-          <option>Cartão</option>
-          <option>Pix</option>
-        </select>
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="checkout-container">
+    <!-- LADO ESQUERDO -->
+    <section class="info-pedido">
+      <h2>💳 Forma de Pagamento</h2>
+      <select id="pagamento">
+        <option>Dinheiro</option>
+        <option>Cartão</option>
+        <option>Pix</option>
+      </select>
 
-        <h2>🚚 Entrega ou Retirada?</h2>
-        <select id="tipoEntrega" onchange="mostrarEndereco()">
-          <option value="retirada">Retirada</option>
-          <option value="entrega">Entrega</option>
-        </select>
+      <h2>🚚 Tipo de Entrega</h2>
+      <select id="tipoEntrega" onchange="mostrarEndereco()">
+        <option value="retirada">Retirada no Pumbas (Grátis)</option>
+        <option value="entrega">Entrega</option>
+      </select>
 
-        <div id="enderecoBox" style="display:none;">
-          <h3>Endereço para entrega</h3>
-          <input type="text" id="endereco" placeholder="Rua, número, bairro...">
-        </div>
+      <div id="enderecoBox" class="endereco-box" style="display:none;">
+        <h3>📍 Endereço para Entrega</h3>
+        <input type="text" id="endereco" placeholder="Rua, número, bairro...">
+      </div>
 
-        <button onclick="enviarWhatsApp()">📲 Enviar Pedido pelo WhatsApp</button>
-      </section>
-  
-      <aside class="carrinho" id="carrinho">
-        <h2>🛒 Carrinho</h2>
-        <ul id="listaCarrinho"></ul>
-        
-      </aside>
-    </div>
+      <h2>🗒️ Observações</h2>
+      <textarea id="observacao" rows="4" placeholder="Ex: Tirar cebola, ponto da carne, etc."></textarea>
+
+      <button onclick="enviarWhatsApp()" class="btn-finalizar">📲 Enviar Pedido pelo WhatsApp</button>
+    </section>
+
+    <!-- LADO DIREITO -->
+    <section class="resumo-pedido">
+      <h2>🧾 Seu Pedido</h2>
+      <div id="resumo"></div>
+
+      <h2>🛒 Itens Selecionados</h2>
+      <ul id="listaCarrinho"></ul>
+      <p id="totalResumo" class="total"></p>
+    </section>
   </main>
 
-  
+  <!-- RODAPÉ -->
+  <footer>
+    © 2025 Pumbas Burguer - Sabor que ruge! 🍔🔥
+  </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-   
-
