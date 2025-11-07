@@ -2,13 +2,24 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Pumbas Burguer - Finalizar Pedido</title>
-  <link rel="stylesheet" href="checkout.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pumbas Burguer - Sua Hamburgueria Artesanal</title>
+
+  <!-- FONTES -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<<<<<<< HEAD
   <!-- CABEÇALHO -->
    <header class="cabecalho">
+=======
+
+  <!-- ===== CABEÇALHO ===== -->
+  <header class="cabecalho">
+>>>>>>> e4b9fef (Atualiza├º├úo autom├ítica: 07/11/2025 12:47:54,10)
     <img src="imagens/logo.png" alt="Logo Pumbas Burguer" class="logo-grande">
 
     <div class="titulo-central">
@@ -17,20 +28,21 @@
     </div>
   </header>
 
-  <!-- BOTÃO VOLTAR -->
+  <!-- ===== BOTÃO VOLTAR ===== -->
   <div class="voltar">
     <a href="index.html">⬅ Voltar para o Cardápio</a>
   </div>
 
-  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
   <main class="checkout-container">
-    <!-- LADO ESQUERDO -->
+
+    <!-- ===== LADO ESQUERDO - INFORMAÇÕES DO PEDIDO ===== -->
     <section class="info-pedido">
       <h2>💳 Forma de Pagamento</h2>
       <select id="pagamento">
-        <option>Dinheiro</option>
-        <option>Cartão</option>
-        <option>Pix</option>
+        <option value="dinheiro">Dinheiro</option>
+        <option value="cartao">Cartão</option>
+        <option value="pix">Pix</option>
       </select>
 
       <h2>🚚 Tipo de Entrega</h2>
@@ -39,7 +51,7 @@
         <option value="entrega">Entrega</option>
       </select>
 
-      <div id="enderecoBox" class="endereco-box" style="display:none;">
+      <div id="enderecoBox" class="endereco-box" style="display: none;">
         <h3>📍 Endereço para Entrega</h3>
         <input type="text" id="endereco" placeholder="Rua, número, bairro...">
       </div>
@@ -47,25 +59,31 @@
       <h2>🗒️ Observações</h2>
       <textarea id="observacao" rows="4" placeholder="Ex: Tirar cebola, ponto da carne, etc."></textarea>
 
-      <button onclick="enviarWhatsApp()" class="btn-finalizar">📲 Enviar Pedido pelo WhatsApp</button>
+      <button onclick="enviarWhatsApp()" class="btn-finalizar">
+        📲 Enviar Pedido pelo WhatsApp
+      </button>
     </section>
 
-    <!-- LADO DIREITO -->
+    <!-- ===== LADO DIREITO - RESUMO DO PEDIDO ===== -->
     <section class="resumo-pedido">
       <h2>🧾 Seu Pedido</h2>
       <div id="resumo"></div>
 
       <h2>🛒 Itens Selecionados</h2>
       <ul id="listaCarrinho"></ul>
+
       <p id="totalResumo" class="total"></p>
     </section>
+
   </main>
 
-  <!-- RODAPÉ -->
+  <!-- ===== RODAPÉ ===== -->
   <footer>
-    © 2025 Pumbas Burguer - Sabor que ruge! 🍔🔥
+    © 2025 Pumbas Burguer - Hakuna Matata! 🍔🔥
   </footer>
 
+  <!-- ===== SCRIPTS ===== -->
   <script src="script.js"></script>
+
 </body>
 </html>
