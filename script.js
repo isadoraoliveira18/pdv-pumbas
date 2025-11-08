@@ -99,6 +99,11 @@ function finalizarPedido() {
   window.location.href = "checkout.html";
 }
 
+ function irParaCheckout() {
+    salvarCarrinho();
+    window.location.href = 'checkout.html';
+  }
+
 /* =====================
    BOTÃO VOLTAR AO TOPO
    ===================== */

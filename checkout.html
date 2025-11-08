@@ -179,11 +179,9 @@
   </header>
 
   <main class="checkout-container">
-
     <section class="info-pedido">
       <h2>Detalhes do Pedido</h2>
 
-      <!-- ENTREGA -->
       <div class="campo">
         <label class="small" for="tipoEntrega">Tipo de Entrega</label>
         <select id="tipoEntrega" onchange="mostrarOpcoesEntrega()">
@@ -198,7 +196,7 @@
           <option value="pumba">Pumba - Frete Grátis</option>
           <option value="lisboa">Lisboa / Antigo Forró do Bosque - R$3,00</option>
           <option value="touquinha">Touquinha / São José (Centro) - R$5,00</option>
-          <option value="bocadamata">Boca da Mata / Pumba 2 / São José (Zona Rural) / Cruz das Almas - R$7,00</option>
+          <option value="bocadamata">Boca da Mata / Zona Rural / Cruz das Almas - R$7,00</option>
           <option value="outro">Outro endereço (Verificar com atendente)</option>
         </select>
       </div>
@@ -208,13 +206,11 @@
         <input type="text" id="endereco" placeholder="Rua, número, bairro...">
       </div>
 
-      <!-- OBSERVAÇÕES -->
       <div class="campo">
         <label class="small" for="observacao">Observações</label>
         <textarea id="observacao" placeholder="Ex: sem cebola, ponto da carne..."></textarea>
       </div>
 
-      <!-- PAGAMENTO -->
       <div class="campo">
         <label class="small" for="pagamentoSelect">Forma de Pagamento</label>
         <select id="pagamentoSelect">
@@ -224,7 +220,6 @@
         </select>
       </div>
 
-      <!-- PIX -->
       <div id="pix-section" class="pix-section">
         <div class="pix-key-box">
           <label>Chave PIX (copiar e colar)</label>
@@ -250,6 +245,7 @@
 
   <script>
     const PIX_KEY = "63396173000190";
+    const whatsNumber = "5575982183914";
 
     function mostrarOpcoesEntrega() {
       const tipo = document.getElementById("tipoEntrega").value;
@@ -268,6 +264,7 @@
       document.getElementById("pix-section").style.display = (e.target.value === "pix") ? "block" : "none";
     });
 
+    // === COPIAR CHAVE PIX ===
     document.getElementById("copyPixBtn").addEventListener("click", async () => {
       await navigator.clipboard.writeText(PIX_KEY);
       const f = document.getElementById("copyFeedback");
@@ -281,6 +278,61 @@
       const f = document.getElementById("copyFeedback");
       f.classList.add("show");
       setTimeout(() => f.classList.remove("show"), 1400);
+    });
+
+    // === EXIBE ITENS DO CARRINHO SALVO NA INDEX ===
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    function exibirCarrinho() {
+      const lista = document.getElementById("listaCarrinho");
+      const totalResumo = document.getElementById("totalResumo");
+      lista.innerHTML = "";
+      let total = 0;
+
+      carrinho.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+        lista.appendChild(li);
+        total += item.preco;
+      });
+
+      totalResumo.textContent = "💰 Total: R$ " + total.toFixed(2);
+    }
+    exibirCarrinho();
+
+    // === GERAR MENSAGEM E ENVIAR PELO WHATSAPP ===
+    function gerarMensagemPedido() {
+      const tipoEntrega = document.getElementById("tipoEntrega").value;
+      const localEntrega = document.getElementById("localEntrega") ? document.getElementById("localEntrega").value : "";
+      const endereco = document.getElementById("endereco").value;
+      const observacao = document.getElementById("observacao").value;
+      const pagamento = document.getElementById("pagamentoSelect").value;
+
+      let msg = [];
+      msg.push("*🧾 Pedido - Pumba’s Burguer*");
+      msg.push("---------------------------");
+      carrinho.forEach(item => msg.push(`🍔 ${item.nome} - R$ ${item.preco.toFixed(2)}`));
+      msg.push("---------------------------");
+
+      let total = carrinho.reduce((acc, item) => acc + item.preco, 0);
+      msg.push(`💰 Total: R$ ${total.toFixed(2)}`);
+      msg.push("");
+      msg.push(`📦 Entrega: ${tipoEntrega}`);
+      if (tipoEntrega === "entrega" && localEntrega) msg.push(`🏠 Local: ${localEntrega}`);
+      if (endereco) msg.push(`📍 Endereço: ${endereco}`);
+      msg.push(`💳 Pagamento: ${pagamento}`);
+      if (observacao) msg.push(`🗒️ Obs: ${observacao}`);
+      msg.push("");
+      msg.push("✅ Agradecemos sua preferência!");
+
+      return msg.join("\n");
+    }
+
+    document.getElementById("btnEnviarWhats").addEventListener("click", () => {
+      const mensagem = gerarMensagemPedido();
+      const textoEnc = encodeURIComponent(mensagem);
+      const url = `https://wa.me/${whatsNumber}?text=${textoEnc}`;
+      window.open(url, "_blank");
     });
   </script>
 </body>
