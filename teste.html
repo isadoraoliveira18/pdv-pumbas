@@ -6,24 +6,22 @@
   <title>Pumbas Burguer - Sua Hamburgueria Artesanal</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
  <!-- CABEÇALHO -->
 <header class="cabecalho">
   <img src="imagens/logo.png" alt="Logo Pumbas Burguer" class="logo-grande">
+
   <div class="titulo-central">
     <h1 class="titulo-principal">PUMBAS BURGUER</h1>
     <h2 class="subtitulo"> Bem vindo ao Pumba's Burguer</h2>
     <h3 class="descricao"> Hamburgueria artesanal - Pumba I (Cruz das Almas - BA)</h3>
   </div>
 </header>
-  <!-- MENU SUPERIOR -->
-   <div class="status-funcionamento">
-  <span id="status"></span>
-  <p>Horário de funcionamento: <strong>Sexta a Segunda - 18h às 23h</strong></p>
-</div>
 
+<button id="btnTopo" title="Voltar ao topo">&#8679;</button>
+
+  <!-- MENU SUPERIOR -->
   <nav class="menu">
     <ul>
       <li><a href="#hamburguer">Hambúrguer</a></li>
@@ -31,13 +29,9 @@
       <li><a href="#bebida">Bebida</a></li>
     </ul>
   </nav>
-   <!-- <button id="btnTopo" title="Voltar ao topo">&#8679;</button>
-    
 
-  CONTEÚDO PRINCIPAL -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <main>
-    <aside class="carrinho"></aside>
-    
     <section class="menu-lateral">
 
       <!-- HAMBÚRGUERES -->
@@ -125,24 +119,7 @@
           </div>
       </section>
 
-           <!-- Promoções
-      <section id="Promocao">
-        <h2>Promoções</h2>
-        <div class="grid">
-          <div class="item" onclick="addToCart('Promocao 1', 20)">
-            <img src="imagens/promocao.jpg" alt="Promocao 1">
-            <p>Promocão - R$20,00</p>
-            <small></small>
-          </div>
-          <div class="item" onclick="addToCart('Combo', 25)">
-            <img src="imagens/combo.jpg" alt="Combo">
-            <p>Combo - R$25,00</p>
-            <small>.</small>
-          </div>
-          </div>
-      </section>
-
-      BEBIDAS -->
+      <!-- BEBIDAS -->
       <section id="bebida">
         <h2>🥤 Bebidas</h2>
         <div class="grid">
@@ -156,7 +133,7 @@
             <p>Antártica Lata - R$5,00</p>
           </div>
 
-          <!-- Cervejas 
+          <!-- Cervejas -->
           <div class="item" onclick="addToCart('Heineken Long Neck', 11)">
             <img src="imagens/hei.jpg" alt="Heineken Long Neck">
             <p>Heineken Long Neck - R$11,00</p>
@@ -170,11 +147,15 @@
             <p>Skol Long Neck - R$5,00</p>
           </div>
         </div>
-      </section>-->
+      </section>
 
     </section>
+
+    <!-- CARRINHO -->
+    <aside class="carrinho"></aside>
+  
   </main>
-<button id="btnTopo">⬆</button>
+
   <script src="script.js"></script>
 </body>
 </html>

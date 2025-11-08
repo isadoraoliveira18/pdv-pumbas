@@ -37,6 +37,14 @@ function atualizarCarrinho() {
   `;
 }
 
+function cancelarPedido() {
+  if (confirm("Tem certeza que deseja cancelar o pedido?")) {
+    carrinho = [];
+    atualizarCarrinho();
+  }
+}
+
+
 function alterarQuantidade(index, valor) {
   carrinho[index].quantidade += valor;
   if (carrinho[index].quantidade <= 0) carrinho.splice(index, 1);
@@ -69,7 +77,6 @@ function finalizarPedido() {
 /* =====================
    PÁGINA DE CHECKOUT
    ===================== */
-
    
 document.addEventListener("DOMContentLoaded", () => {
   const resumo = document.getElementById("resumo");
@@ -166,4 +173,3 @@ function enviarWhatsApp() {
       behavior: "smooth" // Rolagem suave
     });
   });
-

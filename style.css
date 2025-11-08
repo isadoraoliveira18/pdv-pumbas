@@ -1,94 +1,83 @@
 /* ====== ESTILO GERAL ====== */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #0e0e0e;
   color: #fff;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+  margin: 10;
+  padding: 10;
 }
 
-section {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-section h2 {
-  color: #ff7b00;
-  margin-bottom: 10px;
-}
-
-section p {
-  color: #ccc;
-}
-
-/* ===== CABEÇALHO ===== */
-.cabecalho {
+/* ====== CABEÇALHO ====== */
+header.cabecalho {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  padding: 25px 0;
   background-color: #000;
   border-bottom: 3px solid #ff7b00;
+  padding: 10px 20px;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-.logo-grande {
-  position: absolute;
-  left: 40px;
-  width: 140px;
+.logo {
+  width: 10px;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 123, 0, 0.4);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
-/* ===== TÍTULO CENTRAL ===== */
-.titulo-central {
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.titulo-site {
   text-align: center;
 }
 
 .titulo-principal {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 90px;
+  font-size: 36px;
+  color: #ff7b00;
   margin: 0;
-  letter-spacing: 4px;
-  background: linear-gradient(90deg, #ff7b00, #ffae42, #ffd166);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: brilho 3s ease-in-out infinite alternate;
-}
-
-.subtitulo {
-  font-size: 28px;
-  color: #ffae42;
-  margin: 0px 0 0;
-  letter-spacing: 5px;
-  text-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
-}
-
-.descricao {
-  font-size: 10px;
-  color: #ffcc80;
-  margin: 10px 0 0;
   letter-spacing: 2px;
 }
 
-/* Animação suave no gradiente */
-@keyframes brilho {
-  0% {
-    background-position: 0% 50%;
+.subtitulo {
+  font-size: 16px;
+  color: #ffae42;
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+@media (max-width: 768px) {
+  header.cabecalho {
+    flex-direction: column;
+    padding: 10px;
   }
-  100% {
-    background-position: 100% 50%;
+
+  .logo {
+    width: 70px;
+  }
+
+  .titulo-principal {
+    font-size: 28px;
+  }
+
+  .subtitulo {
+    font-size: 14px;
   }
 }
 
-/* ====== MENU SUPERIOR ====== */
+/* ====== STATUS LOJA ====== */
+.status-funcionamento {
+  text-align: center;
+  font-size: 14px;
+  color: #ffae42;
+}
+
+/* ====== MENU ====== */
 .menu {
   width: 100%;
   background-color: #ff7b00;
-  padding: 10px 0;
   display: flex;
   justify-content: center;
   border-bottom: 3px solid #000;
@@ -98,22 +87,18 @@ section p {
   list-style: none;
   display: flex;
   gap: 40px;
-  padding: 0;
+  padding: 10px 0;
   margin: 0;
-}
-
-.menu li {
-  display: inline-block;
 }
 
 .menu a {
   color: #000;
-  text-decoration: none;
   font-weight: bold;
-  font-size: 1.2em;
-  padding: 5px 10px;
+  font-size: 1.1em;
+  text-decoration: none;
   border-radius: 5px;
-  transition: color 0.3s, background 0.3s;
+  padding: 5px 10px;
+  transition: 0.3s;
 }
 
 .menu a:hover {
@@ -122,160 +107,91 @@ section p {
 }
 
 /* ====== GRID DE ITENS ====== */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
 .grid {
-  text-align: left;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  justify-content: left;
-  padding-right: 200px;
+  justify-content: center;
+  max-width: 800px;
 }
 
 .item {
   background: #1a1a1a;
   border: 2px solid #2a2a2a;
   border-radius: 12px;
-  width: 280px;
-  padding: 20px;
-  text-align: left;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  width: 190px;
+  padding: 12px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .item:hover {
   transform: scale(1.05);
   border-color: #ff7b00;
-  box-shadow: 0 0 15px rgba(255, 123, 0, 0.5);
 }
 
 .item img {
   width: 100%;
-  height: 190px;
+  height: 140px;
+  border-radius: 8px;
   object-fit: cover;
-  border-radius: 10px;
-  background-color: #111;
 }
 
 .item p {
   margin: 8px 0 4px;
-  font-weight: bold;
   color: #ff7b00;
-  font-size: 1em;
-}
-/* ===== ADICIONAIS (SEÇÃO MENOR) ===== */
-#adicionais {
-  text-align: left;
-  margin-top: 30px;
-}
-
-#adicionais h2 {
-  color: #ff7b00;
-  margin-bottom: 20px;
-}
-
-.adicionais-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
-.item.adicional {
-  width: 100px;
-  background-color: #1a1a1a;
-  border: 2px solid #2a2a2a;
-  border-radius: 12px;
-  padding: 10px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.item.adicional:hover {
-  transform: scale(1.05);
-  border-color: #ff7b00;
-  box-shadow: 0 0 15px rgba(255, 123, 0, 0.4);
-}
-
-.item.adicional img {
-  width: 100%;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.item.adicional p {
-  font-size: 0.9em;
-  color: #ffae42;
-  margin-top: 8px;
   font-weight: bold;
 }
 
-/* ====== CARRINHO FIXO ====== */
-.carrinho {
-  position: relative;  
-  background: linear-gradient(180deg, #1e1e1e 0%, #2c2c2c 100%);
-  border: 2px solid #ff7b00;
-  border-radius: 14px;
-  box-shadow: 0 0 15px rgba(255, 123, 0, 0.3);
-  padding: 15px;
-  z-index: 999;
+.descricao {
+  color: #ccc;
+  font-size: 12px;
+  min-height: 35px;
 }
 
-.carrinho h2 {
-  text-align: center;
-  margin-bottom: 12px;
-  font-size: 15px;
-  color: #ff7b00;
-}
-
-/* ====== ITENS DO CARRINHO ====== */
-.carrinho-item {
-  display: inline-block;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #111;
-  border-left: 1px solid #ff7b00;
-  padding: 1px;
-  border-radius: 1px;
-  margin-bottom: 1px;
-  transition: 0.2s;
-}
-
-.carrinho-item:hover {
-  background-color: #2a2a2a;
-}
-
-.carrinho-item span {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* ====== BOTÕES DO CARRINHO ====== */
-.carrinho-item button {
+.item button {
   background-color: #ff7b00;
-  color: white;
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-size: 13px;
-  padding: 4px 6px;
-  margin-left: 4px;
+  border-radius: 8px;
+  padding: 8px;
   cursor: pointer;
-  transition: 0.2s;
-}
-
-.carrinho-item button:hover {
-  background-color: #ff5500;
-  transform: scale(1.1);
-}
-
-/* ====== TOTAL E BOTÕES ====== */
-.total {
-  font-size: 16px;
   font-weight: bold;
+  transition: 0.3s;
+}
+
+.item button:hover {
+  background-color: #ff5500;
+}
+.btn-carrinho:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 123, 0, 0.8);
+}
+
+.carrinho-item {
+  display: flex;
+  justify-content: space-between;
+  background: #ff7b00;
+  border-left: 4px solid #ff7b00;
+  padding: 8px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.total {
   color: #ff7b00;
+  font-weight: bold;
   text-align: right;
-  border-top: 1px solid #444;
-  padding-top: 8px;
 }
 
 .botoes-carrinho {
@@ -285,201 +201,112 @@ section p {
 }
 
 .botoes-carrinho button {
-  flex: 10;
-  padding: 4px;
-  margin: 2px;
+  flex: 1;
+  margin: 5px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
-  font-size: 14px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  padding: 8px;
 }
 
-.botoes-carrinho .finalizar {
+.finalizar {
   background-color: #ff7b00;
-  color: #fff;
+  color: white;
 }
 
-.botoes-carrinho .finalizar:hover {
-  background-color: #ff5500;
-  box-shadow: 0 0 8px rgba(255, 123, 0, 0.4);
-}
-
-.botoes-carrinho .cancelar {
+.cancelar {
   background-color: #333;
-  color: #fff;
-  border: 1px solid #555;
-}
-
-.botoes-carrinho .cancelar:hover {
-  background-color: #ff1a1a;
-  border-color: #ff1a1a;
-  box-shadow: 0 0 8px rgba(255, 26, 26, 0.4);
-  transform: scale(1.03);
-}
-
-/* ====== RODAPÉ ====== */
-footer {
-  text-align: center;
-  padding: 15px;
-  background-color: #000;
-  color: #ff7b00;
-  font-weight: bold;
-  letter-spacing: 1px;
-  border-top: 2px solid #ff7b00;
+  color: white;
 }
 
 /* ====== RESPONSIVO ====== */
 @media (max-width: 768px) {
-  .cabecalho {
+  header.cabecalho {
     flex-direction: column;
   }
-  .logo-lateral {
-    width: 100px;
+
+  .logo {
+    width: 90px;
   }
-  .grid {
-    padding-right: 0;
-    justify-content: center;
+
+  main {
+    flex-direction: column;
+    align-items: center;
   }
+
   .carrinho {
     position: relative;
     width: 90%;
-    margin: 20px auto;
   }
+
+/* ====== BOTÕES CARRINHO ====== */
+.botoes-carrinho {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-#btnTopo {
-  display: none; /* Inicialmente escondido */
-  position: fixed; /* Fica fixo na tela */
-  bottom: 40px; /* Distância da parte inferior */
-  right: 40px; /* Distância da lateral direita */
-  z-index: 100; /* Fica acima de outros elementos */
-  font-size: 24px;
-  background-color: #ff7b00; /* Cor do botão */
-  color: #fff;
+.botoes-carrinho button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  font-size: 15px;
   border: none;
-  padding: 12px 16px;
-  border-radius: 70%; /* Botão redondo */
+  border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.botoes-carrinho .finalizar {
+  background: linear-gradient(90deg, #ff7b00, #ffae42);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+}
+
+.botoes-carrinho .finalizar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 123, 0, 0.8);
+}
+
+.botoes-carrinho .cancelar {
+  background: linear-gradient(90deg, #ff3b3b, #b30000);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
+}
+
+.botoes-carrinho .cancelar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 26, 26, 0.8);
+}
+
+/* ===== BOTÃO VOLTAR AO TOPO ===== */
+#btnTopo {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: linear-gradient(90deg, #ff7b00, #ffae42);
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 25px;
+  cursor: pointer;
+  display: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 123, 0, 0.4);
 }
 
 #btnTopo:hover {
-  background-color: #ff9500; /* Cor ao passar o mouse */
+  transform: scale(1.15);
+  background: linear-gradient(90deg, #ff5500, #ff9e3d);
+  color: #fff;
+  box-shadow: 0 0 25px rgba(255, 123, 0, 0.8);
 }
 
-/* =============================
-   RESPONSIVIDADE PUMBAS BURGUER
-   ============================= */
-
-/* Telas até 768px (celulares e tablets pequenos) */
-@media (max-width: 768px) {
-
-  /* Ajusta cabeçalho */
-  .cabecalho {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px 10px;
-  }
-
-  .cabecalho .logo-grande {
-    width: 120px;
-    height: auto;
-    margin-bottom: 10px;
-  }
-
-  .titulo-central h1 {
-    font-size: 26px;
-  }
-
-  .titulo-central h2 {
-    font-size: 18px;
-  }
-
-  /* Ajusta layout principal */
-  .checkout-container {
-    flex-direction: column;
-    padding: 20px;
-    gap: 20px;
-  }
-
-  .info-pedido,
-  .resumo-pedido {
-    width: 100%;
-  }
-
-  /* Botão voltar */
-  .voltar a {
-    font-size: 16px;
-    padding: 8px 14px;
-    display: inline-block;
-    text-align: center;
-  }
-
-  /* Campos de formulário */
-  select, textarea, input[type="text"] {
-    width: 100%;
-    font-size: 16px;
-    padding: 10px;
-  }
-
-  .btn-finalizar {
-    width: 100%;
-    font-size: 18px;
-    padding: 12px;
-  }
-
-  /* Rodapé */
-  footer {
-    font-size: 14px;
-    padding: 15px;
-    text-align: center;
-  }
-}
-
-/* Telas menores que 480px (celulares muito pequenos) */
-@media (max-width: 480px) {
-  .titulo-central h1 {
-    font-size: 22px;
-  }
-
-  .titulo-central h2 {
-    font-size: 16px;
-  }
-
-  .btn-finalizar {
-    font-size: 16px;
-    padding: 10px;
-  }
-
-  .voltar a {
-    font-size: 14px;
-  }
-}
-
-.checkout-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-  padding: 40px;
-}
-
-#btnTopo {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 24px;
-  padding: 10px 12px;
-}
-
-@media (max-width: 768px) {
-  #btnTopo {
-    bottom: 15px;
-    right: 15px;
-    font-size: 20px;
-    padding: 8px 10px;
-  }
 }
