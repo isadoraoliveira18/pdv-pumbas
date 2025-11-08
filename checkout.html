@@ -1,82 +1,287 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pumbas Burguer - Sua Hamburgueria Artesanal</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pumba's Burguer - Checkout</title>
 
   <!-- FONTES -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <style>
+    :root {
+      --laranja: #ff7b00;
+      --laranja-claro: #ffae42;
+      --fundo: #0e0e0e;
+      --card-1: #1a1a1a;
+      --card-2: #111;
+    }
 
-  <!-- ===== CABEÇALHO ===== -->
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--fundo);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== CABEÇALHO ===== */
+    .cabecalho {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 20px;
+      background: #000;
+      border-bottom: 3px solid var(--laranja);
+      box-shadow: 0 3px 10px rgba(255,123,0,0.18);
+      flex-wrap: wrap;
+    }
+
+    .titulo-central { text-align: center; }
+    .titulo-principal {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--laranja);
+      margin: 0;
+    }
+    .text-final { margin: 0; color: var(--laranja-claro); }
+
+    /* ===== CONTAINER ===== */
+    .checkout-container {
+      display: flex;
+      gap: 28px;
+      padding: 36px 5%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .info-pedido, .resumo-pedido {
+      background: linear-gradient(180deg, var(--card-1) 0%, var(--card-2) 100%);
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 24px;
+      width: 420px;
+      box-shadow: 0 8px 25px rgba(255,123,0,0.06);
+    }
+
+    h2 {
+      color: var(--laranja);
+      font-size: 18px;
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+
+    .campo { margin-bottom: 14px; }
+    label.small { display: block; color: #ccc; margin-bottom: 6px; font-size: 13px; }
+
+    select, input[type="text"], textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      background: #0d0d0d;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    select:focus, input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--laranja);
+      box-shadow: 0 0 10px rgba(255,123,0,0.18);
+    }
+
+    textarea { min-height: 84px; resize: vertical; }
+
+    /* ===== PIX ===== */
+    .pix-section {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #121212;
+      border: 1px dashed rgba(255,123,0,0.12);
+      display: none;
+    }
+
+    .pix-key-box label { display: block; color: var(--laranja-claro); font-size: 13px; margin-bottom: 6px; }
+    .pix-key-box code {
+      background: #0b0b0b;
+      border: 1px solid rgba(255,123,0,0.14);
+      padding: 8px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      font-family: monospace;
+      color: var(--laranja-claro);
+    }
+
+    .btn {
+      background: var(--laranja);
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform .14s ease, box-shadow .14s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255,123,0,0.12); }
+    .btn.secondary { background: transparent; border: 1px solid rgba(255,123,0,0.12); color: var(--laranja-claro); }
+
+    .copy-feedback {
+      margin-left: 8px;
+      color: #00e676;
+      font-weight: 700;
+      font-size: 13px;
+      opacity: 0;
+      transition: opacity .18s;
+    }
+    .copy-feedback.show { opacity: 1; }
+
+    .resumo-pedido .total {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--laranja-claro);
+      text-align: right;
+      margin-top: 12px;
+    }
+
+    .resumo-pedido ul { list-style: none; padding: 0; margin: 0; max-height: 300px; overflow: auto; }
+    .resumo-pedido li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+
+    .btn-finalizar {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(90deg,var(--laranja),var(--laranja-claro));
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+
+    .btn-finalizar:hover { transform: translateY(-3px); }
+
+    @media (max-width: 920px) {
+      .info-pedido, .resumo-pedido { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
   <header class="cabecalho">
     <div class="titulo-central">
-      <h1 class="titulo-principal">PUMBA'S BURGUER AGRADECE A CONFIANÇA</h1>
-      <h2 class="text-final">Finalize seu pedido</h2>
+      <h1 class="titulo-principal">Pumba's Burguer</h1>
+      <p class="text-final">Finalize seu pedido</p>
     </div>
   </header>
 
-   <div class="voltar">
-  <a href="index.html">⬅ Voltar</a>
-</div>
-
-
-
-  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
   <main class="checkout-container">
 
-    <!-- ===== LADO ESQUERDO - INFORMAÇÕES DO PEDIDO ===== -->
     <section class="info-pedido">
-      <h2>💳 Forma de Pagamento</h2>
-      <select id="pagamento">
-        <option value="dinheiro">Dinheiro</option>
-        <option value="cartao">Cartão</option>
-        <option value="pix">Pix</option>
-      </select>
+      <h2>Detalhes do Pedido</h2>
 
-      <h2>🚚 Tipo de Entrega</h2>
-      <select id="tipoEntrega" onchange="mostrarEndereco()">
-        <option value="retirada">Retirada no Pumbas (Grátis)</option>
-        <option value="entrega">Entrega</option>
-      </select>
+      <!-- ENTREGA -->
+      <div class="campo">
+        <label class="small" for="tipoEntrega">Tipo de Entrega</label>
+        <select id="tipoEntrega" onchange="mostrarOpcoesEntrega()">
+          <option value="retirada">Retirada no Pumbas (Grátis)</option>
+          <option value="entrega">Entrega</option>
+        </select>
+      </div>
 
-      <div id="enderecoBox" class="endereco-box" style="display: none;">
-        <h3>📍 Endereço para Entrega</h3>
+      <div id="opcoesEntregaBox" class="campo" style="display:none;">
+        <label class="small" for="localEntrega">Local de Entrega</label>
+        <select id="localEntrega" onchange="mostrarEnderecoEntrega()">
+          <option value="pumba">Pumba - Frete Grátis</option>
+          <option value="lisboa">Lisboa / Antigo Forró do Bosque - R$3,00</option>
+          <option value="touquinha">Touquinha / São José (Centro) - R$5,00</option>
+          <option value="bocadamata">Boca da Mata / Pumba 2 / São José (Zona Rural) / Cruz das Almas - R$7,00</option>
+          <option value="outro">Outro endereço (Verificar com atendente)</option>
+        </select>
+      </div>
+
+      <div id="enderecoBox" class="campo" style="display:none;">
+        <label class="small" for="endereco">Endereço para Entrega</label>
         <input type="text" id="endereco" placeholder="Rua, número, bairro...">
       </div>
 
-      <h2>🗒️ Observações</h2>
-      <textarea id="observacao" rows="4" placeholder="Ex: Tirar cebola, ponto da carne, etc."></textarea>
+      <!-- OBSERVAÇÕES -->
+      <div class="campo">
+        <label class="small" for="observacao">Observações</label>
+        <textarea id="observacao" placeholder="Ex: sem cebola, ponto da carne..."></textarea>
+      </div>
 
-      <button onclick="enviarWhatsApp()" class="btn-finalizar">
-        📲 Enviar Pedido pelo WhatsApp
-      </button>
+      <!-- PAGAMENTO -->
+      <div class="campo">
+        <label class="small" for="pagamentoSelect">Forma de Pagamento</label>
+        <select id="pagamentoSelect">
+          <option value="dinheiro">Dinheiro</option>
+          <option value="cartao">Cartão</option>
+          <option value="pix">PIX</option>
+        </select>
+      </div>
+
+      <!-- PIX -->
+      <div id="pix-section" class="pix-section">
+        <div class="pix-key-box">
+          <label>Chave PIX (copiar e colar)</label>
+          <code id="pixKeyText">63396173000190</code>
+        </div>
+
+        <div class="pix-actions">
+          <button id="copyPixBtn" class="btn">Copiar chave</button>
+          <button id="copyPixWithAmountBtn" class="btn secondary">Copiar chave + valor</button>
+          <span id="copyFeedback" class="copy-feedback">Copiado!</span>
+        </div>
+      </div>
+
+      <button id="btnEnviarWhats" class="btn-finalizar">📲 Enviar pedido pelo WhatsApp</button>
     </section>
 
-    <!-- ===== LADO DIREITO - RESUMO DO PEDIDO ===== -->
-    <section class="resumo-pedido">
-      <h2>🧾 Seu Pedido</h2>
-      <div id="resumo"></div>
-
-      <h2>🛒 Itens Selecionados</h2>
+    <aside class="resumo-pedido">
+      <h2>Resumo do Pedido</h2>
       <ul id="listaCarrinho"></ul>
-
-      <p id="totalResumo" class="total"></p>
-    </section>
-
+      <p id="totalResumo" class="total">Total: R$ 0,00</p>
+    </aside>
   </main>
 
-  <!-- ===== RODAPÉ ===== -->
-  <footer>
-    © 2025 Pumbas Burguer - Hakuna Matata! 🍔🔥
-  </footer>
+  <script>
+    const PIX_KEY = "63396173000190";
 
-  <!-- ===== SCRIPTS ===== -->
-  <script src="script.js"></script>
+    function mostrarOpcoesEntrega() {
+      const tipo = document.getElementById("tipoEntrega").value;
+      const box = document.getElementById("opcoesEntregaBox");
+      const end = document.getElementById("enderecoBox");
+      if (tipo === "entrega") box.style.display = "block";
+      else { box.style.display = "none"; end.style.display = "none"; }
+    }
+
+    function mostrarEnderecoEntrega() {
+      const local = document.getElementById("localEntrega").value;
+      document.getElementById("enderecoBox").style.display = (local === "outro") ? "block" : "none";
+    }
+
+    document.getElementById("pagamentoSelect").addEventListener("change", e => {
+      document.getElementById("pix-section").style.display = (e.target.value === "pix") ? "block" : "none";
+    });
+
+    document.getElementById("copyPixBtn").addEventListener("click", async () => {
+      await navigator.clipboard.writeText(PIX_KEY);
+      const f = document.getElementById("copyFeedback");
+      f.classList.add("show");
+      setTimeout(() => f.classList.remove("show"), 1400);
+    });
+
+    document.getElementById("copyPixWithAmountBtn").addEventListener("click", async () => {
+      const total = document.getElementById("totalResumo").textContent;
+      await navigator.clipboard.writeText(`${PIX_KEY} | ${total}`);
+      const f = document.getElementById("copyFeedback");
+      f.classList.add("show");
+      setTimeout(() => f.classList.remove("show"), 1400);
+    });
+  </script>
 </body>
 </html>
