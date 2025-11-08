@@ -19,15 +19,46 @@ header.cabecalho {
   flex-wrap: wrap;
 }
 
-.logo {
-  width: 10px;
-  height: auto;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
+/* CSS para posicionar a logo "encaixada" no topo lateral com glow RGB */
+.cabecalho {
+  position: relative;
+  height: 90px;                /* ajuste a altura do cabeçalho conforme necessário */
+  padding: 0 20px;
+  display: flex;
+  align-items: flex-start;     /* mantém conteúdo no topo */
+  background: transparent;
+  overflow: visible;
 }
 
-.logo:hover {
-  transform: scale(1.05);
+/* Classe da imagem conforme seu HTML: <img class="logo-grande"> */
+.logo-grande {
+  position: absolute;
+  top: -8px;                   /* "encaixa" a logo na parte de cima (puxe para cima com valores negativos) */
+  left: 18px;                  /* posicionamento lateral: mude para `right: 18px;` se quiser à direita */
+  width: 180px;                /* ajuste o tamanho conforme necessário */
+  height: auto;
+  z-index: 10;
+  display: block;
+  padding: 6px;                /* pequeno halo/offset para destacar o glow */
+  border-radius: 8px;          /* cantos arredondados (opcional) */
+  background: rgba(0,0,0,0.18);/* leve fundo para destacar o brilho sobre fundos claros/escuros */
+  transition: transform .25s ease, box-shadow .25s ease;
+  cursor: default;
+
+}
+
+/* interação opcional: aumenta sutilmente o glow ao passar o mouse */
+.logo-grande:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Responsividade: reduz a logo em telas pequenas */
+@media (max-width: 520px) {
+  .logo-grande {
+    width: 100px;
+    left: 12px;   /* ajusta o encaixe em telas pequenas */
+    top: -6px;
+  }
 }
 
 .titulo-site {
@@ -44,7 +75,7 @@ header.cabecalho {
 .subtitulo {
   font-size: 16px;
   color: #ffae42;
-  margin: 0;
+  margin: -10px 0 0 0;
   letter-spacing: 3px;
 }
 

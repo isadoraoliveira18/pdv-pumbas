@@ -165,7 +165,6 @@ function enviarWhatsApp() {
       btnTopo.style.display = "none";
     }
   };
-
   // Função para voltar ao topo
   btnTopo.addEventListener("click", function() {
     window.scrollTo({
@@ -173,3 +172,4 @@ function enviarWhatsApp() {
       behavior: "smooth" // Rolagem suave
     });
   });
+

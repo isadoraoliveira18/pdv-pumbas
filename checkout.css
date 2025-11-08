@@ -11,8 +11,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
-  padding: 20px 40px;
+  gap: 20px;
+  padding: 10px 20px;
   background-color: #000;
   border-bottom: 3px solid #ff7b00;
   flex-wrap: wrap;
@@ -37,7 +37,14 @@ body {
   letter-spacing: 3px;
 }
 
-/* ===== BOTÃO VOLTAR ===== */
+.logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #ff7b00;
+  box-shadow: 0 0 15px rgba(255, 123, 0, 0.4);
+}
+
 /* ===== BOTÃO VOLTAR ===== */
 .voltar {
   text-align: center;
