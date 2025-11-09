@@ -72,6 +72,41 @@
           </div>
         </div>
       </section>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "SUA_API_KEY",
+    authDomain: "pumbas-burguer.firebaseapp.com",
+    projectId: "pumbas-burguer",
+    storageBucket: "pumbas-burguer.appspot.com",
+    messagingSenderId: "000000000000",
+    appId: "1:000000000000:web:xxxxxxxxxx"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Exemplo: salvar pedido manualmente
+  async function salvarPedido() {
+    try {
+      await addDoc(collection(db, "pedidos"), {
+        nome: "Isadora",
+        burguer: "Simba Burguer",
+        quantidade: 2,
+        valor: 15,
+        total: 30,
+        data: new Date()
+      });
+      alert("✅ Pedido salvo com sucesso!");
+    } catch (e) {
+      alert("❌ Erro ao salvar pedido: " + e);
+    }
+  }
+</script>
+<button onclick="salvarPedido()">Testar pedido</button>
+
 <!-- ADICIONAIS -->
 <section id="adicionais">
   <h2>🥓 Adicionais</h2>
@@ -121,12 +156,17 @@
           </div>
       </section>
 
-          <div class="item" onclick="addToCart('Combo', 26)">
+     <section id="combo">
+        <h2>Combo</h2>
+        <div class="grid">
+          <div class="item" onclick="addToCart('Combo', 28)">
             <img src="imagens/combo.jpg" alt="Combo">
-            <p>Combo - R$26,00</p>
-            <small> Simba + Refri lata + Batata P </small>
+            <p>Combo - R$28,00</p>
+            <small>Batata P, Simba Burguer e um Refri lata </small>
           </div>
-          
+          </div>
+      </section>
+
            <!-- Promoções
       <section id="Promocao">
         <h2>Promoções</h2>
