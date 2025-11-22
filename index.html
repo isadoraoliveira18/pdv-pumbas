@@ -43,33 +43,34 @@
       <section id="hamburguer">
         <h2>🍔 Hambúrgueres</h2>
         <div class="grid">
-          <div class="item" onclick="addToCart('Simbas Burguer', 15)">
+          <div class="item" onclick="addToCart('Simbas Burguer', 15, 1)">
             <img src="imagens/burguer1.jpg" alt="Simbas Burguer">
             <p class="nome">Simbas Burguer - R$15,00</p>
-            <small>Pão brioche, carne artesanal, queijo, alface americano e maionese artesanal.</small>
+            <small>Pão brioche, 90g carne artesanal, maionese artesanal, queijo muçarela, alface americano e cebola marinada.</small>
           </div>
-          <div class="item" onclick="addToCart('Nala Burguer', 18)">
+          <div class="item" onclick="addToCart('Nala Burguer', 18, 1)">
             <img src="imagens/burguer2.jpg" alt="Nala Burguer">
             <p class="nome">Nala Burguer - R$18,00</p>
-            <small>Cebola caramelizada e molho da casa.</small>
+            <small>Pão brioche, 90g de carne artesanal, molho da casa queijo muçarela, alface americano e cebola caramelizada .</small>
           </div>
-          <div class="item" onclick="addToCart('Timão Burguer', 20)">
+          <div class="item" onclick="addToCart('Timão Burguer', 20, 1)">
             <img src="imagens/burguer3.jpg" alt="Timão Burguer">
             <p class="nome">Timão Burguer - R$20,00</p>
-            <small>Molho da casa, bacon e tomate.</small>
+            <small>Pão brioche, 90g carne artesanal, molho da casa, queijo lanche, alface americano, bacon e tomate.</small>
           </div>
-          <div class="item" onclick="addToCart('Kiara Burguer', 22)">
+          <div class="item" onclick="addToCart('Kiara Burguer', 22, 1)">
             <img src="imagens/burguer4.jpg" alt="Kiara Burguer">
             <p class="nome">Kiara Burguer - R$22,00</p>
-            <small>Bacon, barbecue e cebola chapeada ao molho.</small>
+            <small>Pão brioche, 100g carne artesanal, Molho barbecue, queijo muçarela, Bacon e cebola chapeada.</small>
           </div>
-          <div class="item" onclick="addToCart('Mufasa Burguer', 25)">
+          <div class="item" onclick="addToCart('Mufasa Burguer', 25, 1)">
             <img src="imagens/burguer5.jpg" alt="Mufasa Burguer">
             <p class="nome">Mufasa Burguer - R$25,00</p>
-            <small>Queijo chapeado, molho da casa e cebola caramelizada.</small>
+            <small>Pão brioche, 100g carne artesanal, queijo lanche ,Queijo chapeado, molho da casa e cebola caramelizada.</small>
           </div>
         </div>
       </section>
+      <!-- FIREBASE
   <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
   import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
@@ -103,39 +104,39 @@
     }
   }
 </script>
-
+-->
 
 <!-- ADICIONAIS -->
 <section id="adicionais">
   <h2>🥓 Adicionais</h2>
   <div class="grid adicionais-grid">
 
-    <div class="item adicional" onclick="addToCart('Adicional Carne', 5)">
+    <div class="item adicional" onclick="addToCart('Adicional Carne', 5, 1)">
       <img src="imagens/carne.jpg" alt="Adicional Carne">
       <p>Carne Extra - R$5,00</p>
     </div>
 
-    <div class="item adicional" onclick="addToCart('Adicional Queijo', 4)">
+    <div class="item adicional" onclick="addToCart('Adicional Queijo', 4, 1)">
       <img src="imagens/queijo.jpg" alt="Adicional Queijo">
       <p>Queijo - R$3,00</p>
     </div>
 
-    <div class="item adicional" onclick="addToCart('Adicional Molho', 2)">
+    <div class="item adicional" onclick="addToCart('Adicional Molho', 2, 1)">
       <img src="imagens/molho.jpg" alt="Molho Especial">
       <p>Molho Especial - R$2,00</p>
     </div>
 
-    <div class="item adicional" onclick="addToCart('Adicional Salada', 2)">
+    <div class="item adicional" onclick="addToCart('Adicional Salada', 2, 1)">
       <img src="imagens/salada.jpg" alt="Adicional Salada">
       <p>Salada - R$2,00</p>
     </div>
 
-    <div class="item adicional" onclick="addToCart('Adicional Bacon', 5)">
+    <div class="item adicional" onclick="addToCart('Adicional Bacon', 5, 1)">
       <img src="imagens/bacon.jpg" alt="Adicional Bacon">
       <p>Bacon - R$4,00</p>
     </div>
 
-    <div class="item adicional" onclick="addToCart('Cebola Caramelizada', 4)">
+    <div class="item adicional" onclick="addToCart('Cebola Caramelizada', 4, 1)">
       <img src="imagens/cebola.jpg" alt="Cebola Caramelizada">
       <p>Cebola Caramelizada - R$2,00</p>
     </div>
@@ -146,12 +147,12 @@
       <section id="batata">
         <h2>🍟 Batatas</h2>
         <div class="grid">
-          <div class="item" onclick="addToCart('Batata Pequena', 10)">
+          <div class="item" onclick="addToCart('Batata Pequena', 10, 1)">
             <img src="imagens/batata.jpg" alt="Batata Pequena">
             <p>Batata Pequena - R$10,00</p>
             <small>Porção de 120g.</small>
           </div>
-          <div class="item" onclick="addToCart('Batata Média', 15)">
+          <div class="item" onclick="addToCart('Batata Média', 15, 1)">
             <img src="imagens/batata.jpg" alt="Batata Média">
             <p>Batata Média - R$15,00</p>
             <small>Porção de 200g.</small>
@@ -185,15 +186,13 @@
         <h2>🥤 Bebidas</h2>
         <div class="grid">
           <!-- Refrigerantes -->
-          <div class="item" onclick="addToCart('Pepsi Lata', 5)">
-            <img src="imagens/pepsi.jpg" alt="Pepsi Lata">
-            <p>Pepsi Lata - R$5,00</p>
+          <div class="item" onclick="addToCart('Pepsi Lata', 5, 1)">
+            <img src="imagens/lata.png" alt="Pepsi Lata">
+            <p>Refrigerantes Lata - R$5,00</p>
           </div>
-          <div class="item" onclick="addToCart('Antártica Lata', 5)">
-            <img src="imagens/lataG.jpg" alt="Antártica Lata">
-            <p>Antártica Lata - R$5,00</p>
-          </div>
-
+          <div class="item" onclick="addToCart('Pepsi 600ml', 8, 1)">
+            <img src="imagens/litro.jpg" alt="Pepsi 600ml">
+            <p>Refrigerantes 1 litro - R$8,00</p>
           <!-- Cervejas 
           <div class="item" onclick="addToCart('Heineken Long Neck', 11)">
             <img src="imagens/hei.jpg" alt="Heineken Long Neck">

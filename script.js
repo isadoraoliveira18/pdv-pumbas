@@ -7,17 +7,18 @@ let carrinho = [];
 /* =====================
    ADICIONAR AO CARRINHO
    ===================== */
-function addToCart(nome, preco) {
+function addToCart(nome, preco, qtd = 1) {
   const itemExistente = carrinho.find(item => item.nome === nome);
 
   if (itemExistente) {
-    itemExistente.quantidade++;
+    itemExistente.quantidade += qtd;
   } else {
-    carrinho.push({ nome, preco, quantidade: 1 });
+    carrinho.push({ nome, preco, quantidade: qtd });
   }
 
   atualizarCarrinho();
 }
+
 
 /* =====================
    ATUALIZAR CARRINHO
@@ -104,6 +105,7 @@ function finalizarPedido() {
     window.location.href = 'checkout.html';
   }
 
+  
 /* =====================
    BOTÃO VOLTAR AO TOPO
    ===================== */
