@@ -266,11 +266,16 @@ main {
     flex-direction: column;
     align-items: center;
   }
+} /* ← FECHAMENTO ADICIONADO */
 
-  .carrinho {
-    position: relative;
-    width: 90%;
-  }
+.carrinho {
+  width: 300px;
+  height: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  pointer-events: auto;
+}
 
 /* ====== BOTÕES CARRINHO ====== */
 .botoes-carrinho {
@@ -341,4 +346,3 @@ main {
   box-shadow: 0 0 25px rgba(255, 123, 0, 0.8);
 }
 
-}

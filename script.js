@@ -1,7 +1,3 @@
-/* ======================================================
-   SISTEMA DE CARRINHO - PUMBAS BURGUER 🍔🔥
-   ====================================================== */
-
 let carrinho = [];
 
 /* =====================
@@ -18,8 +14,6 @@ function addToCart(nome, preco, qtd = 1) {
 
   atualizarCarrinho();
 }
-
-
 /* =====================
    ATUALIZAR CARRINHO
    ===================== */
@@ -78,7 +72,6 @@ function removerItem(index) {
   carrinho.splice(index, 1);
   atualizarCarrinho();
 }
-
 /* =====================
    CALCULAR TOTAL
    ===================== */
