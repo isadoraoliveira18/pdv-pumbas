@@ -17,16 +17,23 @@ function addToCart(nome, preco, qtd = 1) {
 /* =====================
    ATUALIZAR CARRINHO
    ===================== */
+function atualizarBarraCarrinho() {
+  const numero = document.querySelector(".carrinho-numero");
+  numero.textContent = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+}
+
+function abrirCarrinho() {
+  const popup = document.getElementById("carrinhoPopup");
+  popup.style.display = popup.style.display === "block" ? "none" : "block";
+  popup.innerHTML = document.querySelector(".carrinho").innerHTML;
+}
+
+
 function atualizarCarrinho() {
   const carrinhoDiv = document.querySelector(".carrinho");
+
   if (!carrinhoDiv) return;
 
-  // Mostrar ou esconder o carrinho
-if (carrinho.length > 0) {
-    carrinhoDiv.classList.add("mostrar");
-} else {
-    carrinhoDiv.classList.remove("mostrar");
-}
   carrinhoDiv.innerHTML = `
     <h2>🛒 Carrinho</h2>
     ${carrinho.length === 0
@@ -46,10 +53,12 @@ if (carrinho.length > 0) {
     <p class="total">Total: R$ ${calcularTotal().toFixed(2)}</p>
 
     <div class="botoes-carrinho">
-      <button class="finalizar" onclick="finalizarPedido()">✅ Finalizar Pedido</button>
-      <button class="cancelar" onclick="cancelarPedido()">❌ Cancelar</button>
+      <button class="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+      <button class="cancelar" onclick="cancelarPedido()">Cancelar</button>
     </div>
   `;
+
+  atualizarBarraCarrinho();
 }
 
 /* =====================

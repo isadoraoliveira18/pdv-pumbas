@@ -200,24 +200,65 @@ main {
     background-color: #ff5500;
 }
 
-/* ====== CARRINHO NOVO (MELHORADO) ====== */
-.carrinho {
+
+/* ===== CARRINHO FIXO NO FINAL DA TELA ===== */
+/* ===== BARRA MINI, REDONDA E CHARMOSA ===== */
+.carrinho-barra {
   position: fixed;
-  top: 10px;
-  right: 10px;
-  width: 130px;
-  padding: 10px;
-  background: #222;
+  bottom: 15px;
+  right: 15px;
+  background: #ff6600;
   color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  z-index: 9999;
-  font-size: 12px;
-  display: none; /* Importante: só aparece quando houver itens */
+  padding: 10px 14px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  cursor: pointer;
+  z-index: 99999;
+
+  transition: transform .2s ease, background .2s ease;
 }
 
-.carrinho.mostrar {
-  display: block;
+.carrinho-barra:active {
+  transform: scale(0.9);
+  background: #e25800;
+}
+
+.carrinho-numero {
+  background: #000;
+  padding: 3px 8px;
+  font-size: 12px;
+  border-radius: 12px;
+}
+
+.carrinho-popup {
+  position: fixed;
+  bottom: 75px;
+  right: 10px;
+  width: 88vw;
+  max-height: 70vh;
+  background: #080808;
+  color: #ff8d0b;
+  border-radius: 16px;
+  padding: 16px;
+  overflow-y: auto;
+
+  box-shadow: 0 0 15px rgba(0,0,0,0.35);
+  display: none;
+  z-index: 99999;
+
+  animation: abrirCart .25s ease;
+}
+
+@keyframes abrirCart {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 
@@ -306,35 +347,3 @@ main {
     }
 }
 
-/* ===== CARRINHO MOBILE ===== */
-@media (max-width: 768px) {
-
-  .carrinho-flutuante {
-    width: 65px;        /* menor */
-    height: 65px;
-    bottom: 20px;
-    right: 20px;
-  }
-
-  /* Quando o carrinho abre */
-  .carrinho-ativo .carrinho {
-    width: 85vw;
-    height: 70vh;
-    max-height: 70vh;
-  }
-
-  /* Conteúdo rolável */
-  .carrinho {
-    overflow-y: auto;
-    padding-bottom: 70px; /* espaço pros botões */
-  }
-
-  /* Mantém os botões SEMPRE FIXOS */
-  .botoes-carrinho {
-    position: sticky;
-    bottom: 0;
-    background: #fff;
-    padding: 10px;
-    border-top: 2px solid #ddd;
-  }
-}
