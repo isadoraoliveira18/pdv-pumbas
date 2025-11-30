@@ -203,8 +203,21 @@
       
     </section>
   </main>
-<button id="btnTopo">⬆</button>
   <script src="script.js"></script>
+
+<!-- BOTÃO DO CARRINHO -->
+<button id="btnCarrinho" title="Carrinho"> <i class="fa fa-shopping-cart"></i></button>
+
+<!-- POPUP DO CARRINHO -->
+<div id="popupCarrinho" class="popup">
+  <div class="popup-conteudo">
+    <span id="fecharCarrinho">&times;</span>
+    <h2>Seu Carrinho</h2>
+    <div id="itensCarrinho"></div>
+    <p id="totalCarrinho"></p>
+    <button id="finalizarPedido">Finalizar Pedido</button>
+  </div>
+</div>
 
       </body>
 </html>

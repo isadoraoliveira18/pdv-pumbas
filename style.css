@@ -278,47 +278,43 @@ main {
 }
 
 /* ====== BOTÕES CARRINHO ====== */
-.botoes-carrinho {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
-.botoes-carrinho button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+.carrinho {
+  width: 200px;                  /* ainda menor */
+  max-height: 70vh;              /* altura reduzida */
+  position: fixed;
+  right: 20px;
+  top: 80px;
+  background: #111;
+  border: 2px solid #ff7b00;
+  border-radius: 8px;            /* formato quadrado com leve arredondamento */
   padding: 10px;
-  font-size: 15px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
-  letter-spacing: 0.5px;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.4);
+  z-index: 999;
 }
 
-.botoes-carrinho .finalizar {
-  background: linear-gradient(90deg, #ff7b00, #ffae42);
-  color: #fff;
-  box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+/* Itens dentro do carrinho */
+.carrinho-item {
+  background: #1a1a1a;
+  border-left: 4px solid #ff7b00;
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
 }
 
-.botoes-carrinho .finalizar:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 123, 0, 0.8);
+/* Total do carrinho */
+.total {
+  font-size: 14px;
+  text-align: right;
+  color: #ff7b00;
 }
 
-.botoes-carrinho .cancelar {
-  background: linear-gradient(90deg, #ff3b3b, #b30000);
-  color: #fff;
-  box-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
-}
-
-.botoes-carrinho .cancelar:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 26, 26, 0.8);
+/* Botões */
+.botoes-carrinho button {
+  font-size: 13px;
+  padding: 8px;
 }
 
 /* ===== BOTÃO VOLTAR AO TOPO ===== */
