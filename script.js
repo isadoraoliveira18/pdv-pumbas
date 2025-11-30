@@ -21,6 +21,12 @@ function atualizarCarrinho() {
   const carrinhoDiv = document.querySelector(".carrinho");
   if (!carrinhoDiv) return;
 
+  // Mostrar ou esconder o carrinho
+if (carrinho.length > 0) {
+    carrinhoDiv.classList.add("mostrar");
+} else {
+    carrinhoDiv.classList.remove("mostrar");
+}
   carrinhoDiv.innerHTML = `
     <h2>🛒 Carrinho</h2>
     ${carrinho.length === 0
