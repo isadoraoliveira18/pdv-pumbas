@@ -305,3 +305,36 @@ main {
         align-items: center;
     }
 }
+
+/* ===== CARRINHO MOBILE ===== */
+@media (max-width: 768px) {
+
+  .carrinho-flutuante {
+    width: 65px;        /* menor */
+    height: 65px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  /* Quando o carrinho abre */
+  .carrinho-ativo .carrinho {
+    width: 85vw;
+    height: 70vh;
+    max-height: 70vh;
+  }
+
+  /* Conteúdo rolável */
+  .carrinho {
+    overflow-y: auto;
+    padding-bottom: 70px; /* espaço pros botões */
+  }
+
+  /* Mantém os botões SEMPRE FIXOS */
+  .botoes-carrinho {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding: 10px;
+    border-top: 2px solid #ddd;
+  }
+}
