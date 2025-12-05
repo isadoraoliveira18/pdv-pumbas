@@ -27,9 +27,6 @@
       padding: 0;
     }
 
-
-
-    /* ===== CABEÇALHO ===== */
     .cabecalho {
       display: flex;
       justify-content: center;
@@ -50,7 +47,6 @@
     }
     .text-final { margin: 0; color: var(--laranja-claro); }
 
-    /* ===== CONTAINER ===== */
     .checkout-container {
       display: flex;
       gap: 28px;
@@ -96,7 +92,6 @@
 
     textarea { min-height: 84px; resize: vertical; }
 
-    /* ===== PIX ===== */
     .pix-section {
       margin-top: 12px;
       padding: 12px;
@@ -214,6 +209,12 @@
         <textarea id="observacao" placeholder="Ex: sem cebola, ponto da carne..."></textarea>
       </div>
 
+      <!-- CAMPO CONTÉM 
+      <div class="campo">
+        <label class="small" for="contem">Contém</label>
+        <input type="text" id="contem" placeholder="Ex: contém picles, contém queijo...">
+      </div> -->
+
       <div class="campo">
         <label class="small" for="pagamentoSelect">Forma de Pagamento</label>
         <select id="pagamentoSelect">
@@ -256,18 +257,19 @@
       const end = document.getElementById("enderecoBox");
       if (tipo === "entrega") box.style.display = "block";
       else { box.style.display = "none"; end.style.display = "none"; }
+      exibirCarrinho(); // Atualiza total quando troca tipo de entrega
     }
 
     function mostrarEnderecoEntrega() {
       const local = document.getElementById("localEntrega").value;
       document.getElementById("enderecoBox").style.display = (local === "outro") ? "block" : "none";
+      exibirCarrinho(); // Atualiza total quando troca endereço
     }
 
     document.getElementById("pagamentoSelect").addEventListener("change", e => {
       document.getElementById("pix-section").style.display = (e.target.value === "pix") ? "block" : "none";
     });
 
-    // === COPIAR CHAVE PIX ===
     document.getElementById("copyPixBtn").addEventListener("click", async () => {
       await navigator.clipboard.writeText(PIX_KEY);
       const f = document.getElementById("copyFeedback");
@@ -282,62 +284,98 @@
       f.classList.add("show");
       setTimeout(() => f.classList.remove("show"), 1400);
     });
-    // === CARRINHO DE COMPRAS ===
-const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-/* ===========================================
-   EXIBIR ITENS E TOTAL
-   =========================================== */
-function exibirCarrinho() {
-    const lista = document.getElementById("listaCarrinho");
-    const totalResumo = document.getElementById("totalResumo");
 
-    lista.innerHTML = "";
-    let total = 0;
+    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-    carrinho.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.nome} (${item.quantidade}x) - R$ ${(item.preco * item.quantidade).toFixed(2)}`;
-        lista.appendChild(li);
-        total += item.preco * item.quantidade;
-    });
+    function exibirCarrinho() {
+        const lista = document.getElementById("listaCarrinho");
+        const totalResumo = document.getElementById("totalResumo");
 
-    totalResumo.textContent = "💰 Total: R$ " + total.toFixed(2);
-}
-exibirCarrinho();
-    // === GERAR MENSAGEM E ENVIAR PELO WHATSAPP ===
-function gerarMensagemPedido() {
-  const tipoEntrega = document.getElementById("tipoEntrega").value;
-  const localEntrega = document.getElementById("localEntrega") ? document.getElementById("localEntrega").value : "";
-  const endereco = document.getElementById("endereco") ? document.getElementById("endereco").value : "";
-  const observacao = document.getElementById("observacao").value;
-  const pagamento = document.getElementById("pagamentoSelect").value;
+        lista.innerHTML = "";
+        let total = 0;
 
-  let linhas = [];
-  linhas.push("*🧾 Pedido - Pumba’s Burguer*");
-  linhas.push("---------------------------");
+        carrinho.forEach(item => {
+            const li = document.createElement("li");
+            const qtd = (typeof item.quantidade === 'number' && item.quantidade > 0) ? item.quantidade : 1;
+            const subtotal = item.preco * qtd;
+            li.textContent = `${item.nome} (${qtd}x) - R$ ${subtotal.toFixed(2)}`;
+            lista.appendChild(li);
+            total += subtotal;
+        });
 
-  let total = 0;
-  carrinho.forEach(item => {
-    const qtd = (typeof item.quantidade === 'number' && item.quantidade > 0) ? item.quantidade : 1;
-    const subtotal = item.preco * qtd;
-    linhas.push(`🍔 ${item.nome} (${qtd}x) - R$ ${subtotal.toFixed(2)}`);
-    total += subtotal;
-  });
+        // Valor da entrega
+        const tipoEntrega = document.getElementById("tipoEntrega").value;
+        const localEntrega = document.getElementById("localEntrega") ? document.getElementById("localEntrega").value : "";
+        let valorEntrega = 0;
+        if (tipoEntrega === "entrega") {
+            switch(localEntrega) {
+                case "pumba": valorEntrega = 2; break;
+                case "lisboa": valorEntrega = 3; break;
+                case "touquinha": valorEntrega = 7; break;
+                case "bocadamata": valorEntrega = 9; break;
+                default: valorEntrega = 0; break;
+            }
+            if (valorEntrega > 0) {
+                const liEntrega = document.createElement("li");
+                liEntrega.textContent = `📦 Entrega - R$ ${valorEntrega.toFixed(2)}`;
+                lista.appendChild(liEntrega);
+                total += valorEntrega;
+            }
+        }
 
-  linhas.push("---------------------------");
-  linhas.push(`💰 Total: R$ ${total.toFixed(2)}`);
-  linhas.push("");
-  linhas.push(`📦 Entrega: ${tipoEntrega}`);
-  if (tipoEntrega === "entrega" && localEntrega) linhas.push(`🏠 Local: ${localEntrega}`);
-  if (endereco) linhas.push(`📍 Endereço: ${endereco}`);
-  linhas.push(`💳 Pagamento: ${pagamento}`);
-  if (observacao) linhas.push(`🗒️ Obs: ${observacao}`);
-  linhas.push("");
-  linhas.push("✅ Agradecemos sua preferência!");
+        totalResumo.textContent = "💰 Total: R$ " + total.toFixed(2);
+    }
 
-  return linhas.join("\n");
-}
+    exibirCarrinho();
 
+    function gerarMensagemPedido() {
+      const tipoEntrega = document.getElementById("tipoEntrega").value;
+      const localEntrega = document.getElementById("localEntrega") ? document.getElementById("localEntrega").value : "";
+      const endereco = document.getElementById("endereco") ? document.getElementById("endereco").value : "";
+      const observacao = document.getElementById("observacao").value;
+      const contem = document.getElementById("Adicional a mais ?").value;
+      const pagamento = document.getElementById("pagamentoSelect").value;
+
+      let linhas = [];
+      linhas.push("*🧾 Pedido - Pumba’s Burguer*");
+      linhas.push("---------------------------");
+
+      let total = 0;
+      carrinho.forEach(item => {
+        const qtd = (typeof item.quantidade === 'number' && item.quantidade > 0) ? item.quantidade : 1;
+        const subtotal = item.preco * qtd;
+        linhas.push(`🍔 ${item.nome} (${qtd}x) - R$ ${subtotal.toFixed(2)}`);
+        total += subtotal;
+      });
+
+      // Valor da entrega
+      let valorEntrega = 0;
+      if (tipoEntrega === "entrega") {
+          switch(localEntrega) {
+              case "pumba": valorEntrega = 2; break;
+              case "lisboa": valorEntrega = 3; break;
+              case "touquinha": valorEntrega = 7; break;
+              case "bocadamata": valorEntrega = 9; break;
+              default: valorEntrega = 0; break;
+          }
+          if (valorEntrega > 0) linhas.push(`📦 Valor da Entrega: R$ ${valorEntrega.toFixed(2)}`);
+          total += valorEntrega;
+      }
+
+      linhas.push("---------------------------");
+      linhas.push(`💰 Total: R$ ${total.toFixed(2)}`);
+      linhas.push("");
+      linhas.push(`📦 Entrega: ${tipoEntrega}`);
+      if (tipoEntrega === "entrega" && localEntrega) linhas.push(`🏠 Local: ${localEntrega}`);
+      if (endereco) linhas.push(`📍 Endereço: ${endereco}`);
+      if (contem) linhas.push(`🍽️ Contém: ${contem}`);
+      linhas.push(`💳 Pagamento: ${pagamento}`);
+      if (observacao) linhas.push(`🗒️ Obs: ${observacao}`);
+      linhas.push("");
+      linhas.push("✅ Agradecemos sua preferência!");
+
+      return linhas.join("\n");
+    }
 
     document.getElementById("btnEnviarWhats").addEventListener("click", () => {
       const mensagem = gerarMensagemPedido();
