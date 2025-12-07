@@ -3,8 +3,8 @@ body {
     font-family: "Poppins", sans-serif;
     background-color: #0e0e0e;
     color: #fff;
-    margin: 10;
-    padding: 10;
+    margin: 10px;
+    padding: 10px;
 }
 
 /* ====== CABEÇALHO ====== */
@@ -17,18 +17,11 @@ header.cabecalho {
     padding: 10px 20px;
     gap: 15px;
     flex-wrap: wrap;
-}
-
-/* CABEÇALHO ENCAIXADO */
-.cabecalho {
     position: relative;
     height: 90px;
-    padding: 0 20px;
-    display: flex;
-    align-items: flex-start;
-    background: transparent;
-    overflow: visible;
 }
+
+/* REMOVIDO O DUPLICADO .cabecalho QUE QUEBRAVA O SITE */
 
 /* LOGO MAIOR */
 .logo-grande {
@@ -41,7 +34,7 @@ header.cabecalho {
     display: block;
     padding: 6px;
     border-radius: 8px;
-    background: rgba(0,0,0,0.18);
+    background: rgba(0, 0, 0, 0.18);
     transition: transform .25s ease, box-shadow .25s ease;
     cursor: default;
 }
@@ -200,69 +193,60 @@ main {
     background-color: #ff5500;
 }
 
-
-/* ===== CARRINHO FIXO NO FINAL DA TELA ===== */
-/* ===== BARRA MINI, REDONDA E CHARMOSA ===== */
+/* ===== CARRINHO ===== */
 .carrinho-barra {
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-  background: #ff6600;
-  color: #fff;
-  padding: 10px 14px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: bold;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  cursor: pointer;
-  z-index: 99999;
-
-  transition: transform .2s ease, background .2s ease;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: #ff6600;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    z-index: 99999;
+    transition: transform .2s ease, background .2s ease;
 }
 
 .carrinho-barra:active {
-  transform: scale(0.9);
-  background: #e25800;
+    transform: scale(0.9);
+    background: #e25800;
 }
 
 .carrinho-numero {
-  background: #000;
-  padding: 3px 8px;
-  font-size: 12px;
-  border-radius: 12px;
+    background: #000;
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 12px;
 }
 
 .carrinho-popup {
-  position: fixed;
-  bottom: 75px;
-  right: 10px;
-  width: 88vw;
-  max-height: 70vh;
-  background: #080808;
-  color: #ff8d0b;
-  border-radius: 16px;
-  padding: 16px;
-  overflow-y: auto;
-
-  box-shadow: 0 0 15px rgba(0,0,0,0.35);
-  display: none;
-  z-index: 99999;
-
-  animation: abrirCart .25s ease;
+    position: fixed;
+    bottom: 75px;
+    right: 10px;
+    width: 88vw;
+    max-height: 70vh;
+    background: #080808;
+    color: #ff8d0b;
+    border-radius: 16px;
+    padding: 16px;
+    overflow-y: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+    display: none;
+    z-index: 99999;
+    animation: abrirCart .25s ease;
 }
 
 @keyframes abrirCart {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-
-/* Itens do carrinho */
 .carrinho-item {
     background: #131313;
     border: 1px solid #ff7b00;
@@ -273,7 +257,6 @@ main {
     box-shadow: 0 0 6px rgba(255, 123, 0, 0.3);
 }
 
-/* Total */
 .total {
     font-size: 13px;
     text-align: right;
@@ -282,7 +265,6 @@ main {
     margin-top: 8px;
 }
 
-/* Botões */
 .botoes-carrinho button {
     font-size: 12px;
     padding: 6px;
@@ -290,7 +272,6 @@ main {
     font-weight: bold;
 }
 
-/* Finalizar */
 .botoes-carrinho .finalizar {
     background: linear-gradient(90deg, #ff7b00, #ffae42);
     color: #fff;
@@ -302,7 +283,6 @@ main {
     box-shadow: 0 0 14px rgba(255, 123, 0, 0.8);
 }
 
-/* Cancelar */
 .botoes-carrinho .cancelar {
     background: linear-gradient(90deg, #ff3b3b, #b30000);
     color: #fff;
@@ -346,4 +326,22 @@ main {
         align-items: center;
     }
 }
-
+.combos-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+.combo-item {
+    background: #1a1a1a;
+    border: 2px solid #2a2a2a;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}

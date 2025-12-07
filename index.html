@@ -4,227 +4,196 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pumbas Burguer - Sua Hamburgueria Artesanal</title>
+
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
- <!-- CABEÇALHO -->
+
 <header class="cabecalho">
   <div class="titulo-central">
     <h1 class="titulo-principal">PUMBAS BURGUER</h1>
-    <h2 class="subtitulo"> Bem vindo ao Pumba's Burguer</h2>
-    <h3 class="descricao"> Hamburgueria artesanal - Pumba I (Cruz das Almas - BA)</h3>
+    <h2 class="subtitulo">Bem vindo ao Pumba's Burguer</h2>
+    <h3 class="descricao">Hamburgueria artesanal - Pumba I (Cruz das Almas - BA)</h3>
   </div>
 </header>
-  <!-- MENU SUPERIOR -->
-   <div class="status-funcionamento">
+
+<div class="status-funcionamento">
   <span id="status"></span>
   <p>Horário de funcionamento: <strong>Sexta a Segunda - 18h às 23h</strong></p>
 </div>
 
-  <nav class="menu">
-    <ul>
-      <li><a href="#hamburguer">Hambúrguer</a></li>
-      <li><a href="#batata">Batata</a></li>
-      <li><a href="#bebida">Bebida</a></li>
-    </ul>
-  </nav>
-   <!-- <button id="btnTopo" title="Voltar ao topo">&#8679;</button>
-    
+<nav class="menu">
+  <ul>
+    <li><a href="#hamburguer">Hambúrguer</a></li>
+    <li><a href="#batata">Batata</a></li>
+    <li><a href="#bebida">Bebida</a></li>
+  </ul>
+</nav>
 
-  CONTEÚDO PRINCIPAL -->
-  <main>
-    <aside class="carrinho"></aside>
-        
-    <section class="menu-lateral">
+<main>
+  <section class="menu-lateral">
 
-      <!-- HAMBÚRGUERES -->
-      <section id="hamburguer">
-        <h2>🍔 Hambúrgueres</h2>
-        <div class="grid">
-          <div class="item" onclick="addToCart('Simbas Burguer', 16, 1)">
-            <img src="imagens/burguer1.jpg" alt="Simbas Burguer">
-            <p class="nome">Simbas Burguer - R$16,00</p>
-            <small>Pão brioche, 90g carne artesanal, maionese artesanal, queijo muçarela, alface americano e cebola marinada.</small>
-          </div>
-          <div class="item" onclick="addToCart('Nala Burguer', 19, 1)">
-            <img src="imagens/burguer2.jpg" alt="Nala Burguer">
-            <p class="nome">Nala Burguer - R$19,00</p>
-            <small>Pão brioche, 90g de carne artesanal, molho da casa queijo muçarela, alface americano e cebola caramelizada .</small>
-          </div>
+    <!-- HAMBÚRGUERES -->
+    <section id="hamburguer">
+      <h2>🍔 Hambúrgueres</h2>
+      <div class="grid">
 
-          <div class="item" onclick="addToCart('Timão Burguer', 22, 1)">
-            <img src="imagens/burguer3.jpg" alt="Timão Burguer">
-            <p class="nome">Timão Burguer - R$22,00</p>
-            <small>Pão brioche, 90g carne artesanal, molho da casa, queijo lanche, alface americano, bacon e tomate.</small>
-          </div>
-
-          <div class="item" onclick="addToCart('Kiara Burguer', 22, 1)">
-            <img src="imagens/burguer4.jpg" alt="Kiara Burguer">
-            <p class="nome">Kiara Burguer - R$22,00</p>
-            <small>Pão brioche, 100g carne artesanal, Molho barbecue, queijo muçarela, Bacon e cebola chapeada.</small>
-          </div>
-
-          <div class="item" onclick="addToCart('Mufasa Burguer', 23, 1)">
-            <img src="imagens/burguer5.jpg" alt="Mufasa Burguer">
-            <p class="nome">Mufasa Burguer - R$25,00</p>
-            <small>Pão brioche, 100g carne artesanal, queijo lanche ,Queijo chapeado, molho da casa e cebola caramelizada.</small>
-          </div>
-            
-          <div class="item" onclick="addToCart('Burguer supresa', 24)">
-            <img src="imagens/pre.jpg" alt="Mufasa Burguer">
-            <p class="nome">NOVO BURGUER (DISPONIVEL NA INAUGURAÇÃO) - R$25,00</p>
-            <small>Pão brioche, 2X 60g carne artesanal ************* .</small>
-          </div>
+        <div class="item" onclick="addToCart('Simbas Burguer', 16)">
+          <img src="imagens/burguer1.jpg" alt="Simbas Burguer">
+          <p class="nome">Simbas Burguer - R$16,00</p>
+          <small>Pão brioche, 90g carne artesanal, maionese artesanal, muçarela, alface e cebola marinada.</small>
         </div>
-      </section>
-      <!-- FIREBASE
-  <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "SUA_API_KEY",
-    authDomain: "pumbas-burguer.firebaseapp.com",
-    projectId: "pumbas-burguer",
-    storageBucket: "pumbas-burguer.appspot.com",
-    messagingSenderId: "000000000000",
-    appId: "1:000000000000:web:xxxxxxxxxx"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // Exemplo: salvar pedido manualmente
-  async function salvarPedido() {
-    try {
-      await addDoc(collection(db, "pedidos"), {
-        nome: "Isadora",
-        burguer: "Simba Burguer",
-        quantidade: 2,
-        valor: 15,
-        total: 30,
-        data: new Date()
-      });
-      alert("✅ Pedido salvo com sucesso!");
-    } catch (e) {
-      alert("❌ Erro ao salvar pedido: " + e);
-    }
-  }
-</script>
--->
-
-<!-- ADICIONAIS -->
-<section id="adicionais">
-  <h2>🥓 Adicionais</h2>
-  <div class="grid adicionais-grid">
-
-    <div class="item adicional" onclick="addToCart('Adicional Carne', 5)">
-      <img src="imagens/carne.jpg" alt="Adicional Carne">
-      <p>Carne Extra - R$5,00</p>
-    </div>
-
-    <div class="item adicional" onclick="addToCart('Adicional Queijo', 4)">
-      <img src="imagens/queijo.jpg" alt="Adicional Queijo">
-      <p>Queijo - R$3,00</p>
-    </div>
-
-    <div class="item adicional" onclick="addToCart('Adicional Molho', 3)">
-      <img src="imagens/molho.jpg" alt="Molho Especial">
-      <p>Molho Especial - R$2,00</p>
-    </div>
-
-    <div class="item adicional" onclick="addToCart('Adicional Salada', 2)">
-      <img src="imagens/salada.jpg" alt="Adicional Salada">
-      <p>Salada - R$2,00</p>
-    </div>
-
-    <div class="item adicional" onclick="addToCart('Adicional Bacon', 5)">
-      <img src="imagens/bacon.jpg" alt="Adicional Bacon">
-      <p>Bacon - R$4,00</p>
-    </div>
-
-    </div>
-</section>
-      <!-- BATATAS -->
-      <section id="batata">
-        <h2>🍟 Batatas</h2>
-        <div class="grid">
-          <div class="item" onclick="addToCart('Batata Pequena', 10)">
-            <img src="imagens/batata.jpg" alt="Batata Pequena">
-            <p>Batata Pequena - R$10,00</p>
-            <small>Porção de 120g.</small>
-          </div>
-          <div class="item" onclick="addToCart('Batata Média', 15)">
-            <img src="imagens/batata.jpg" alt="Batata Média">
-            <p>Batata Média - R$15,00</p>
-            <small>Porção de 200g.</small>
-      </section>
-
-     <!-- <section id="combo">
-        <h2>Combos</h2>
-        <div class="grid">
-          <div class="item" onclick="addToCart('Combo', 30,1)">
-            <img src="imagens/combo.jpg" alt="Combo">
-            <p>Combo REI LEÃO - R$30,00</p>
-            <small> Simba Burguer + Batata P +  Refri lata </small>
-          </div>
-          </div>     
-        <div class="grid">
-          <div class="item" onclick="addToCart('Combo', 48,1)">
-            <img src="imagens/combo.jpg" alt="Combo">
-            <p>Combo REI LEÃO 2 - R$48,00</p>
-            <small> Simba Burguer + Nala Burguer + Batata M</small>
-          </div>
+        <div class="item" onclick="addToCart('Nala Burguer', 19)">
+          <img src="imagens/burguer2.jpg" alt="Nala Burguer">
+          <p class="nome">Nala Burguer - R$19,00</p>
+          <small>Pão brioche, 90g carne artesanal, molho da casa, muçarela, alface e cebola caramelizada.</small>
         </div>
-        <div class="grid">
-          <div class="item" onclick="addToCart('Combo', 52)">
-           <img src="imagens/combo.jpg" alt="Combo">
-            <p>Combo HAKUNA MATATA - R$52,00</p>
-            <small>2x Simba's Burguer + BATATA M + REFRI LITRO </small>
+
+        <div class="item" onclick="addToCart('Timão Burguer', 24)">
+          <img src="imagens/timao.jpg" alt="Timão Burguer">
+          <p class="nome">Timão Burguer - R$24,00</p>
+          <small>Pão brioche, 2x60g carne artesanal, barbecue e mel, 2x queijo coalho.</small>
         </div>
-         </div>
-      </section> -->
- 
-      <section id="bebida">
-        <h2>🥤 Bebidas</h2>
-        <div class="grid">
-          <!-- Refrigerantes -->
-          <div class="item" onclick="addToCart('Pepsi Lata', 5, 1)">
-            <img src="imagens/lata.png" alt="Pepsi Lata">
-            <p>Refrigerantes Lata - R$5,00</p>
-          </div>
-          <div class="item" onclick="addToCart('Refrigerante litro', 8, 1)">
-            <img src="imagens/litro.jpg" alt="Refrigerante litro">
-            <p>Refrigerantes 1 litro - R$8,00</p>
+
+        <div class="item" onclick="addToCart('Kiara Burguer', 22)">
+          <img src="imagens/burguer4.jpg" alt="Kiara Burguer">
+          <p class="nome">Kiara Burguer - R$22,00</p>
+          <small>Pão brioche, 100g carne artesanal, barbecue, muçarela, bacon e cebola chapeada.</small>
         </div>
-      </section>      
+
+        <div class="item" onclick="addToCart('Mufasa Burguer', 25)">
+          <img src="imagens/burguer5.jpg" alt="Mufasa Burguer">
+          <p class="nome">Mufasa Burguer - R$25,00</p>
+          <small>Pão brioche, 100g carne artesanal, queijo lanche, queijo chapeado, molho da casa e cebola caramelizada.</small>
+        </div>
+
+        <div class="item" onclick="addToCart('Pumbas Burguer', 24)">
+          <img src="imagens/burguer3.jpg" alt="Pumbas Burguer">
+          <p class="nome">Pumbas Burguer - R$24,00</p>
+          <small>Pão brioche, 120g carne artesanal, molho da casa, muçarela, salada e bacon.</small>
+        </div>
+
+      </div>
     </section>
-  </main>
-</div>
-</div>
+
+    <!-- ADICIONAIS -->
+    <section id="adicionais">
+      <h2>🥓 Adicionais</h2>
+      <div class="grid adicionais-grid">
+
+        <div class="item adicional" onclick="addToCart('Adicional Carne', 5)">
+          <img src="imagens/carne.jpg" alt="Adicional Carne">
+          <p>Carne Extra - R$5,00</p>
+        </div>
+
+        <div class="item adicional" onclick="addToCart('Adicional Queijo', 3)">
+          <img src="imagens/queijo.jpg" alt="Adicional Queijo">
+          <p>Queijo - R$3,00</p>
+        </div>
+
+        <div class="item adicional" onclick="addToCart('Adicional Molho', 3)">
+          <img src="imagens/molho.jpg" alt="Molho Especial">
+          <p>Molho Especial - R$3,00</p>
+        </div>
+
+        <div class="item adicional" onclick="addToCart('Adicional Salada', 2)">
+          <img src="imagens/salada.jpg" alt="Adicional Salada">
+          <p>Salada - R$2,00</p>
+        </div>
+
+        <div class="item adicional" onclick="addToCart('Adicional Bacon', 4)">
+          <img src="imagens/bacon.jpg" alt="Adicional Bacon">
+          <p>Bacon - R$4,00</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BATATAS -->
+    <section id="batata">
+      <h2>🍟 Batatas</h2>
+      <div class="grid">
+
+        <div class="item" onclick="addToCart('Batata Pequena', 10)">
+          <img src="imagens/batata.jpg" alt="Batata Pequena">
+          <p>Batata Pequena - R$10,00</p>
+          <small>Porção de 120g.</small>
+        </div>
+
+        <div class="item" onclick="addToCart('Batata Média', 15)">
+          <img src="imagens/batata.jpg" alt="Batata Média">
+          <p>Batata Média - R$15,00</p>
+          <small>Porção de 200g.</small>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMBOS -->
+    <section id="combo">
+      <h2>Combos</h2>
+
+      <div class="grid">
+        <div class="item" onclick="addToCart('Combo Rei Leão', 30)">
+          <img src="imagens/combo.jpg" alt="Combo">
+          <p>Combo REI LEÃO - R$30,00</p>
+          <small>Simba Burguer + Batata P + Refri lata</small>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="item" onclick="addToCart('Combo Rei Leão 2', 48)">
+          <img src="imagens/combo.jpg" alt="Combo">
+          <p>Combo REI LEÃO 2 - R$48,00</p>
+          <small>Simba Burguer + Nala Burguer + Batata M</small>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="item" onclick="addToCart('Combo Hakuna Matata', 52)">
+          <img src="imagens/combo.jpg" alt="Combo">
+          <p>Combo Hakuna Matata - R$52,00</p>
+          <small>2x Simbas Burguer + Batata M + Refri litro</small>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- BEBIDAS -->
+    <section id="bebida">
+      <h2>🥤 Bebidas</h2>
+      <div class="grid">
+
+        <div class="item" onclick="addToCart('Refrigerante Lata', 5)">
+          <img src="imagens/lata.png" alt="Refrigerante Lata">
+          <p>Refrigerantes Lata - R$5,00</p>
+        </div>
+
+        <div class="item" onclick="addToCart('Refrigerante Litro', 8)">
+          <img src="imagens/litro.jpg" alt="Refrigerante litro">
+          <p>Refrigerantes 1 litro - R$8,00</p>
+        </div>
+
+      </div>
+    </section>
+
+  </section>
+</main>
+
+<!-- BARRA DO CARRINHO -->
 <div class="carrinho-barra" onclick="abrirCarrinho()">
   <span>🛒 Meu Carrinho</span>
   <span class="carrinho-numero">0</span>
 </div>
 
+<!-- POPUP DO CARRINHO -->
 <div id="carrinhoPopup" class="carrinho-popup"></div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
-
-          <!-- Cervejas 
-          <div class="item" onclick="addToCart('Heineken Long Neck', 11)">
-            <img src="imagens/hei.jpg" alt="Heineken Long Neck">
-            <p>Heineken Long Neck - R$11,00</p>
-          </div>
-          <div class="item" onclick="addToCart('Amstel Long Neck', 9)">
-            <img src="imagens/amstel.jpg" alt="Amstel Long Neck">
-            <p>Amstel Long Neck - R$9,00</p>
-          </div>
-          <div class="item" onclick="addToCart('Skol Long Neck', 5)">
-            <img src="imagens/sk.jpg" alt="Skol Long Neck">
-            <p>Skol Long Neck - R$5,00</p>
-   
