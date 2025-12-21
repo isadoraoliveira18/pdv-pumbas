@@ -179,6 +179,11 @@
   <main class="checkout-container">
     <section class="info-pedido">
       <h2>Detalhes do Pedido</h2>
+      
+  <div class="campo">
+        <label class="small" for="contem">Seu nome</label>
+        <input type="text" id="contem" placeholder="Nome para identificação do pedido">
+      </div>
 
       <div class="campo">
         <label class="small" for="tipoEntrega">Tipo de Entrega</label>
@@ -191,10 +196,15 @@
       <div id="opcoesEntregaBox" class="campo" style="display:none;">
         <label class="small" for="localEntrega">Local de Entrega</label>
         <select id="localEntrega" onchange="mostrarEnderecoEntrega()">
-          <option value="pumba">Zona: Pumba (Enviar localização) - R$2,00</option>
-          <option value="lisboa">Zona: Lisboa / Antigo Forró do Bosque - R$3,00</option>
-          <option value="touquinha">Zona: Touquinha / São José (Centro) - R$7,00</option>
-          <option value="bocadamata">Zona: Boca da Mata / Zona Rural / Cruz das Almas - R$9,00</option>
+          <option value="pumba"> Pumba - R$2,00</option>
+          <option value="lisboa"> Lisboa - R$3,00</option>
+          <option value="lisboa">Antigo Forró do Bosque - R$4,00</option>
+          <option value="touquinha"> Toquinha/Gremio - R$7,00</option> 
+          <option value="touquinha"> São José do Itaporã (Centro) - R$7,00</option>
+          <option value="touquinha"> Baixa Fria - Pumba 2 - R$7,00</option>         
+          <option value="bocadamata">Boca da Mata - R$9,00</option>
+          <option value="bocadamata">São José do Itaporã (Zona Rural) - R$9,00</option>
+               <option value="bocadamata"> Cruz das Almas - R$10,00</option>
           <option value="outro">Outro endereço (Verificar com atendente)</option>
         </select>
       </div>
@@ -209,11 +219,7 @@
         <textarea id="observacao" placeholder="Ex: sem cebola, ponto da carne..."></textarea>
       </div>
 
-      <div class="campo">
-        <label class="small" for="contem">Feedback</label>
-        <input type="text" id="contem" placeholder="Ex: Adicionar elogio ou critica (opcional)...">
-      </div>
-
+    
       <div class="campo">
         <label class="small" for="pagamentoSelect">Forma de Pagamento</label>
         <select id="pagamentoSelect">
@@ -230,7 +236,7 @@
         </div>
         <div class="pix-actions">
           <button id="copyPixBtn" class="btn">Copiar chave</button>
-          <button id="copyPixWithAmountBtn" class="btn secondary">Copiar chave + valor</button>
+          <button id="copyPixWithAmountBtn" class="btn secondary">Ignorar</button>
           <span id="copyFeedback" class="copy-feedback">Copiado!</span>
         </div>
       </div>
