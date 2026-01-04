@@ -15,15 +15,8 @@
 <header class="cabecalho">
   <div class="titulo-central">
     <h1 class="titulo-principal">PUMBAS BURGUER</h1>
-    <h2 class="subtitulo">Bem vindo ao Pumba's Burguer</h2>
-    <h3 class="descricao">Hamburgueria artesanal - Pumba I (Cruz das Almas - BA)</h3>
   </div>
 </header>
-
-<div class="status-funcionamento">
-  <span id="status"></span>
-  <p>Horário de funcionamento: <strong>Sexta a Segunda - 18h às 23h</strong></p>
-</div>
 
 <nav class="menu">
   <ul>
@@ -36,152 +29,273 @@
 <main>
   <section class="menu-lateral">
 
-    <!-- HAMBÚRGUERES -->
-    <section id="hamburguer">
-      <h2>🍔 Hambúrgueres</h2>
-      <div class="grid">
+ <section id="hamburguer">
+  <h2>🍔 Hambúrgueres</h2>
+  <div class="grid">
 
-        <div class="item" onclick="addToCart('Simbas Burguer', 16)">
-          <img src="imagens/burguer1.jpg" alt="Simbas Burguer">
-          <p class="nome">Simbas Burguer - R$16,00</p>
-          <small>Pão brioche, 90g carne artesanal, maionese artesanal, muçarela, alface e cebola marinada.</small>
-        </div>
+<div class="item">
+  <img src="imagens/burguer1.jpg" alt="Simbas Burguer">
+  <p class="nome">Simbas Burguer - R$16,00</p>
 
-        <div class="item" onclick="addToCart('Nala Burguer', 19)">
-          <img src="imagens/burguer2.jpg" alt="Nala Burguer">
-          <p class="nome">Nala Burguer - R$19,00</p>
-          <small>Pão brioche, 90g carne artesanal, molho da casa, muçarela, alface e cebola caramelizada.</small>
-        </div>
+  <div class="quantidade">
+    <button type="button" onclick="alterarQtd('simba', -1)">−</button>
+    <span id="qtd-simba">0</span>
+    <button type="button" onclick="alterarQtd('simba', 1)">+</button>
+  </div>
 
-        <div class="item" onclick="addToCart('Timão Burguer', 24)">
-          <img src="imagens/timao.jpg" alt="Timão Burguer">
-          <p class="nome">Timão Burguer - R$24,00</p>
-          <small>Pão brioche, 2x60g carne artesanal, barbecue e mel, 2x queijo coalho.</small>
-        </div>
+  <button
+    type="button"
+    class="btn-add"
+    onclick="addToCart('Simbas Burguer', 16, 'simba')">
+    Adicionar
+  </button>
+</div>
 
-        <div class="item" onclick="addToCart('Kiara Burguer', 22)">
-          <img src="imagens/burguer4.jpg" alt="Kiara Burguer">
-          <p class="nome">Kiara Burguer - R$22,00</p>
-          <small>Pão brioche, 100g carne artesanal, barbecue, muçarela, bacon e cebola chapeada.</small>
-        </div>
 
-        <div class="item" onclick="addToCart('Mufasa Burguer', 25)">
-          <img src="imagens/burguer5.jpg" alt="Mufasa Burguer">
-          <p class="nome">Mufasa Burguer - R$25,00</p>
-          <small>Pão brioche, 100g carne artesanal, queijo lanche, queijo chapeado, molho da casa e cebola caramelizada.</small>
-        </div>
+    <div class="item">
+      <img src="imagens/burguer2.jpg" alt="Nala Burguer">
+      <p class="nome">Nala Burguer - R$19,00</p>
 
-        <div class="item" onclick="addToCart('Pumbas Burguer', 24)">
-          <img src="imagens/burguer3.jpg" alt="Pumbas Burguer">
-          <p class="nome">Pumbas Burguer - R$24,00</p>
-          <small>Pão brioche, 120g carne artesanal, molho da casa, muçarela, salada e bacon.</small>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ADICIONAIS -->
-    <section id="adicionais">
-      <h2>🥓 Adicionais</h2>
-      <div class="grid adicionais-grid">
-
-        <div class="item adicional" onclick="addToCart('Adicional Carne', 5)">
-          <img src="imagens/carne.jpg" alt="Adicional Carne">
-          <p>Carne Extra - R$5,00</p>
-        </div>
-
-        <div class="item adicional" onclick="addToCart('Adicional Queijo', 3)">
-          <img src="imagens/queijo.jpg" alt="Adicional Queijo">
-          <p>Queijo - R$3,00</p>
-        </div>
-
-        <div class="item adicional" onclick="addToCart('Adicional Molho', 3)">
-          <img src="imagens/molho.jpg" alt="Molho Especial">
-          <p>Molho Especial - R$3,00</p>
-        </div>
-
-        <div class="item adicional" onclick="addToCart('Adicional Salada', 2)">
-          <img src="imagens/salada.jpg" alt="Adicional Salada">
-          <p>Salada - R$2,00</p>
-        </div>
-
-        <div class="item adicional" onclick="addToCart('Adicional Bacon', 4)">
-          <img src="imagens/bacon.jpg" alt="Adicional Bacon">
-          <p>Bacon - R$4,00</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- BATATAS -->
-    <section id="batata">
-      <h2>🍟 Batatas</h2>
-      <div class="grid">
-
-        <div class="item" onclick="addToCart('Batata Pequena', 10)">
-          <img src="imagens/batata.jpg" alt="Batata Pequena">
-          <p>Batata Pequena - R$10,00</p>
-          <small>Porção de 120g.</small>
-        </div>
-
-        <div class="item" onclick="addToCart('Batata Média', 15)">
-          <img src="imagens/batata.jpg" alt="Batata Média">
-          <p>Batata Média - R$15,00</p>
-          <small>Porção de 200g.</small>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- COMBOS -->
-    <section id="combo">
-      <h2>Combos</h2>
-
-      <div class="grid">
-        <div class="item" onclick="addToCart('Combo Rei Leão', 30)">
-          <img src="imagens/combo.jpg" alt="Combo">
-          <p>Combo REI LEÃO - R$30,00</p>
-          <small>Simba Burguer + Batata P + Refri lata</small>
-        </div>
+      <div class="quantidade">
+        <button type="button" onclick="alterarQtd('nala', -1)">−</button>
+        <span id="qtd-nala">0</span>
+        <button type="button" onclick="alterarQtd('nala', 1)">+</button>
       </div>
 
-      <div class="grid">
-        <div class="item" onclick="addToCart('Combo Rei Leão 2', 48)">
-          <img src="imagens/combo.jpg" alt="Combo">
-          <p>Combo REI LEÃO 2 - R$48,00</p>
-          <small>Simba Burguer + Nala Burguer + Batata M</small>
-        </div>
+      <button
+        type="button"
+        class="btn-add"
+        onclick="addToCart('Nala Burguer', 19, 'nala')">
+        Adicionar
+      </button>
+    </div>
+    <div class="item">
+      <img src="imagens/burguer3.jpg" alt="Kiara Burguer">
+      <p class="nome">Kiara Burguer - R$22,00</p>
+
+      <div class="quantidade">
+        <button type="button" onclick="alterarQtd('kiara', -1)">−</button>
+        <span id="qtd-kiara">0</span>
+        <button type="button" onclick="alterarQtd('kiara', 1)">+</button>
       </div>
 
-      <div class="grid">
-        <div class="item" onclick="addToCart('Combo Hakuna Matata', 52)">
-          <img src="imagens/combo.jpg" alt="Combo">
-          <p>Combo Hakuna Matata - R$52,00</p>
-          <small>2x Simbas Burguer + Batata M + Refri litro</small>
-        </div>
-      </div>
+      <button
+        type="button"
+        class="btn-add"
+        onclick="addToCart('Kiara Burguer', 22, 'kiara')">
+        Adicionar
+      </button>
+    </div>
 
-    </section>
+    <div class="item">
+  <img src="imagens/burguer5.jpg" alt="Mufasa Burguer">
+  <p class="nome">Mufasa Burguer - R$25,00</p>
 
-    <!-- BEBIDAS -->
+  <div class="quantidade">
+    <button type="button" onclick="alterarQtd('mufasa', -1)">−</button>
+    <span id="qtd-mufasa">0</span>
+    <button type="button" onclick="alterarQtd('mufasa', 1)">+</button>
+  </div>
+
+  <button
+    type="button"
+    class="btn-add"
+    onclick="addToCart('Mufasa Burguer', 25, 'mufasa')">
+    Adicionar
+  </button>
+</div>
+
+
+<div class="item">
+  <img src="imagens/burguer3.jpg" alt="Pumbas Burguer">
+  <p class="nome">Pumbas Burguer - R$24,00</p>
+
+  <div class="quantidade">
+    <button type="button" onclick="alterarQtd('pumba', -1)">−</button>
+    <span id="qtd-pumba">0</span>
+    <button type="button" onclick="alterarQtd('pumba', 1)">+</button>
+  </div>
+
+  <button
+    type="button"
+    class="btn-add"
+    onclick="addToCart('Pumbas Burguer', 24, 'pumba')">
+    Adicionar
+  </button>
+</div>
+
+
+<div class="item">
+  <img src="imagens/timao.jpg" alt="Timao Burguer">
+  <p class="nome">Timão Burguer - R$24,00</p>
+
+  <div class="quantidade">
+    <button type="button" onclick="alterarQtd('timao', -1)">−</button>
+    <span id="qtd-timao">0</span>
+    <button type="button" onclick="alterarQtd('timao', 1)">+</button>
+  </div>
+
+  <button
+    type="button"
+    class="btn-add"
+    onclick="addToCart('Timão Burguer', 24, 'timao')">
+    Adicionar
+  </button>
+</div>
+</section>
+
+<!-- Bebidas -->
     <section id="bebida">
       <h2>🥤 Bebidas</h2>
       <div class="grid">
 
-        <div class="item" onclick="addToCart('Refrigerante Lata', 5)">
+        <div class="item" onclick="alterarQtd('refriLata', 5)">
           <img src="imagens/lata.png" alt="Refrigerante Lata">
-          <p>Refrigerantes Lata - R$5,00</p>
-        </div>
+          <p>Refrigerante Lata - R$5,00</p>
 
-        <div class="item" onclick="addToCart('Refrigerante Litro', 8)">
-          <img src="imagens/litro.jpg" alt="Refrigerante litro">
-          <p>Refrigerantes 1 litro - R$8,00</p>
-        </div>
+  <div class="quantidade">
+
+        <button onclick="alterarQtd('refrilata', -1)">−</button>
+        <span id="qtd-refrilata">0</span>
+        <button onclick="alterarQtd('refrilata', 1)">+</button>
 
       </div>
-    </section>
 
-  </section>
+      <button class="btn-add" onclick="alterarQtd('refrilata', 5)">
+        Adicionar
+      </button>
+      </div>
+      <div class="item" onclick="alterarQtd('refriLi', 8)">
+          <img src="imagens/litro.jpg" alt="Refrigerante Litro">
+          <p>Refrigerante Litro - R$8,00</p>
+          <div class="quantidade">
+        <button type="button" onclick="alterarQtd('refrilitro', -1)">−</button>
+        <span id="qtd-refrilitro">0</span>
+        <button type="button" onclick="alterarQtd('refrilitro', 1)">+</button>
+      </div>
+
+      <button
+        type="button"
+        class="btn-add"
+        onclick="addToCart('Refrigerante Litro', 8, 'refrilitro')">
+        Adicionar
+      </button>
+    </div>
+      </div>
+    </section>
+<!-- Combos -->
+    <section id="combo">
+      <h2>🥤 Combos</h2>
+      <div class="grid">
+        <div class="item" onclick="alterarQtd('Combo1', 30)">
+          <img src="imagens/combo.jpg" alt="Combo Rei Leão">
+          <p>Combo Rei Leão - R$30,00</p>
+
+          <div class="quantidade">
+
+        <button type="button" onclick="alterarQtd('combo1', -1)">−</button>
+        <span id="qtd-combo1">0</span>
+        <button type="button" onclick="alterarQtd('combo1', 1)">+</button>
+      </div>
+
+      <button
+        type="button"
+        class="btn-add"
+        onclick="addToCart('Combo Rei Leão', 30, 'combo1')">
+        Adicionar
+      </button>      
+      </div>
+
+        <div class="item" onclick="alterarQtd('ComboReiLeao 2', 48)">
+          <img src="imagens/combo.jpg" alt="Combo Rei Leão 2">
+          <p>Combo Rei Leão 2 - R$48,00</p>
+          <div class="quantidade">
+        <button type="button" onclick="alterarQtd('combo2', -1)">−</button>
+        <span id="qtd-combo2">0</span>
+        <button type="button" onclick="alterarQtd('combo2', 1)">+</button>
+      </div>
+
+      <button
+        type="button"
+        class="btn-add"
+        onclick="addToCart('Combo Rei Leão 2', 48, 'combo2')">
+        Adicionar
+      </button>
+    </div>
+        <div class="item" onclick="alterarQtd('ComboHakunaMatata', 52)">
+          <img src="imagens/combo.jpg" alt="Combo Hakuna Matata">
+          <p>Combo Hakuna Matata - R$52,00</p>
+          <div class="quantidade">
+        <button type="button" onclick="alterarQtd('combo3', -1)"> −</button>
+        <span id="qtd-combo3">0</span>
+        <button type="button" onclick="alterarQtd('combo3', 1)">+</button>
+      </div>
+ <button
+        type="button"
+        class="btn-add"
+        onclick="addToCart('Combo Hakuna Matata', 52, 'combo3')">
+        Adicionar
+  </button>
+    </div>
+      </div>
+     </section>
+ <!-- BATATAS -->
+    <section id="batata">
+      <h2>🍟 Batatas</h2>
+      <div class="grid">
+
+ <div class="item" onclick="alterarQtd('BatataP', 10)">
+          <img src="imagens/batata.jpg" alt="Batata Pequena">
+          <p>Batata Pequena - R$10,00</p>
+          <div class="quantidade">
+        <button type="button" onclick="alterarQtd('batataP', -1)">−</button>
+        <span id="qtd-batataP">0</span>
+        <button type="button" onclick="alterarQtd('batataP', 1)">+</button>
+      </div>
+
+      <button
+        type="button"
+        class="btn-add"
+        onclick="addToCart('Batata Pequena', 10, 'batataP')">
+        Adicionar
+      </button>
+    </div>
+    
+    <div class="item" onclick="alterarQtd('BatataM', 15)">
+          <img src="imagens/batata.jpg" alt="Batata Média">
+          <p>Batata Média - R$15,00</p>
+          <div class="quantidade">
+        <button type="button" onclick="alterarQtd('batataM', -1)">−</button>
+        <span id="qtd-batataM">0</span>
+        <button type="button" onclick="alterarQtd('batataM', 1)">+</button>
+      </div>
+
+      <button
+        type="button"
+        class="btn-add"
+        onclick="addToCart('Batata Média', 15, 'batataM')">
+        Adicionar
+      </button>
+    </div>
+    <div class="item" onclick="alterarQtd('Batata Grande', 25)">
+          <img src="imagens/batata.jpg" alt="Batata Grande">
+          <p>Batata Grande - R$25,00</p>
+          <div class="quantidade">
+        <button type="button" onclick="alterarQtd('batataG', -1)">−</button>
+        <span id="qtd-batataG">0</span>
+        <button type="button" onclick="alterarQtd('batataG', 1)">+</button>
+      </div>
+
+      <button
+        type="button"
+        class="btn-add"
+        onclick="addToCart('Batata Grande', 25, 'batataG')">
+        Adicionar
+      </button>
+    </div>
+
+ </div>
+ </section>
 </main>
 
 <!-- BARRA DO CARRINHO -->

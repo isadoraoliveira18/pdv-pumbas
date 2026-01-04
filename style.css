@@ -1,11 +1,76 @@
+
+
 /* ====== ESTILO GERAL ====== */
 body {
-    font-family: "Poppins", sans-serif;
     background-color: #0e0e0e;
+    background-image: url("logo.png"); /* <<< LOGO DE FUNDO */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 650px;
+    background-attachment: fixed;
     color: #fff;
     margin: 10px;
     padding: 10px;
+    position: relative;
 }
+
+@font-face {
+    font-family: "ReiLeao";
+    src: url("fonts/lion.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* TÍTULOS */
+@font-face {
+    font-family: "ReiLeao";
+    src: url("fonts/lion.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+.titulo-site {
+    position: absolute;
+    left: 220px; /* respeita a logo */
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+}
+
+.titulo-principal {
+    font-family: "ReiLeao", serif;
+    font-size: 34px;
+    color: #ff7b00;
+    letter-spacing: 3px;
+    text-shadow: 
+        2px 2px 0 #000,
+        0 0 10px rgba(255, 123, 0, 0.6);
+}
+
+.subtitulo {
+    font-size: 16px;
+    color: #ffae42;
+    letter-spacing: 4px;
+}
+@media (max-width: 768px) {
+    .titulo-site {
+        position: static;
+        transform: none;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+
+/* CAMADA DE TRANSPARÊNCIA PARA SUAVIZAR A LOGO */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(14, 14, 14, 0.88); /* controla a transparência */
+    z-index: -1;
+}
+
+
 
 /* ====== CABEÇALHO ====== */
 header.cabecalho {
@@ -21,7 +86,6 @@ header.cabecalho {
     height: 90px;
 }
 
-/* REMOVIDO O DUPLICADO .cabecalho QUE QUEBRAVA O SITE */
 
 /* LOGO MAIOR */
 .logo-grande {
@@ -51,25 +115,17 @@ header.cabecalho {
         top: -6px;
     }
 }
-
-/* TÍTULOS */
-.titulo-site {
-    text-align: center;
+/* RESPONSIVO LOGO */
+@media (max-width: 520px) {
+    .logo-grande {
+        width: 100px;
+        left: 12px;
+        top: -6px;
+    }
 }
 
-.titulo-principal {
-    font-size: 36px;
-    color: #ff7b00;
-    margin: 0;
-    letter-spacing: 2px;
-}
 
-.subtitulo {
-    font-size: 16px;
-    color: #ffae42;
-    margin: -10px 0 0 0;
-    letter-spacing: 3px;
-}
+
 
 /* RESPONSIVO CABEÇALHO */
 @media (max-width: 768px) {
@@ -293,6 +349,50 @@ main {
     transform: scale(1.05);
     box-shadow: 0 0 14px rgba(255, 26, 26, 0.8);
 }
+
+.quantidade {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.quantidade button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #ff7a00;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.quantidade span {
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+.btn-add {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  background: #1db954;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-add:hover {
+  background: #159a45;
+}
+
 
 /* ===== BOTÃO VOLTAR AO TOPO ===== */
 #btnTopo {

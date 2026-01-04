@@ -1,33 +1,76 @@
+/* =====================
+   CARRINHO
+===================== */
 let carrinho = [];
 
 /* =====================
+   CONTROLE DE QUANTIDADE POR PRODUTO
+===================== */
+const quantidades = {};
+
+function alterarQtd(produto, valor) {
+  if (!quantidades[produto]) {
+    quantidades[produto] = 0;
+  }
+
+  quantidades[produto] += valor;
+
+  if (quantidades[produto] < 0) {
+    quantidades[produto] = 0;
+  }
+
+  const span = document.getElementById(`qtd-${produto}`);
+  if (span) {
+    span.textContent = quantidades[produto];
+  }
+}
+
+/* =====================
    ADICIONAR AO CARRINHO
-   ===================== */
-function addToCart(nome, preco, qtd = 1) {
+===================== */
+function addToCart(nome, preco, produtoId) {
+  const qtd = quantidades[produtoId] || 0;
+
+  if (qtd === 0) {
+    alert("Selecione a quantidade antes de adicionar.");
+    return;
+  }
+
   const itemExistente = carrinho.find(item => item.nome === nome);
 
   if (itemExistente) {
     itemExistente.quantidade += qtd;
   } else {
-    carrinho.push({ nome, preco, quantidade: qtd });
+    carrinho.push({
+      nome,
+      preco,
+      quantidade: qtd
+    });
   }
+
+  quantidades[produtoId] = 0;
+  const span = document.getElementById(`qtd-${produtoId}`);
+  if (span) span.textContent = 0;
 
   atualizarCarrinho();
 }
 
 /* =====================
    ATUALIZAR NÚMERO NA BARRA
-   ===================== */
+===================== */
 function atualizarBarraCarrinho() {
   const numero = document.querySelector(".carrinho-numero");
   if (numero) {
-    numero.textContent = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+    numero.textContent = carrinho.reduce(
+      (soma, item) => soma + item.quantidade,
+      0
+    );
   }
 }
 
 /* =====================
    ABRIR / FECHAR POPUP DO CARRINHO
-   ===================== */
+===================== */
 function abrirCarrinho() {
   const popup = document.getElementById("carrinhoPopup");
   if (!popup) return;
@@ -37,8 +80,8 @@ function abrirCarrinho() {
 }
 
 /* =====================
-   GERA O HTML DO CARRINHO (PARA O POPUP)
-   ===================== */
+   HTML DO CARRINHO
+===================== */
 function gerarHTMLCarrinho() {
   if (carrinho.length === 0) {
     return `
@@ -75,8 +118,8 @@ function gerarHTMLCarrinho() {
 }
 
 /* =====================
-   ATUALIZAR CARRINHO NA TELA
-   ===================== */
+   ATUALIZAR CARRINHO
+===================== */
 function atualizarCarrinho() {
   atualizarBarraCarrinho();
 
@@ -88,7 +131,7 @@ function atualizarCarrinho() {
 
 /* =====================
    CANCELAR PEDIDO
-   ===================== */
+===================== */
 function cancelarPedido() {
   if (confirm("Tem certeza que deseja cancelar o pedido?")) {
     carrinho = [];
@@ -97,8 +140,8 @@ function cancelarPedido() {
 }
 
 /* =====================
-   ALTERAR QUANTIDADE
-   ===================== */
+   ALTERAR QUANTIDADE NO CARRINHO
+===================== */
 function alterarQuantidade(index, valor) {
   carrinho[index].quantidade += valor;
 
@@ -111,7 +154,7 @@ function alterarQuantidade(index, valor) {
 
 /* =====================
    REMOVER ITEM
-   ===================== */
+===================== */
 function removerItem(index) {
   carrinho.splice(index, 1);
   atualizarCarrinho();
@@ -119,7 +162,7 @@ function removerItem(index) {
 
 /* =====================
    CALCULAR TOTAL
-   ===================== */
+===================== */
 function calcularTotal() {
   return carrinho.reduce(
     (soma, item) => soma + item.preco * item.quantidade,
@@ -129,7 +172,7 @@ function calcularTotal() {
 
 /* =====================
    FINALIZAR PEDIDO
-   ===================== */
+===================== */
 function finalizarPedido() {
   if (carrinho.length === 0) {
     alert("Seu carrinho está vazio!");
@@ -142,18 +185,14 @@ function finalizarPedido() {
 
 /* =====================
    BOTÃO VOLTAR AO TOPO
-   ===================== */
+===================== */
 document.addEventListener("DOMContentLoaded", () => {
   const btnTopo = document.getElementById("btnTopo");
 
   if (!btnTopo) return;
 
   window.onscroll = () => {
-    if (window.scrollY > 100) {
-      btnTopo.style.display = "block";
-    } else {
-      btnTopo.style.display = "none";
-    }
+    btnTopo.style.display = window.scrollY > 100 ? "block" : "none";
   };
 
   btnTopo.addEventListener("click", () => {
