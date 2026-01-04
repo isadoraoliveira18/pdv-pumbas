@@ -60,6 +60,125 @@ body {
     }
 }
 
+/* ===== MODAL DETALHES DO PRODUTO ===== */
+#modalDetalhes {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+
+/* CONTAINER DO MODAL */
+.modal-conteudo {
+  background: #0e0e0e;
+  width: 95%;
+  max-width: 420px;
+  max-height: 90vh;
+  border-radius: 18px;
+  overflow-y: auto;
+  padding: 16px;
+  box-shadow: 0 0 25px rgba(255, 123, 0, 0.45);
+  animation: modalSubir .25s ease;
+}
+
+@keyframes modalSubir {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* IMAGEM PRINCIPAL */
+#modalImagemPrincipal {
+  width: 100%;
+  max-height: 230px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 12px;
+}
+
+/* MINIATURAS */
+#modalMiniaturas {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+
+#modalMiniaturas img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  border: 2px solid transparent;
+  transition: 0.25s;
+}
+
+#modalMiniaturas img:hover {
+  opacity: 1;
+  border-color: #ff7b00;
+}
+/* CONTAINER QUADRADO DA IMAGEM */
+.modal-imagem-box {
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 14px auto;
+  background: #111;
+  border-radius: 18px;
+  padding: 8px;
+  box-shadow: 
+    0 0 0 2px #ff7b00,
+    0 10px 25px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* TEXTO */
+#modalNome {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ff7b00;
+  margin-bottom: 6px;
+}
+
+#modalDescricao {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #ddd;
+  margin-bottom: 12px;
+}
+
+/* PREÇO */
+#modalPreco {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffae42;
+  margin-bottom: 14px;
+}
+
+/* BOTÃO */
+.modal-botoes button {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff7b00, #ffae42);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #000;
+  transition: .25s;
+}
+
+.modal-botoes button:hover {
+  transform: scale(1.03);
+}
+
 
 /* CAMADA DE TRANSPARÊNCIA PARA SUAVIZAR A LOGO */
 body::before {
