@@ -46,7 +46,31 @@ body {
         0 0 10px rgba(255, 123, 0, 0.6);
 }
 
+.slogan {
+    text-align: center;
+    font-family: "ReiLeao", serif;
+    font-size: 30px;
+    color: #ff7b00;
+    letter-spacing: 3px;
+    text-shadow: 
+        2px 2px 0 #000,
+        0 0 10px rgb(240, 234, 229);
+        margin-top: -30px;
+}
+
+/* Texto promocional */
+.promo {
+    text-align: center;
+  color: #ffb366;
+  font-size: 24px;
+  margin-top: 20px;
+   text-shadow: 
+        2px 2px 0 #000,
+        0 0 10px rgb(240, 112, 8);
+}
+
 .subtitulo {
+
     font-size: 16px;
     color: #ffae42;
     letter-spacing: 4px;
