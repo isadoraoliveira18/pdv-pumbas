@@ -450,11 +450,13 @@ main {
     background: #131313;
     border: 1px solid #ff7b00;
     border-radius: 8px;
-    padding: 6px;
-    margin-bottom: 8px;
-    font-size: 12px;
-    box-shadow: 0 0 6px rgba(255, 123, 0, 0.3);
+    padding: 4px 6px;      /* menos altura */
+    margin-bottom: 5px;   /* itens mais próximos */
+    font-size: 14px;      /* letra maior */
+    line-height: 1.2;     /* texto compacto */
+    box-shadow: 0 0 4px rgba(255, 123, 0, 0.3);
 }
+
 
 .total {
     font-size: 13px;
