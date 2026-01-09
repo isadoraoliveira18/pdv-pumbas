@@ -200,21 +200,23 @@
       <div class="grid">
 
         <div class="item" onclick="alterarQtd('refriLata', 5)">
-          <img src="imagens/lata.png" alt="Refrigerante Lata">
+          <img src="imagens/lata.png" alt="refrilata">
           <p>Refrigerante Lata - R$5,00</p>
 
+
   <div class="quantidade">
+    <button type="button" onclick="event.stopPropagation(); alterarQtd('refrilata', -1)">−</button>
+    <span id="qtd-refrilata">0</span>
+    <button type="button" onclick="event.stopPropagation(); alterarQtd('refrilata', 1)">+</button>
+  </div>
 
-        <button onclick="alterarQtd('refrilata', -1)">−</button>
-        <span id="qtd-refrilata">0</span>
-        <button onclick="alterarQtd('refrilata', 1)">+</button>
+  <button
+    type="button"
+    class="btn-add"
+    onclick="event.stopPropagation(); addToCart('refrilata', 5)">
+    Adicionar
+  </button>
 
-      </div>
-
-      <button class="btn-add" onclick="alterarQtd('refrilata', 5)">
-        Adicionar
-      </button>
-      </div>
       <div class="item" onclick="alterarQtd('refriLi', 8)">
           <img src="imagens/litro.jpg" alt="Refrigerante Litro">
           <p>Refrigerante Litro - R$8,00</p>
