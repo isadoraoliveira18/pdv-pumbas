@@ -5,386 +5,965 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Pumba's Burguer - Checkout</title>
 
-  <!-- FONTES -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --laranja: #ff7b00;
-      --laranja-claro: #ffae42;
-      --fundo: #0e0e0e;
-      --card-1: #1a1a1a;
-      --card-2: #111;
+
+    :root{
+      --laranja:#ff7b00;
+      --laranja-claro:#ffae42;
+      --fundo:#0e0e0e;
+      --card:#171717;
+      --card2:#101010;
+      --texto:#ffffff;
+      --cinza:#bdbdbd;
+      --borda:rgba(255,123,0,.15);
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--fundo);
-      color: #fff;
-      margin: 0;
-      padding: 0;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    .cabecalho {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 16px 20px;
-      background: #000;
-      border-bottom: 3px solid var(--laranja);
-      box-shadow: 0 3px 10px rgba(255,123,0,0.18);
-      flex-wrap: wrap;
+    body{
+      font-family:'Poppins',sans-serif;
+      background:
+      linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.88)),
+      url("logo.png");
+
+      background-size:600px;
+      background-position:center;
+      background-attachment:fixed;
+
+      color:#fff;
+      min-height:100vh;
     }
 
-    .titulo-central { text-align: center; }
-    .titulo-principal {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
-      color: var(--laranja);
-      margin: 0;
-    }
-    .text-final { margin: 0; color: var(--laranja-claro); }
+    /* ================= HEADER ================= */
 
-    .checkout-container {
-      display: flex;
-      gap: 28px;
-      padding: 36px 5%;
-      justify-content: center;
-      flex-wrap: wrap;
+    .cabecalho{
+      width:100%;
+      background:#000;
+      border-bottom:3px solid var(--laranja);
+
+      padding:20px;
+
+      text-align:center;
+
+      box-shadow:
+      0 5px 20px rgba(255,123,0,.15);
     }
 
-    .info-pedido, .resumo-pedido {
-      background: linear-gradient(180deg, var(--card-1) 0%, var(--card-2) 100%);
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
-      padding: 24px;
-      width: 420px;
-      box-shadow: 0 8px 25px rgba(255,123,0,0.06);
+    .titulo-principal{
+      font-family:'Bebas Neue',sans-serif;
+      font-size:42px;
+      letter-spacing:2px;
+      color:var(--laranja);
     }
 
-    h2 {
-      color: var(--laranja);
-      font-size: 18px;
-      text-transform: uppercase;
-      margin-top: 0;
+    .text-final{
+      color:var(--laranja-claro);
+      font-size:15px;
+      margin-top:5px;
     }
 
-    .campo { margin-bottom: 14px; }
-    label.small { display: block; color: #ccc; margin-bottom: 6px; font-size: 13px; }
+    /* ================= LAYOUT ================= */
 
-    select, input[type="text"], textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #333;
-      background: #0d0d0d;
-      color: #fff;
-      font-size: 15px;
+    .checkout-container{
+      width:100%;
+      max-width:1300px;
+
+      margin:auto;
+
+      display:flex;
+      gap:28px;
+
+      justify-content:center;
+      align-items:flex-start;
+
+      padding:40px 20px;
+      flex-wrap:wrap;
     }
 
-    select:focus, input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--laranja);
-      box-shadow: 0 0 10px rgba(255,123,0,0.18);
+    .info-pedido,
+    .resumo-pedido{
+      flex:1;
+      min-width:320px;
+      max-width:520px;
+
+      background:
+      linear-gradient(180deg,var(--card),var(--card2));
+
+      border:1px solid var(--borda);
+
+      border-radius:22px;
+
+      padding:24px;
+
+      box-shadow:
+      0 10px 30px rgba(0,0,0,.35);
     }
 
-    textarea { min-height: 84px; resize: vertical; }
-
-    .pix-section {
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 10px;
-      background: #121212;
-      border: 1px dashed rgba(255,123,0,0.12);
-      display: none;
+    h2{
+      color:var(--laranja);
+      margin-bottom:22px;
+      font-size:22px;
+      letter-spacing:1px;
     }
 
-    .pix-key-box label { display: block; color: var(--laranja-claro); font-size: 13px; margin-bottom: 6px; }
-    .pix-key-box code {
-      background: #0b0b0b;
-      border: 1px solid rgba(255,123,0,0.14);
-      padding: 8px 10px;
-      border-radius: 6px;
-      display: inline-block;
-      font-family: monospace;
-      color: var(--laranja-claro);
+    /* ================= CAMPOS ================= */
+
+    .campo{
+      margin-bottom:18px;
     }
 
-    .btn {
-      background: var(--laranja);
-      color: #fff;
-      border: none;
-      padding: 10px 14px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: transform .14s ease, box-shadow .14s ease;
+    .small{
+      display:block;
+      margin-bottom:7px;
+      color:#ddd;
+      font-size:14px;
     }
 
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255,123,0,0.12); }
-    .btn.secondary { background: transparent; border: 1px solid rgba(255,123,0,0.12); color: var(--laranja-claro); }
+    input,
+    select,
+    textarea{
+      width:100%;
 
-    .copy-feedback {
-      margin-left: 8px;
-      color: #00e676;
-      font-weight: 700;
-      font-size: 13px;
-      opacity: 0;
-      transition: opacity .18s;
-    }
-    .copy-feedback.show { opacity: 1; }
+      padding:14px;
 
-    .resumo-pedido .total {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--laranja-claro);
-      text-align: right;
-      margin-top: 12px;
-    }
+      border:none;
+      outline:none;
 
-    .resumo-pedido ul { list-style: none; padding: 0; margin: 0; max-height: 300px; overflow: auto; }
-    .resumo-pedido li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+      border-radius:14px;
 
-    .btn-finalizar {
-      width: 100%;
-      padding: 12px;
-      border-radius: 12px;
-      border: none;
-      background: linear-gradient(90deg,var(--laranja),var(--laranja-claro));
-      color: #fff;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 16px;
+      background:#0d0d0d;
+
+      color:#fff;
+
+      font-size:15px;
+
+      border:1px solid rgba(255,255,255,.06);
+
+      transition:.25s;
     }
 
-    .btn-finalizar:hover { transform: translateY(-3px); }
+    input:focus,
+    select:focus,
+    textarea:focus{
+      border-color:var(--laranja);
 
-    @media (max-width: 920px) {
-      .info-pedido, .resumo-pedido { width: 100%; }
+      box-shadow:
+      0 0 0 3px rgba(255,123,0,.12);
     }
+
+    textarea{
+      resize:none;
+      min-height:90px;
+    }
+
+    /* ================= PIX ================= */
+
+    .pix-section{
+      display:none;
+
+      margin-top:15px;
+
+      background:#111;
+
+      border:1px dashed rgba(255,123,0,.25);
+
+      border-radius:16px;
+
+      padding:18px;
+    }
+
+    .pix-key-box label{
+      display:block;
+      color:var(--laranja-claro);
+      margin-bottom:8px;
+      font-size:13px;
+    }
+
+    .pix-key-box code{
+      display:block;
+
+      background:#000;
+
+      padding:14px;
+
+      border-radius:12px;
+
+      border:1px solid rgba(255,123,0,.12);
+
+      color:#fff;
+
+      word-break:break-all;
+    }
+
+    .pix-actions{
+      margin-top:15px;
+    }
+
+    .btn{
+      border:none;
+      cursor:pointer;
+
+      padding:12px 18px;
+
+      border-radius:12px;
+
+      font-weight:600;
+
+      transition:.25s;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-pix{
+      background:linear-gradient(90deg,var(--laranja),var(--laranja-claro));
+      color:#fff;
+      width:100%;
+    }
+
+    .copy-feedback{
+      display:block;
+      margin-top:10px;
+      color:#00ff95;
+      font-size:13px;
+      opacity:0;
+      transition:.25s;
+    }
+
+    .copy-feedback.show{
+      opacity:1;
+    }
+
+    /* ================= RESUMO ================= */
+
+    .resumo-topo{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      margin-bottom:18px;
+    }
+
+    .pedido-count{
+      background:rgba(255,123,0,.12);
+
+      color:var(--laranja-claro);
+
+      padding:7px 12px;
+
+      border-radius:999px;
+
+      font-size:13px;
+      font-weight:600;
+    }
+
+    #listaCarrinho{
+      list-style:none;
+    }
+
+    .item-carrinho{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+
+      padding:14px;
+
+      border-radius:16px;
+
+      background:#111;
+
+      margin-bottom:14px;
+
+      border:1px solid rgba(255,255,255,.04);
+    }
+
+    .item-info{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .item-nome{
+      font-weight:600;
+      color:#fff;
+    }
+
+    .item-qtd{
+      font-size:13px;
+      color:#aaa;
+    }
+
+    .item-preco{
+      color:var(--laranja-claro);
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .linha-entrega{
+      margin-top:10px;
+      padding-top:10px;
+      border-top:1px solid rgba(255,255,255,.05);
+
+      display:flex;
+      justify-content:space-between;
+
+      color:#ccc;
+    }
+
+    .total-box{
+      margin-top:24px;
+
+      background:#111;
+
+      border-radius:18px;
+
+      padding:18px;
+
+      border:1px solid rgba(255,123,0,.12);
+    }
+
+    .total-linha{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .total-linha strong{
+      color:var(--laranja);
+      font-size:28px;
+    }
+
+    /* ================= BOTÃO FINALIZAR ================= */
+
+    .btn-finalizar{
+      width:100%;
+      margin-top:24px;
+
+      padding:16px;
+
+      border:none;
+
+      border-radius:16px;
+
+      background:
+      linear-gradient(90deg,var(--laranja),var(--laranja-claro));
+
+      color:#fff;
+
+      font-size:16px;
+      font-weight:700;
+
+      cursor:pointer;
+
+      transition:.25s;
+    }
+
+    .btn-finalizar:hover{
+      transform:translateY(-3px);
+      box-shadow:
+      0 10px 25px rgba(255,123,0,.22);
+    }
+
+    .vazio{
+      text-align:center;
+      color:#aaa;
+      padding:30px 10px;
+    }
+
+    /* ================= RESPONSIVO ================= */
+
+    @media(max-width:900px){
+
+      .checkout-container{
+        padding:20px 14px 40px;
+      }
+
+      .titulo-principal{
+        font-size:34px;
+      }
+
+      .info-pedido,
+      .resumo-pedido{
+        width:100%;
+      }
+
+    }
+
   </style>
 </head>
 
 <body>
 
   <header class="cabecalho">
-    <div class="titulo-central">
-      <h1 class="titulo-principal">Pumba's Burguer</h1>
-      <p class="text-final">Finalize seu pedido</p>
-    </div>
+
+    <h1 class="titulo-principal">
+      Pumba's Burguer
+    </h1>
+
+    <p class="text-final">
+      Finalize seu pedido
+    </p>
+
   </header>
 
   <main class="checkout-container">
+
+    <!-- ================= ESQUERDA ================= -->
+
     <section class="info-pedido">
-      <h2>Detalhes do Pedido</h2>
-      
-  <div class="campo">
-        <label class="small" for="contem">Seu nome</label>
-        <input type="text" id="contem" placeholder="Nome para identificação do pedido">
+
+      <h2>📋 Informações do Pedido</h2>
+
+      <div class="campo">
+        <label class="small">Seu nome</label>
+
+        <input
+          type="text"
+          id="nomeCliente"
+          placeholder="Digite seu nome"
+        >
       </div>
 
       <div class="campo">
-        <label class="small" for="tipoEntrega">Tipo de Entrega</label>
+
+        <label class="small">
+          Tipo de entrega
+        </label>
+
         <select id="tipoEntrega" onchange="mostrarOpcoesEntrega()">
-          <option value="retirada">Retirada no Pumbas (Grátis)</option>
-          <option value="entrega">Entrega</option>
+
+          <option value="retirada">
+            Retirada no local
+          </option>
+
+          <option value="entrega">
+            Entrega
+          </option>
+
         </select>
       </div>
 
-      <div id="opcoesEntregaBox" class="campo" style="display:none;">
-        <label class="small" for="localEntrega">Local de Entrega</label>
-        <select id="localEntrega" onchange="mostrarEnderecoEntrega()">
-          <option value="pumba"> Pumba - R$2,00</option>
-          <option value="lisboa"> Lisboa - R$3,00</option>
-          <option value="lisboa">Antigo Forró do Bosque - R$4,00</option>
-          <option value="touquinha"> Toquinha/Gremio - R$7,00</option> 
-          <option value="touquinha"> São José do Itaporã (Centro) - R$7,00</option>
-          <option value="touquinha"> Baixa Fria - Pumba 2 - R$7,00</option>         
-          <option value="bocadamata">Boca da Mata - R$9,00</option>
-          <option value="bocadamata">São José do Itaporã (Zona Rural) - R$9,00</option>
-          <option value="outro"> Cruz das Almas - R$10,00</option>
-          <option value="outro">Outro endereço (Verificar com atendente)</option>
+      <div
+        id="opcoesEntregaBox"
+        class="campo"
+        style="display:none;"
+      >
+
+        <label class="small">
+          Região
+        </label>
+
+        <select
+          id="localEntrega"
+          onchange="mostrarEnderecoEntrega()"
+        >
+
+          <option value="pumba">
+            Pumba - R$2
+          </option>
+
+          <option value="lisboa">
+            Lisboa - R$3
+          </option>
+
+          <option value="touquinha">
+            Toquinha/Gremio - R$7
+          </option>
+
+          <option value="bocadamata">
+            Boca da Mata - R$9
+          </option>
+
+          <option value="outro">
+            Outro endereço
+          </option>
+
         </select>
+
       </div>
 
-      <div id="enderecoBox" class="campo" style="display:none;">
-        <label class="small" for="endereco">Endereço para Entrega</label>
-        <input type="text" id="endereco" placeholder="Rua, número, bairro...">
+      <div
+        id="enderecoBox"
+        class="campo"
+        style="display:none;"
+      >
+
+        <label class="small">
+          Endereço
+        </label>
+
+        <input
+          type="text"
+          id="endereco"
+          placeholder="Rua, número, bairro..."
+        >
+
       </div>
 
       <div class="campo">
-        <label class="small" for="observacao">Observações</label>
-        <textarea id="observacao" placeholder="Ex: sem cebola, ponto da carne..."></textarea>
+
+        <label class="small">
+          Observações
+        </label>
+
+        <textarea
+          id="observacao"
+          placeholder="Ex: sem cebola..."
+        ></textarea>
+
       </div>
 
-    
       <div class="campo">
-        <label class="small" for="pagamentoSelect">Forma de Pagamento</label>
+
+        <label class="small">
+          Forma de pagamento
+        </label>
+
         <select id="pagamentoSelect">
-          <option value="dinheiro">Dinheiro</option>
-          <option value="cartao">Cartão</option>
-          <option value="pix">PIX</option>
+
+          <option value="dinheiro">
+            Dinheiro
+          </option>
+
+          <option value="cartao">
+            Cartão
+          </option>
+
+          <option value="pix">
+            PIX
+          </option>
+
         </select>
+
       </div>
+
+      <!-- PIX -->
 
       <div id="pix-section" class="pix-section">
+
         <div class="pix-key-box">
-          <label>Chave PIX (copiar e colar)</label>
-          <code id="pixKeyText">75982183914</code>
+
+          <label>
+            Chave PIX
+          </label>
+
+          <code id="pixKeyText">
+            75982183914
+          </code>
+
         </div>
+
         <div class="pix-actions">
-          <button id="copyPixBtn" class="btn">Copiar chave</button>
-          <span id="copyFeedback" class="copy-feedback">Copiado!</span>
+
+          <button
+            id="copyPixBtn"
+            class="btn btn-pix"
+          >
+
+            Copiar chave PIX
+
+          </button>
+
+          <span
+            id="copyFeedback"
+            class="copy-feedback"
+          >
+
+            Chave copiada!
+
+          </span>
+
         </div>
+
       </div>
 
-      <button id="btnEnviarWhats" class="btn-finalizar">Enviar Pedido via WhatsApp</button>
+      <button
+        id="btnEnviarWhats"
+        class="btn-finalizar"
+      >
+
+        Enviar Pedido no WhatsApp
+
+      </button>
+
     </section>
 
+    <!-- ================= DIREITA ================= -->
+
     <aside class="resumo-pedido">
-      <h2>Resumo do Pedido</h2>
+
+      <div class="resumo-topo">
+
+        <h2>🛒 Seu Pedido</h2>
+
+        <span class="pedido-count" id="pedidoCount">
+          0 itens
+        </span>
+
+      </div>
+
       <ul id="listaCarrinho"></ul>
-      <p id="totalResumo" class="total">Total: R$ 0,00</p>
+
+      <div class="total-box">
+
+        <div class="total-linha">
+
+          <span>Total</span>
+
+          <strong id="totalResumo">
+            R$ 0,00
+          </strong>
+
+        </div>
+
+      </div>
+
     </aside>
+
   </main>
 
   <script>
+
     const PIX_KEY = "75982183914";
     const whatsNumber = "5575982183914";
 
-    function mostrarOpcoesEntrega() {
-      const tipo = document.getElementById("tipoEntrega").value;
-      const box = document.getElementById("opcoesEntregaBox");
-      const end = document.getElementById("enderecoBox");
-      if (tipo === "entrega") box.style.display = "block";
-      else { box.style.display = "none"; end.style.display = "none"; }
+    /* ================= CARRINHO ================= */
+
+    const carrinho =
+      JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    /* ================= MOSTRAR ENTREGA ================= */
+
+    function mostrarOpcoesEntrega(){
+
+      const tipo =
+        document.getElementById("tipoEntrega").value;
+
+      const box =
+        document.getElementById("opcoesEntregaBox");
+
+      const endereco =
+        document.getElementById("enderecoBox");
+
+      if(tipo === "entrega"){
+
+        box.style.display = "block";
+
+      }else{
+
+        box.style.display = "none";
+        endereco.style.display = "none";
+
+      }
+
       exibirCarrinho();
     }
 
-    function mostrarEnderecoEntrega() {
-      const local = document.getElementById("localEntrega").value;
-      document.getElementById("enderecoBox").style.display = (local === "outro") ? "block" : "none";
+    function mostrarEnderecoEntrega(){
+
+      const local =
+        document.getElementById("localEntrega").value;
+
+      document.getElementById("enderecoBox").style.display =
+        local === "outro"
+        ? "block"
+        : "none";
+
       exibirCarrinho();
     }
 
-    document.getElementById("pagamentoSelect").addEventListener("change", e => {
-      document.getElementById("pix-section").style.display = (e.target.value === "pix") ? "block" : "none";
-    });
+    /* ================= PIX ================= */
 
-    document.getElementById("copyPixBtn").addEventListener("click", async () => {
-      await navigator.clipboard.writeText(PIX_KEY);
-      const f = document.getElementById("copyFeedback");
-      f.classList.add("show");
-      setTimeout(() => f.classList.remove("show"), 1400);
-    });
+    document
+      .getElementById("pagamentoSelect")
+      .addEventListener("change", e => {
 
-    document.getElementById("copyPixWithAmountBtn").addEventListener("click", async () => {
-      const total = document.getElementById("totalResumo").textContent;
-      await navigator.clipboard.writeText(`${PIX_KEY} | ${total}`);
-      const f = document.getElementById("copyFeedback");
-      f.classList.add("show");
-      setTimeout(() => f.classList.remove("show"), 1400);
-    });
+        document.getElementById("pix-section").style.display =
+          e.target.value === "pix"
+          ? "block"
+          : "none";
 
-    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      });
 
-    function exibirCarrinho() {
-        const lista = document.getElementById("listaCarrinho");
-        const totalResumo = document.getElementById("totalResumo");
+    document
+      .getElementById("copyPixBtn")
+      .addEventListener("click", async () => {
 
-        lista.innerHTML = "";
-        let total = 0;
+        await navigator.clipboard.writeText(PIX_KEY);
 
-        carrinho.forEach(item => {
-            const li = document.createElement("li");
-            const qtd = (typeof item.quantidade === 'number' && item.quantidade > 0) ? item.quantidade : 1;
-            const subtotal = item.preco * qtd;
-            li.textContent = `${item.nome} (${qtd}x) - R$ ${subtotal.toFixed(2)}`;
-            lista.appendChild(li);
-            total += subtotal;
-        });
+        const feedback =
+          document.getElementById("copyFeedback");
 
-        const tipoEntrega = document.getElementById("tipoEntrega").value;
-        const localEntrega = document.getElementById("localEntrega") ? document.getElementById("localEntrega").value : "";
-        let valorEntrega = 0;
-        if (tipoEntrega === "entrega") {
-            switch(localEntrega) {
-                case "pumba": valorEntrega = 2; break;
-                case "lisboa": valorEntrega = 3; break;
-                case "touquinha": valorEntrega = 7; break;
-                case "bocadamata": valorEntrega = 9; break;
-                default: valorEntrega = 0; break;
-            }
-            if (valorEntrega > 0) {
-                const liEntrega = document.createElement("li");
-                liEntrega.textContent = `📦 Entrega - R$ ${valorEntrega.toFixed(2)}`;
-                lista.appendChild(liEntrega);
-                total += valorEntrega;
-            }
+        feedback.classList.add("show");
+
+        setTimeout(() => {
+
+          feedback.classList.remove("show");
+
+        }, 1500);
+
+      });
+
+    /* ================= VALOR ENTREGA ================= */
+
+    function obterValorEntrega(local){
+
+      switch(local){
+
+        case "pumba":
+          return 2;
+
+        case "lisboa":
+          return 3;
+
+        case "touquinha":
+          return 7;
+
+        case "bocadamata":
+          return 9;
+
+        default:
+          return 0;
+      }
+    }
+
+    /* ================= EXIBIR CARRINHO ================= */
+
+    function exibirCarrinho(){
+
+      const lista =
+        document.getElementById("listaCarrinho");
+
+      const totalResumo =
+        document.getElementById("totalResumo");
+
+      const pedidoCount =
+        document.getElementById("pedidoCount");
+
+      lista.innerHTML = "";
+
+      if(carrinho.length === 0){
+
+        lista.innerHTML = `
+          <div class="vazio">
+            Nenhum item no carrinho.
+          </div>
+        `;
+
+        totalResumo.textContent = "R$ 0,00";
+
+        pedidoCount.textContent = "0 itens";
+
+        return;
+      }
+
+      let total = 0;
+      let totalItens = 0;
+
+      carrinho.forEach(item => {
+
+        const qtd =
+          item.quantidade || 1;
+
+        const subtotal =
+          item.preco * qtd;
+
+        total += subtotal;
+        totalItens += qtd;
+
+        const li =
+          document.createElement("li");
+
+        li.className = "item-carrinho";
+
+        li.innerHTML = `
+
+          <div class="item-info">
+
+            <span class="item-nome">
+              ${item.nome}
+            </span>
+
+            <span class="item-qtd">
+              ${qtd}x item(s)
+            </span>
+
+          </div>
+
+          <span class="item-preco">
+            R$ ${subtotal.toFixed(2)}
+          </span>
+
+        `;
+
+        lista.appendChild(li);
+
+      });
+
+      const tipoEntrega =
+        document.getElementById("tipoEntrega").value;
+
+      if(tipoEntrega === "entrega"){
+
+        const local =
+          document.getElementById("localEntrega").value;
+
+        const valorEntrega =
+          obterValorEntrega(local);
+
+        if(valorEntrega > 0){
+
+          total += valorEntrega;
+
+          const entrega =
+            document.createElement("div");
+
+          entrega.className = "linha-entrega";
+
+          entrega.innerHTML = `
+            <span>📦 Taxa de entrega</span>
+            <strong>
+              R$ ${valorEntrega.toFixed(2)}
+            </strong>
+          `;
+
+          lista.appendChild(entrega);
         }
+      }
 
-        totalResumo.textContent = "💰 Total: R$ " + total.toFixed(2);
+      pedidoCount.textContent =
+        `${totalItens} item(s)`;
+
+      totalResumo.textContent =
+        `R$ ${total.toFixed(2)}`;
     }
 
     exibirCarrinho();
 
-    function gerarMensagemPedido() {
-      const tipoEntrega = document.getElementById("tipoEntrega").value;
-      const localEntrega = document.getElementById("localEntrega") ? document.getElementById("localEntrega").value : "";
-      const endereco = document.getElementById("endereco") ? document.getElementById("endereco").value : "";
-      const observacao = document.getElementById("observacao").value;
-      const contemEl = document.getElementById("contem");
-      const contem = contemEl ? contemEl.value : "";
-      const pagamento = document.getElementById("pagamentoSelect").value;
+    /* ================= GERAR MENSAGEM ================= */
 
-      let linhas = [];
-      linhas.push("*🧾 Pedido - Pumba’s Burguer*");
-      linhas.push("---------------------------");
+    function gerarMensagemPedido(){
 
-      let total = 0;
-      carrinho.forEach(item => {
-        const qtd = (typeof item.quantidade === 'number' && item.quantidade > 0) ? item.quantidade : 1;
-        const subtotal = item.preco * qtd;
-        linhas.push(`🍔 ${item.nome} (${qtd}x) - R$ ${subtotal.toFixed(2)}`);
-        total += subtotal;
-      });
+      const nome =
+        document.getElementById("nomeCliente").value;
 
-      let valorEntrega = 0;
-      if (tipoEntrega === "entrega") {
-          switch(localEntrega) {
-              case "pumba": valorEntrega = 2; break;
-              case "lisboa": valorEntrega = 3; break;
-              case "touquinha": valorEntrega = 7; break;
-              case "bocadamata": valorEntrega = 9; break;
-              default: valorEntrega = 0; break;
-          }
-          if (valorEntrega > 0) linhas.push(`📦 Valor da Entrega: R$ ${valorEntrega.toFixed(2)}`);
-          total += valorEntrega;
+      const tipoEntrega =
+        document.getElementById("tipoEntrega").value;
+
+      const localEntrega =
+        document.getElementById("localEntrega").value;
+
+      const endereco =
+        document.getElementById("endereco").value;
+
+      const observacao =
+        document.getElementById("observacao").value;
+
+      const pagamento =
+        document.getElementById("pagamentoSelect").value;
+
+      let mensagem = "";
+
+      mensagem += "🍔 *NOVO PEDIDO - PUMBA'S BURGUER*%0A%0A";
+
+      if(nome){
+
+        mensagem += `👤 Nome: ${nome}%0A`;
+
       }
 
-      linhas.push("---------------------------");
-      linhas.push(`💰 Total: R$ ${total.toFixed(2)}`);
-      linhas.push("");
-      linhas.push(`📦 Entrega: ${tipoEntrega}`);
-      if (tipoEntrega === "entrega" && localEntrega) linhas.push(`🏠 Local: ${localEntrega}`);
-      if (endereco) linhas.push(`📍 Endereço: ${endereco}`);
-      if (contem) linhas.push(`🍽️ Contém: ${contem}`);
-      linhas.push(`💳 Pagamento: ${pagamento}`);
-      if (observacao) linhas.push(`🗒️ Obs: ${observacao}`);
-      linhas.push("");
-      linhas.push("✅ Agradecemos sua preferência!");
+      mensagem += "📋 *ITENS:*%0A";
 
-      return linhas.join("\n");
+      let total = 0;
+
+      carrinho.forEach(item => {
+
+        const qtd =
+          item.quantidade || 1;
+
+        const subtotal =
+          item.preco * qtd;
+
+        total += subtotal;
+
+        mensagem +=
+          `• ${item.nome} (${qtd}x) - R$ ${subtotal.toFixed(2)}%0A`;
+
+      });
+
+      if(tipoEntrega === "entrega"){
+
+        const taxa =
+          obterValorEntrega(localEntrega);
+
+        total += taxa;
+
+        mensagem += `%0A📦 Entrega: Sim%0A`;
+
+        mensagem += `🏠 Região: ${localEntrega}%0A`;
+
+        if(endereco){
+
+          mensagem += `📍 Endereço: ${endereco}%0A`;
+
+        }
+
+        if(taxa > 0){
+
+          mensagem += `🚚 Taxa: R$ ${taxa.toFixed(2)}%0A`;
+
+        }
+
+      }else{
+
+        mensagem += `%0A📦 Retirada no local%0A`;
+
+      }
+
+      mensagem += `%0A💳 Pagamento: ${pagamento}%0A`;
+
+      if(observacao){
+
+        mensagem += `📝 Observação: ${observacao}%0A`;
+
+      }
+
+      mensagem += `%0A💰 *TOTAL: R$ ${total.toFixed(2)}*`;
+
+      return mensagem;
     }
 
-    document.getElementById("btnEnviarWhats").addEventListener("click", () => {
-      const mensagem = gerarMensagemPedido();
-      const textoEnc = encodeURIComponent(mensagem);
-      const url = `https://wa.me/${whatsNumber}?text=${textoEnc}`;
-      window.open(url, "_blank");
-    });
+    /* ================= ENVIAR WHATS ================= */
+
+    document
+      .getElementById("btnEnviarWhats")
+      .addEventListener("click", () => {
+
+        if(carrinho.length === 0){
+
+          alert("Seu carrinho está vazio.");
+
+          return;
+        }
+
+        const mensagem =
+          gerarMensagemPedido();
+
+        const url =
+          `https://wa.me/${whatsNumber}?text=${mensagem}`;
+
+        window.open(url, "_blank");
+
+      });
+
   </script>
+
 </body>
 </html>

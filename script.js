@@ -1,8 +1,21 @@
 /* =====================
    CARRINHO
 ===================== */
-let carrinho = [];
+let carrinho =
+  JSON.parse(localStorage.getItem("carrinho")) || [];
+
 let itemModalAtual = null;
+
+/* =====================
+   SALVAR CARRINHO
+===================== */
+function salvarCarrinho() {
+
+  localStorage.setItem(
+    "carrinho",
+    JSON.stringify(carrinho)
+  );
+}
 
 /* =====================
    MODAL DE DETALHES
@@ -180,6 +193,7 @@ function gerarHTMLCarrinho() {
 
     return `
       <div class="carrinho-modern">
+
         <div class="carrinho-topo">
           <h2>🛒 Meu Carrinho</h2>
         </div>
@@ -187,6 +201,7 @@ function gerarHTMLCarrinho() {
         <div class="carrinho-vazio">
           <p>Seu carrinho está vazio.</p>
         </div>
+
       </div>
     `;
   }
@@ -196,6 +211,7 @@ function gerarHTMLCarrinho() {
     <div class="carrinho-modern">
 
       <div class="carrinho-topo">
+
         <h2>🛒 Meu Carrinho</h2>
 
         <button
@@ -205,6 +221,7 @@ function gerarHTMLCarrinho() {
           ✕
 
         </button>
+
       </div>
 
       <div class="carrinho-lista">
@@ -315,9 +332,11 @@ function fecharCarrinho() {
 }
 
 /* =====================
-   ATUALIZAÇÕES
+   ATUALIZAR CARRINHO
 ===================== */
 function atualizarCarrinho() {
+
+  salvarCarrinho();
 
   atualizarBarraCarrinho();
 
@@ -400,10 +419,12 @@ function finalizarPedido() {
     return;
   }
 
-  localStorage.setItem(
-    "carrinho",
-    JSON.stringify(carrinho)
-  );
+  salvarCarrinho();
 
   window.location.href = "checkout.html";
 }
+
+/* =====================
+   INICIAR
+===================== */
+atualizarCarrinho();
