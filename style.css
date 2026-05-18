@@ -1,618 +1,1011 @@
-/* ====== ESTILO GERAL ====== */
-body {
-    background-color: #0e0e0e;
+/* ====================================
+   VARIÁVEIS
+==================================== */
+:root{
+    --laranja: #ff7b00;
+    --laranja-claro: #ffae42;
+    --fundo: #0e0e0e;
+    --card: #141414;
+    --texto: #ffffff;
+    --texto2: #d6d6d6;
+}
+
+/* ====================================
+   RESET
+==================================== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ====================================
+   BODY
+==================================== */
+body{
+    background-color: var(--fundo);
     background-image: url("logo.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 650px;
     background-attachment: fixed;
-    color: #fff;
-    margin: 10px;
-    padding: 10px;
-    position: relative;
+
+    color: var(--texto);
+
     font-family: 'Poppins', sans-serif;
+
+    min-height: 100vh;
+
+    position: relative;
+
+    overflow-x: hidden;
 }
 
-/* CAMADA DE TRANSPARÊNCIA */
-body::before {
+/* CAMADA ESCURA */
+body::before{
     content: "";
+
     position: fixed;
     inset: 0;
-    background: rgba(14, 14, 14, 0.88);
+
+    background: rgba(14,14,14,.90);
+
     z-index: -1;
 }
 
-/* ====== FONTES ====== */
-@font-face {
+/* ====================================
+   FONTES
+==================================== */
+@font-face{
     font-family: "ReiLeao";
     src: url("fonts/lion.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
 }
 
-/* ====== TÍTULOS ====== */
-.titulo-site {
-    position: absolute;
-    left: 220px;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: left;
-}
+/* ====================================
+   CABEÇALHO
+==================================== */
+header.cabecalho{
 
-.titulo-principal {
-    font-family: "ReiLeao", serif;
-    font-size: 42px;
-    color: #ff7b00;
-    letter-spacing: 4px;
-    text-align: center;
-    text-shadow:
-        2px 2px 0 #000,
-        0 0 15px rgba(255, 123, 0, 0.65);
-}
-
-.slogan {
-    text-align: center;
-    font-family: "ReiLeao", serif;
-    font-size: 30px;
-    color: #ff7b00;
-    letter-spacing: 3px;
-    text-shadow:
-        2px 2px 0 #000,
-        0 0 10px rgb(240, 234, 229);
-    margin-top: -30px;
-}
-
-.promo {
-    text-align: center;
-    color: #ffb366;
-    font-size: 24px;
-    margin-top: 20px;
-    text-shadow:
-        2px 2px 0 #000,
-        0 0 10px rgb(240, 112, 8);
-}
-
-.subtitulo {
-    font-size: 16px;
-    color: #ffae42;
-    letter-spacing: 4px;
-}
-
-/* ===== RESPONSIVO TÍTULOS ===== */
-@media (max-width: 768px) {
-    .titulo-site {
-        position: static;
-        transform: none;
-        text-align: center;
-        margin-top: 10px;
-    }
-
-    .titulo-principal {
-        font-size: 30px;
-    }
-
-    .subtitulo {
-        font-size: 14px;
-    }
-}
-
-/* ===== MODAL DETALHES ===== */
-#modalDetalhes {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999999;
-}
 
-.modal-conteudo {
-    background: #0e0e0e;
-    width: 95%;
-    max-width: 420px;
-    max-height: 90vh;
-    border-radius: 18px;
-    overflow-y: auto;
-    padding: 16px;
-    box-shadow: 0 0 25px rgba(255, 123, 0, 0.45);
-    animation: modalSubir .25s ease;
-}
+    background: #000;
 
-@keyframes modalSubir {
-    from {
-        transform: translateY(30px);
-        opacity: 0;
-    }
+    border-bottom: 3px solid var(--laranja);
 
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
+    padding: 18px 20px;
 
-#modalImagemPrincipal {
-    width: 100%;
-    max-height: 230px;
-    object-fit: cover;
-    border-radius: 14px;
-    margin-bottom: 12px;
-}
+    min-height: 90px;
 
-#modalMiniaturas {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
-}
+    position: relative;
 
-#modalMiniaturas img {
-    width: 55px;
-    height: 55px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
-    opacity: 0.7;
-    border: 2px solid transparent;
-    transition: 0.25s;
-}
-
-#modalMiniaturas img:hover {
-    opacity: 1;
-    border-color: #ff7b00;
-}
-
-.modal-imagem-box {
-    width: 100%;
-    max-width: 260px;
-    aspect-ratio: 1 / 1;
-    margin: 0 auto 14px auto;
-    background: #111;
-    border-radius: 18px;
-    padding: 8px;
     box-shadow:
-        0 0 0 2px #ff7b00,
-        0 10px 25px rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        0 4px 18px rgba(0,0,0,.45);
 }
 
-#modalNome {
-    font-size: 22px;
-    font-weight: 700;
-    color: #f7f6f5;
-    margin-bottom: 6px;
-}
+/* ====================================
+   LOGO
+==================================== */
+.logo-grande{
 
-#modalDescricao {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #ddd;
-    margin-bottom: 12px;
-}
+    position: absolute;
 
-#modalPreco {
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffae42;
-    margin-bottom: 14px;
-}
+    left: 15px;
+    top: -6px;
 
-.modal-botoes button {
-    width: 100%;
-    padding: 12px;
-    font-size: 15px;
-    font-weight: bold;
-    background: linear-gradient(90deg, #ff7b00, #ffae42);
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    color: #000;
+    width: 170px;
+
+    z-index: 20;
+
     transition: .25s;
 }
 
-.modal-botoes button:hover {
+.logo-grande:hover{
     transform: scale(1.03);
 }
 
-/* ====== CABEÇALHO ====== */
-header.cabecalho {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #000;
-    border-bottom: 3px solid #ff7b00;
-    padding: 18px 20px;
-    gap: 15px;
-    flex-wrap: wrap;
-    position: relative;
-    height: 90px;
-}
+/* ====================================
+   TÍTULOS
+==================================== */
+.titulo-principal{
 
-/* ====== LOGO ====== */
-.logo-grande {
-    position: absolute;
-    top: -8px;
-    left: 18px;
-    width: 180px;
-    height: auto;
-    z-index: 10;
-    display: block;
-    padding: 6px;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.18);
-    transition: transform .25s ease, box-shadow .25s ease;
-    cursor: default;
-}
+    font-family: "ReiLeao", serif;
 
-.logo-grande:hover {
-    transform: translateY(-2px) scale(1.02);
-}
+    font-size: 42px;
 
-@media (max-width: 520px) {
-    .logo-grande {
-        width: 100px;
-        left: 12px;
-        top: -6px;
-    }
-}
+    color: var(--laranja);
 
-/* ===== STATUS ===== */
-.status-funcionamento {
     text-align: center;
-    font-size: 14px;
-    color: #ffae42;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        2px 2px 0 #000,
+        0 0 14px rgba(255,123,0,.45);
 }
 
-/* ===== MENU ===== */
-.menu {
+.slogan{
+
+    margin-top: -8px;
+
+    text-align: center;
+
+    color: var(--laranja-claro);
+
+    letter-spacing: 3px;
+
+    font-size: 22px;
+}
+
+.subtitulo{
+    color: var(--laranja-claro);
+}
+
+/* ====================================
+   MENU
+==================================== */
+.menu{
+
     width: fit-content;
+
     margin: 25px auto;
-    background: rgba(255, 123, 0, .12);
-    border: 1px solid rgba(255, 123, 0, .35);
+
+    background: rgba(255,123,0,.10);
+
+    border: 1px solid rgba(255,123,0,.25);
+
     border-radius: 18px;
-    padding: 10px 25px;
+
+    padding: 10px 20px;
+
     backdrop-filter: blur(8px);
 }
 
-.menu ul {
+.menu ul{
+
     list-style: none;
+
     display: flex;
-    gap: 18px;
-    padding: 0;
-    margin: 0;
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
 }
 
-.menu a {
-    color: #ffb366;
-    font-weight: bold;
-    font-size: 15px;
+.menu a{
+
     text-decoration: none;
+
+    color: #ffb366;
+
+    font-weight: 700;
+
     padding: 10px 18px;
+
     border-radius: 12px;
-    transition: .3s;
+
+    transition: .25s;
 }
 
-.menu a:hover {
-    background: #ff7b00;
+.menu a:hover{
+
+    background: var(--laranja);
+
     color: #000;
 }
 
-/* ===== GRID ===== */
-main {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
+/* ====================================
+   MAIN
+==================================== */
+main{
     padding: 20px;
 }
 
-.grid {
+/* ====================================
+   SEÇÕES
+==================================== */
+section h2{
+
+    text-align: center;
+
+    font-size: 34px;
+
+    color: var(--laranja);
+
+    margin-top: 45px;
+    margin-bottom: 30px;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 15px rgba(255,123,0,.25);
+}
+
+/* ====================================
+   GRID
+==================================== */
+.grid{
+
     display: flex;
+
     flex-wrap: wrap;
-    gap: 22px;
+
     justify-content: center;
-    max-width: 1200px;
+
+    gap: 22px;
+
+    max-width: 1250px;
+
     margin: auto;
 }
 
-/* ===== TÍTULOS DAS SEÇÕES ===== */
-section h2 {
-    text-align: center;
-    font-size: 36px;
-    color: #ff7b00;
-    margin-top: 55px;
-    margin-bottom: 35px;
-    letter-spacing: 2px;
-    text-shadow:
-        2px 2px 0 #000,
-        0 0 15px rgba(255, 123, 0, .5);
-}
+/* ====================================
+   CARD PRODUTO
+==================================== */
+.item{
 
-/* ===== CARD PRODUTO ===== */
-.item {
-    width: 230px;
-    background: rgba(20, 20, 20, 0.95);
-    border: 1px solid rgba(255, 123, 0, 0.18);
-    border-radius: 20px;
+    width: 235px;
+
+    background: rgba(20,20,20,.97);
+
+    border: 1px solid rgba(255,123,0,.15);
+
+    border-radius: 22px;
+
     padding: 14px;
-    text-align: center;
+
+    transition: .30s;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: space-between;
-    transition: .35s;
-    backdrop-filter: blur(6px);
+
+    cursor: pointer;
+
     box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.35);
+        0 8px 22px rgba(0,0,0,.35);
 }
 
-.item:hover {
-    transform: translateY(-6px) scale(1.03);
-    border-color: rgba(255, 123, 0, .7);
+.item:hover{
+
+    transform: translateY(-5px);
+
+    border-color: rgba(255,123,0,.65);
+
     box-shadow:
-        0 0 20px rgba(255, 123, 0, .18),
-        0 0 40px rgba(255, 123, 0, .08);
+        0 0 18px rgba(255,123,0,.18),
+        0 12px 25px rgba(0,0,0,.45);
 }
 
-.item img {
+.item img{
+
     width: 100%;
     height: 170px;
-    border-radius: 14px;
+
     object-fit: cover;
-    box-shadow:
-        0 4px 15px rgba(0,0,0,.45);
+
+    border-radius: 16px;
 }
 
-.nome {
+.nome{
+
+    color: var(--laranja);
+
     font-size: 18px;
+
     font-weight: 700;
-    color: #ff7b00;
+
     margin-top: 14px;
     margin-bottom: 10px;
+
+    text-align: center;
+
     line-height: 1.4;
-    min-height: 52px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    text-shadow:
-        1px 1px 0 #000,
-        0 0 8px rgba(255, 123, 0, 0.25);
 }
 
-.descricao {
-    color: #d6d6d6;
+.descricao{
+
+    color: var(--texto2);
+
     font-size: 13px;
+
     line-height: 1.7;
+
     text-align: center;
+
     min-height: 82px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 0 6px;
 }
 
-/* ===== QUANTIDADE ===== */
-.quantidade {
+/* ====================================
+   QUANTIDADE
+==================================== */
+.quantidade{
+
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     gap: 12px;
+
     margin-top: 14px;
 }
 
-.quantidade button {
+.quantidade button{
+
     width: 34px;
     height: 34px;
+
     border-radius: 50%;
+
     border: none;
-    background: #ff7a00;
+
+    background: var(--laranja);
+
     color: #fff;
+
     font-size: 20px;
-    font-weight: bold;
+
     cursor: pointer;
-    transition: .2s;
+
+    transition: .20s;
 }
 
-.quantidade button:hover {
+.quantidade button:hover{
     transform: scale(1.08);
 }
 
-.quantidade span {
-    font-size: 16px;
-    font-weight: 600;
-    min-width: 20px;
+.quantidade span{
+
+    min-width: 22px;
+
     text-align: center;
-}
 
-/* ===== BOTÃO ADD ===== */
-.btn-add {
-    margin-top: 14px;
-    width: 100%;
-    padding: 10px;
-    background: linear-gradient(90deg, #ff7b00, #ffae42);
-    border: none;
-    border-radius: 10px;
-    color: #000;
     font-weight: 700;
-    cursor: pointer;
-    transition: .3s;
 }
 
-.btn-add:hover {
-    transform: scale(1.04);
-    background: linear-gradient(90deg, #ff5500, #ff9d00);
-}
+/* ====================================
+   BOTÃO ADICIONAR
+==================================== */
+.btn-add{
 
-/* ===== CARRINHO ===== */
-.carrinho-barra {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    background: #ff6600;
-    color: #fff;
-    padding: 10px 14px;
-    border-radius: 50px;
-    font-size: 14px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    cursor: pointer;
-    z-index: 99999;
-    transition: transform .2s ease, background .2s ease;
-}
+    margin-top: 14px;
 
-.carrinho-barra:active {
-    transform: scale(0.9);
-    background: #e25800;
-}
+    width: 100%;
 
-.carrinho-numero {
-    background: #000;
-    padding: 3px 8px;
-    font-size: 12px;
+    padding: 11px;
+
+    border: none;
+
     border-radius: 12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--laranja),
+            var(--laranja-claro)
+        );
+
+    color: #000;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .25s;
 }
 
-.carrinho-popup {
+.btn-add:hover{
+
+    transform: scale(1.03);
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff5500,
+            #ff9900
+        );
+}
+
+/* ====================================
+   MODAL
+==================================== */
+#modalDetalhes{
+
     position: fixed;
-    bottom: 75px;
-    right: 10px;
-    width: 88vw;
-    max-height: 70vh;
-    background: #080808;
-    color: #ff8d0b;
-    border-radius: 16px;
-    padding: 16px;
-    overflow-y: auto;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+
+    inset: 0;
+
+    background: rgba(0,0,0,.88);
+
     display: none;
-    z-index: 99999;
-    animation: abrirCart .25s ease;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999999;
+
+    padding: 15px;
 }
 
-@keyframes abrirCart {
-    from {
+.modal-conteudo{
+
+    background: #101010;
+
+    width: 100%;
+    max-width: 430px;
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    border-radius: 22px;
+
+    padding: 18px;
+
+    border: 1px solid rgba(255,123,0,.18);
+
+    animation: modalSubir .25s ease;
+}
+
+@keyframes modalSubir{
+
+    from{
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(20px);
     }
 
-    to {
+    to{
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-.carrinho-item {
-    background: #131313;
-    border: 1px solid #ff7b00;
-    border-radius: 8px;
-    padding: 8px 10px;
+#modalImagemPrincipal{
+
+    width: 100%;
+
+    height: 250px;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+
+    margin-bottom: 12px;
+}
+
+#modalMiniaturas{
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 14px;
+}
+
+#modalMiniaturas img{
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 10px;
+
+    object-fit: cover;
+
+    cursor: pointer;
+
+    opacity: .7;
+
+    transition: .25s;
+}
+
+#modalMiniaturas img:hover{
+
+    opacity: 1;
+
+    border: 2px solid var(--laranja);
+}
+
+#modalNome{
+
+    color: var(--laranja);
+
+    font-size: 24px;
+
     margin-bottom: 8px;
-    font-size: 14px;
-    line-height: 1.4;
-    box-shadow:
-        0 0 4px rgba(255, 123, 0, 0.3);
 }
 
-.total {
-    font-size: 15px;
-    text-align: right;
-    color: #ffae42;
-    font-weight: bold;
-    margin-top: 12px;
+#modalDescricao{
+
+    color: #ddd;
+
+    line-height: 1.6;
+
+    margin-bottom: 14px;
 }
 
-/* ===== BOTÕES CARRINHO ===== */
-.botoes-carrinho button {
-    font-size: 12px;
-    padding: 6px;
-    border-radius: 8px;
-    font-weight: bold;
+#modalPreco{
+
+    color: var(--laranja-claro);
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    margin-bottom: 14px;
 }
 
-.botoes-carrinho .finalizar {
-    background: linear-gradient(90deg, #ff7b00, #ffae42);
-    color: #fff;
-    box-shadow: 0 0 8px rgba(255, 123, 0, 0.5);
-}
+/* ====================================
+   CARRINHO FLOAT
+==================================== */
+.carrinho-barra{
 
-.botoes-carrinho .finalizar:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 14px rgba(255, 123, 0, 0.8);
-}
-
-.botoes-carrinho .cancelar {
-    background: linear-gradient(90deg, #ff3b3b, #b30000);
-    color: #fff;
-    box-shadow: 0 0 8px rgba(255, 26, 26, 0.5);
-}
-
-.botoes-carrinho .cancelar:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 14px rgba(255, 26, 26, 0.8);
-}
-
-/* ===== BOTÃO TOPO ===== */
-#btnTopo {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: linear-gradient(90deg, #ff7b00, #ffae42);
-    color: #000;
-    border: none;
+
+    right: 18px;
+    bottom: 18px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--laranja),
+            var(--laranja-claro)
+        );
+
+    color: #fff;
+
+    padding: 12px 18px;
+
+    border-radius: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    z-index: 99999;
+
+    transition: .20s;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.35);
+}
+
+.carrinho-barra:hover{
+    transform: scale(1.03);
+}
+
+.carrinho-numero{
+
+    background: #000;
+
+    color: #fff;
+
+    border-radius: 50px;
+
+    padding: 4px 8px;
+
+    font-size: 12px;
+}
+
+/* ====================================
+   POPUP CARRINHO
+==================================== */
+.carrinho-popup{
+
+    position: fixed;
+
+    right: 20px;
+    bottom: 85px;
+
+    width: 420px;
+
+    max-width: calc(100vw - 20px);
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    display: none;
+
+    flex-direction: column;
+
+    z-index: 999999;
+
+    animation: abrirCarrinho .25s ease;
+}
+
+@keyframes abrirCarrinho{
+
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====================================
+   CARRINHO MODERNO
+==================================== */
+.carrinho-modern{
+
+    background: #0d0d0d;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(255,123,0,.18);
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.55);
+}
+
+.carrinho-topo{
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px;
+
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.carrinho-topo h2{
+
+    color: var(--laranja);
+
+    font-size: 24px;
+}
+
+.fechar-carrinho{
+
+    width: 34px;
+    height: 34px;
+
     border-radius: 50%;
+
+    border: none;
+
+    background: rgba(255,255,255,.08);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    transition: .20s;
+}
+
+.fechar-carrinho:hover{
+
+    background: #ff3d3d;
+}
+
+.carrinho-lista{
+
+    padding: 15px;
+}
+
+.carrinho-card{
+
+    background: #161616;
+
+    border: 1px solid rgba(255,123,0,.12);
+
+    border-radius: 16px;
+
+    padding: 14px;
+
+    margin-bottom: 12px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    transition: .20s;
+}
+
+.carrinho-card:hover{
+
+    border-color: rgba(255,123,0,.45);
+
+    transform: translateY(-2px);
+}
+
+.carrinho-info h3{
+
+    color: #fff;
+
+    font-size: 15px;
+
+    margin-bottom: 5px;
+}
+
+.carrinho-qtd{
+
+    color: #aaa;
+
+    font-size: 13px;
+}
+
+.carrinho-direita{
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 10px;
+}
+
+.carrinho-preco{
+
+    color: var(--laranja-claro);
+
+    font-weight: 700;
+}
+
+.carrinho-acoes{
+
+    display: flex;
+
+    gap: 6px;
+}
+
+.carrinho-acoes button{
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: .20s;
+}
+
+.btn-menos{
+    background: #2b2b2b;
+    color: #fff;
+}
+
+.btn-mais{
+    background: var(--laranja);
+    color: #fff;
+}
+
+.btn-remover{
+    background: #ff3d3d;
+    color: #fff;
+}
+
+.carrinho-acoes button:hover{
+    transform: scale(1.06);
+}
+
+/* ====================================
+   FOOTER CARRINHO
+==================================== */
+.carrinho-footer{
+
+    padding: 18px;
+
+    border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.total-box{
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 16px;
+
+    font-size: 20px;
+}
+
+.total-box strong{
+    color: var(--laranja);
+}
+
+.botoes-carrinho{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.btn-finalizar{
+
+    border: none;
+
+    padding: 13px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--laranja),
+            var(--laranja-claro)
+        );
+
+    color: #000;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.btn-finalizar:hover{
+    transform: scale(1.02);
+}
+
+.btn-cancelar{
+
+    border: none;
+
+    padding: 13px;
+
+    border-radius: 14px;
+
+    background: #2a2a2a;
+
+    color: #fff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.btn-cancelar:hover{
+
+    background: #ff3d3d;
+}
+
+/* ====================================
+   CARRINHO VAZIO
+==================================== */
+.carrinho-vazio{
+
+    padding: 40px 20px;
+
+    text-align: center;
+
+    color: #aaa;
+}
+
+/* ====================================
+   BOTÃO TOPO
+==================================== */
+#btnTopo{
+
+    position: fixed;
+
+    right: 22px;
+    bottom: 95px;
+
     width: 55px;
     height: 55px;
-    font-size: 25px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--laranja),
+            var(--laranja-claro)
+        );
+
+    color: #000;
+
+    font-size: 22px;
+
     cursor: pointer;
+
     display: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(255, 123, 0, 0.4);
+
+    z-index: 99999;
+
+    transition: .25s;
 }
 
-#btnTopo:hover {
-    transform: scale(1.15);
-    background: linear-gradient(90deg, #ff5500, #ff9e3d);
-    color: #fff;
-    box-shadow: 0 0 25px rgba(255, 123, 0, 0.8);
+#btnTopo:hover{
+    transform: scale(1.08);
 }
 
-/* ===== RESPONSIVO ===== */
-@media (max-width: 768px) {
+/* ====================================
+   RESPONSIVO
+==================================== */
+@media (max-width: 768px){
 
-    main {
-        flex-direction: column;
-        align-items: center;
+    body{
+        background-size: 320px;
     }
 
-    .grid {
-        gap: 16px;
-    }
-
-    .item {
-        width: 90%;
-        max-width: 320px;
-    }
-
-    .menu ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    section h2 {
+    .titulo-principal{
         font-size: 28px;
     }
 
-    .nome {
-        font-size: 17px;
+    .slogan{
+        font-size: 16px;
+    }
+
+    .logo-grande{
+        width: 95px;
+        top: 0;
+    }
+
+    section h2{
+        font-size: 28px;
+    }
+
+    .item{
+        width: 92%;
+        max-width: 330px;
+    }
+
+    .descricao{
         min-height: auto;
     }
 
-    .descricao {
-        min-height: auto;
-        font-size: 12px;
+    .carrinho-popup{
+
+        right: 10px;
+        left: 10px;
+
+        width: auto;
+
+        bottom: 80px;
+    }
+
+    .carrinho-card{
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .carrinho-direita{
+
+        width: 100%;
+
+        flex-direction: row;
+
+        justify-content: space-between;
+
+        align-items: center;
     }
 }
