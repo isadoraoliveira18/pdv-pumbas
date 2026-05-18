@@ -1,0 +1,148 @@
+<!-- HTML: insira onde for o formulário de pagamento -->
+<div class="pagamento">
+  <h3>Escolha a forma de pagamento</h3>
+  <label><input type="radio" name="pagamento" value="cartao" checked> Cartão</label>
+  <label><input type="radio" name="pagamento" value="pix"> PIX</label>
+
+  <!-- Seção PIX (escondida por padrão) -->
+  <div id="pix-section" class="pix-section" aria-hidden="true">
+    <p>Escolha PIX para pagar. Copie a chave ou escaneie o QR code:</p>
+
+    <div class="pix-info">
+      <div class="pix-key-box">
+        <label>Chave PIX:</label>
+        <code id="pixKeyText">meu-email@exemplo.com</code>
+      </div>
+
+      <div class="pix-actions">
+        <button id="copyPixBtn" class="btn">Copiar chave</button>
+        <button id="copyPixWithAmountBtn" class="btn">Copiar chave + valor (R$)</button>
+        <a id="downloadQr" class="btn link" download="pix-qr.png">Baixar QR</a>
+      </div>
+    </div>
+
+    <div class="pix-qr">
+      <img id="pixQrImg" src="" alt="QR Code PIX">
+    </div>
+
+    <small class="nota">Ao copiar, cole a chave na sua carteira/caixa no campo PIX. O QR pode ser lido por qualquer app bancário.</small>
+  </div>
+</div>
+
+<!-- CSS: cole no seu arquivo .css -->
+<style>
+.pagamento { font-family: 'Poppins', sans-serif; margin: 12px 0; color: #111; }
+.pagamento label { margin-right: 12px; cursor: pointer; }
+.pix-section { margin-top: 14px; padding: 12px; border-radius: 8px; background: #fff; border: 1px dashed rgba(0,0,0,0.06); display: none; max-width: 520px; }
+.pix-info { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.pix-key-box label { display:block; font-size:12px; color:#666; }
+.pix-key-box code { display:inline-block; padding:8px 10px; background:#f4f4f4; border-radius:6px; font-family:monospace; font-size:14px; }
+.pix-actions { display:flex; gap:8px; align-items:center; }
+.btn { background:#ff7b00; color:#fff; border:0; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:600; }
+.btn.link { background:transparent; color:#222; text-decoration:underline; padding:6px 10px; border-radius:6px; }
+.pix-qr { margin-top:12px; }
+.pix-qr img { width:180px; height:180px; object-fit:contain; border-radius:6px; box-shadow:0 6px 18px rgba(0,0,0,0.1); }
+.nota { display:block; margin-top:10px; color:#666; font-size:12px; }
+.copy-feedback { margin-left:8px; color:green; font-weight:600; font-size:13px; display:none; }
+@media (max-width:520px){ .pix-qr img{width:140px;height:140px;} }
+</style>
+
+<!-- JS: cole antes do </body> -->
+<script>
+(function(){
+  // --- CONFIGURAÇÃO: altere aqui para sua chave PIX e valor padrão ---
+  const pixKey = "seu-pix@exemplo.com";           // substitua pela sua chave (email, CPF, CNPJ, telefone ou EVP)
+  const defaultAmount = 39.90;                    // valor mostrado no botão copiar + valor (numérico)
+  // ------------------------------------------------------------------
+
+  const radios = document.querySelectorAll('input[name="pagamento"]');
+  const pixSection = document.getElementById('pix-section');
+  const pixKeyText = document.getElementById('pixKeyText');
+  const pixQrImg = document.getElementById('pixQrImg');
+  const copyBtn = document.getElementById('copyPixBtn');
+  const copyAmountBtn = document.getElementById('copyPixWithAmountBtn');
+  const downloadQr = document.getElementById('downloadQr');
+
+  // Inicializa chave e QR
+  pixKeyText.textContent = pixKey;
+  updateQrImage(pixKey);
+
+  // mostra/oculta seção PIX ao selecionar opção
+  radios.forEach(r => r.addEventListener('change', function(){
+    if (this.value === 'pix') {
+      pixSection.style.display = 'block';
+      pixSection.setAttribute('aria-hidden','false');
+    } else {
+      pixSection.style.display = 'none';
+      pixSection.setAttribute('aria-hidden','true');
+    }
+  }));
+
+  // botão copiar chave simples
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(pixKey);
+      showToast('Chave PIX copiada');
+    } catch (e) {
+      fallbackCopyTextToClipboard(pixKey);
+    }
+  });
+
+  // botão copiar chave + valor (texto simples: "chave | R$ 12,34")
+  copyAmountBtn.addEventListener('click', async () => {
+    const text = `${pixKey} | R$ ${Number(defaultAmount).toFixed(2)}`;
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast('Chave + valor copiados');
+    } catch (e) {
+      fallbackCopyTextToClipboard(text);
+    }
+  });
+
+  // Gera e atualiza imagem de QR usando um serviço público (gera uma imagem com o texto da chave)
+  function updateQrImage(text){
+    // URL pública de geração de QR (pode trocar por outra ou gerar internamente)
+    const encoded = encodeURIComponent(text);
+    const url = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encoded}`;
+    pixQrImg.src = url;
+    downloadQr.href = url;
+  }
+
+  // feedback simples (toast)
+  function showToast(msg){
+    const el = document.createElement('div');
+    el.textContent = msg;
+    el.style.position = 'fixed';
+    el.style.right = '18px';
+    el.style.bottom = '18px';
+    el.style.padding = '10px 14px';
+    el.style.background = '#111';
+    el.style.color = '#fff';
+    el.style.borderRadius = '10px';
+    el.style.boxShadow = '0 6px 20px rgba(0,0,0,0.3)';
+    el.style.zIndex = 9999;
+    document.body.appendChild(el);
+    setTimeout(()=> el.style.opacity = '0.0', 1600);
+    setTimeout(()=> el.remove(), 2000);
+  }
+
+  // fallback para navegadores antigos
+  function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      showToast('Copiado para a área de transferência');
+    } catch (err) {
+      alert('Não foi possível copiar automaticamente. Selecione e copie manualmente: ' + text);
+    }
+    document.body.removeChild(textArea);
+  }
+
+})();
+</script>
