@@ -600,58 +600,23 @@ section h2{
 /* ====================================
    POPUP CARRINHO
 ==================================== */
-.carrinho-popup{
+.carrinho-popup {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
 
-    position: fixed;
+  width: 350px;
+  max-height: 80vh;
 
-    right: 20px;
-    bottom: 85px;
+  overflow-y: auto;
 
-    width: 420px;
+  background: #1c1c1c;
+  border-radius: 15px;
+  padding: 15px;
 
-    max-width: calc(100vw - 20px);
+  z-index: 9999;
 
-    max-height: 80vh;
-
-    overflow-y: auto;
-
-    display: none;
-
-    flex-direction: column;
-
-    z-index: 999999;
-
-    animation: abrirCarrinho .25s ease;
-}
-
-@keyframes abrirCarrinho{
-
-    from{
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ====================================
-   CARRINHO MODERNO
-==================================== */
-.carrinho-modern{
-
-    background: #0d0d0d;
-
-    border-radius: 22px;
-
-    border: 1px solid rgba(255,123,0,.18);
-
-    overflow: hidden;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.55);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
 .carrinho-topo{
@@ -904,6 +869,7 @@ section h2{
 
     color: #aaa;
 }
+
 
 /* ====================================
    BOTÃO TOPO
