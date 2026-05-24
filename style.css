@@ -10,6 +10,41 @@
     --texto2: #d6d6d6;
 }
 
+.aviso-topo {
+  width: 100%;
+  background: #ff9800;
+  color: white;
+
+  text-align: center;
+
+  padding: 12px 15px;
+
+  font-weight: bold;
+  font-size: 15px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 99999;
+
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+
+  animation: deslizarAviso 0.4s ease;
+}
+
+@keyframes deslizarAviso {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* ====================================
    RESET
 ==================================== */
