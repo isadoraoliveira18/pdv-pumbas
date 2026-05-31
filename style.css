@@ -64,6 +64,8 @@ body{
     background-position: center center;
     background-size: 650px;
     background-attachment: fixed;
+    padding-top: 55px;
+
 
     color: var(--texto);
 
