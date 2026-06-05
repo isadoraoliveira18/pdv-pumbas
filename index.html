@@ -47,14 +47,14 @@
 
     <div class="item"
          data-nome="Simbas Burguer"
-         data-preco="16"
+         data-preco="17"
          data-descricao="Hambúrguer artesanal 90g, queijo, pão brioche, alface americano e cebola roxa."
          data-imagens='["imagens/burguer1.jpg"]'
          onclick="abrirModalItem(this)">
 
       <img src="imagens/burguer1.jpg" alt="Simbas Burguer">
 
-      <p class="nome">Simbas Burguer - R$16,00</p>
+      <p class="nome">Simbas Burguer - R$17,00</p>
 
       <p class="descricao">
         Hambúrguer artesanal 90g, queijo, pão brioche, alface americano e cebola roxa.
@@ -77,14 +77,14 @@
 
     <div class="item"
          data-nome="Nala Burguer"
-         data-preco="19"
+         data-preco="20"
          data-descricao="Hambúrguer artesanal 90g, queijo, pão brioche, molho da casa, alface americano e cebola caramelizada."
          data-imagens='["imagens/burguer2.jpg"]'
          onclick="abrirModalItem(this)">
 
       <img src="imagens/burguer2.jpg" alt="Nala Burguer">
 
-      <p class="nome">Nala Burguer - R$19,00</p>
+      <p class="nome">Nala Burguer - R$20,00</p>
 
       <p class="descricao">
         Hambúrguer artesanal 90g, queijo, pão brioche, molho da casa, alface americano e cebola caramelizada.
@@ -107,14 +107,14 @@
 
     <div class="item"
          data-nome="Pumbas Burguer"
-         data-preco="24"
+         data-preco="25"
          data-descricao="Hambúrguer artesanal 90g, queijo, pão brioche, molho da casa, alface americano, tomate e bacon."
          data-imagens='["imagens/burguer3.jpg"]'
          onclick="abrirModalItem(this)">
 
       <img src="imagens/burguer3.jpg" alt="Pumbas Burguer">
 
-      <p class="nome">Pumbas Burguer - R$24,00</p>
+      <p class="nome">Pumbas Burguer - R$25,00</p>
 
       <p class="descricao">
         Hambúrguer artesanal 90g, queijo, pão brioche, molho da casa, alface americano, tomate e bacon.
@@ -137,14 +137,14 @@
 
     <div class="item"
          data-nome="Mufasa Burguer"
-         data-preco="25"
+         data-preco="24"
          data-descricao="Hambúrguer artesanal 100g, queijo, pão brioche, molho da casa, queijo chapeado e cebola caramelizada."
          data-imagens='["imagens/burguer5.jpg"]'
          onclick="abrirModalItem(this)">
 
       <img src="imagens/burguer5.jpg" alt="Mufasa Burguer">
 
-      <p class="nome">Mufasa Burguer - R$25,00</p>
+      <p class="nome">Mufasa Burguer - R$24,00</p>
 
       <p class="descricao">
         Hambúrguer artesanal 100g, queijo, pão brioche, molho da casa, queijo chapeado e cebola caramelizada.
@@ -197,14 +197,14 @@
 
     <div class="item"
          data-nome="Timão Burguer"
-         data-preco="24"
+         data-preco="25"
          data-descricao="Hambúrguer artesanal com duas carnes de 60g, queijo e cebola ao mel no pão brioche."
          data-imagens='["imagens/timao.jpg"]'
          onclick="abrirModalItem(this)">
 
       <img src="imagens/timao.jpg" alt="Timão Burguer">
 
-      <p class="nome">Timão Burguer - R$24,00</p>
+      <p class="nome">Timão Burguer - R$25,00</p>
 
       <p class="descricao">
         Hambúrguer artesanal com duas carnes de 60g, queijo e cebola ao mel no pão brioche.
@@ -237,7 +237,7 @@
     <div class="item">
       <img src="imagens/lata.png" alt="Refrigerante Lata">
 
-      <p class="nome">Refrigerante Lata - R$5,00</p>
+      <p class="nome">Refrigerante Lata - R$5,50</p>
 
       <p class="descricao">
         Lata 350ml gelada. Pergunte os sabores disponíveis.
@@ -252,7 +252,7 @@
       <button
         type="button"
         class="btn-add"
-        onclick="addToCart('Refrigerante Lata', 5, 'refrilata')">
+        onclick="addToCart('Refrigerante Lata', 5.50, 'refrilata')">
         Adicionar
       </button>
     </div>
@@ -295,7 +295,7 @@
       <p class="nome">Isca de Frango - R$25,00</p>
 
       <p class="descricao">
-        Iscas de frango empanadas e crocantes, fritas na hora. Acompanha molho da casa.
+        Iscas de frango empanadas e crocantes, fritas na hora. Acompanha 2 molhos.
       </p>
 
       <div class="quantidade">
@@ -303,11 +303,24 @@
         <span id="qtd-iscaFrango">0</span>
         <button type="button" onclick="alterarQtd('iscaFrango', 1)">+</button>
       </div>
+<div class="item">
+      <img src="imagens/isca.jpg" alt="Isca de Frango - 150G">
 
+      <p class="nome">Isca de Frango - R$17,00</p>
+
+      <p class="descricao">
+        Iscas de frango empanadas e crocantes, fritas na hora. Acompanha 1 molho da casa.
+      </p>
+
+      <div class="quantidade">
+        <button type="button" onclick="alterarQtd('iscaFrango', -1)">−</button>
+        <span id="qtd-iscaFrango">0</span>
+        <button type="button" onclick="alterarQtd('iscaFrango', 1)">+</button>
+      </div>
       <button
         type="button"
         class="btn-add"
-        onclick="addToCart('Isca de Frango', 25, 'iscaFrango')">
+        onclick="addToCart('Isca de Frango', 17, 'iscaFrango')">
         Adicionar
       </button>
     </div>
@@ -315,7 +328,7 @@
     <div class="item">
       <img src="imagens/batatached.jpg" alt="Batata com Bacon e Cheddar">
 
-      <p class="nome">Batata c/ Bacon e Cheddar - R$23,00</p>
+      <p class="nome">Batata c/ Bacon e Cheddar - R$20,00</p>
 
       <p class="descricao">
         Porção de batatas fritas crocantes cobertas com bacon e cheddar cremoso.
@@ -340,7 +353,7 @@
     <div class="item">
       <img src="imagens/batata.jpg" alt="Batata Pequena">
 
-      <p class="nome">Batata Pequena - R$10,00</p>
+      <p class="nome">Batata Pequena - R$12,00</p>
 
       <p class="descricao">
         Porção pequena de batatas fritas crocantes.
@@ -355,7 +368,7 @@
       <button
         type="button"
         class="btn-add"
-        onclick="addToCart('Batata Pequena', 10, 'batataP')">
+        onclick="addToCart('Batata Pequena', 12, 'batataP')">
         Adicionar
       </button>
     </div>
@@ -363,7 +376,7 @@
     <div class="item">
       <img src="imagens/batata.jpg" alt="Batata Média">
 
-      <p class="nome">Batata Média - R$15,00</p>
+      <p class="nome">Batata Média - R$17,00</p>
 
       <p class="descricao">
         Porção média de batatas fritas crocantes.
@@ -378,7 +391,7 @@
       <button
         type="button"
         class="btn-add"
-        onclick="addToCart('Batata Média', 15, 'batataM')">
+        onclick="addToCart('Batata Média', 17, 'batataM')">
         Adicionar
       </button>
     </div>
@@ -418,7 +431,7 @@
     <div class="item">
       <img src="imagens/combo.jpg" alt="Combo Rei Leão">
 
-      <p class="nome">Combo Rei Leão - R$30,00</p>
+      <p class="nome">Combo Rei Leão - R$32,00</p>
 
       <p class="descricao">
         Hambúrguer + batata pequena + refrigerante lata.
@@ -433,57 +446,10 @@
       <button
         type="button"
         class="btn-add"
-        onclick="addToCart('Combo Rei Leão', 30, 'combo1')">
+        onclick="addToCart('Combo Rei Leão', 32, 'combo1')">
         Adicionar
       </button>
     </div>
-
-    <div class="item">
-      <img src="imagens/combo2.jpeg" alt="Combo Rei Leão 2">
-
-      <p class="nome">Combo Rei Leão 2 - R$48,00</p>
-
-      <p class="descricao">
-        2 hambúrgueres + batata média.
-      </p>
-
-      <div class="quantidade">
-        <button type="button" onclick="alterarQtd('combo2', -1)">−</button>
-        <span id="qtd-combo2">0</span>
-        <button type="button" onclick="alterarQtd('combo2', 1)">+</button>
-      </div>
-
-      <button
-        type="button"
-        class="btn-add"
-        onclick="addToCart('Combo Rei Leão 2', 48, 'combo2')">
-        Adicionar
-      </button>
-    </div>
-
-    <div class="item">
-      <img src="imagens/familia.jpeg" alt="Combo Hakuna Matata">
-
-      <p class="nome">Combo Hakuna Matata - R$53,00</p>
-
-      <p class="descricao">
-        2 hambúrgueres + batata grande + refrigerante litro.
-      </p>
-
-      <div class="quantidade">
-        <button type="button" onclick="alterarQtd('combo3', -1)">−</button>
-        <span id="qtd-combo3">0</span>
-        <button type="button" onclick="alterarQtd('combo3', 1)">+</button>
-      </div>
-
-      <button
-        type="button"
-        class="btn-add"
-        onclick="addToCart('Combo Hakuna Matata', 53, 'combo3')">
-        Adicionar
-      </button>
-    </div>
-
   </div>
 </section>
 
