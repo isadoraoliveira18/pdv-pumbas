@@ -69,7 +69,7 @@
       <button
         type="button"
         class="btn-add"
-        onclick="event.stopPropagation(); addToCart('Simbas Burguer', 16, 'simba')">
+        onclick="event.stopPropagation(); addToCart('Simbas Burguer', 17, 'simba')">
         Adicionar
       </button>
 
@@ -99,7 +99,7 @@
       <button
         type="button"
         class="btn-add"
-        onclick="event.stopPropagation(); addToCart('Nala Burguer', 19, 'nala')">
+        onclick="event.stopPropagation(); addToCart('Nala Burguer', 20, 'nala')">
         Adicionar
       </button>
 
@@ -129,7 +129,7 @@
       <button
         type="button"
         class="btn-add"
-        onclick="event.stopPropagation(); addToCart('Pumbas Burguer', 24, 'pumba')">
+        onclick="event.stopPropagation(); addToCart('Pumbas Burguer', 25, 'pumba')">
         Adicionar
       </button>
 
@@ -159,7 +159,7 @@
       <button
         type="button"
         class="btn-add"
-        onclick="event.stopPropagation(); addToCart('Mufasa Burguer', 25, 'mufasa')">
+        onclick="event.stopPropagation(); addToCart('Mufasa Burguer', 24, 'mufasa')">
         Adicionar
       </button>
 
@@ -219,7 +219,7 @@
       <button
         type="button"
         class="btn-add"
-        onclick="event.stopPropagation(); addToCart('Timão Burguer', 24, 'timao')">
+        onclick="event.stopPropagation(); addToCart('Timão Burguer', 25, 'timao')">
         Adicionar
       </button>
 
@@ -290,40 +290,52 @@
   <div class="grid">
 
     <div class="item">
-      <img src="imagens/isca.jpg" alt="Isca de Frango">
+  <img src="imagens/isca.jpg" alt="Isca de Frango">
 
-      <p class="nome">Isca de Frango - R$25,00</p>
+  <p class="nome">Isca de Frango - R$25,00</p>
 
-      <p class="descricao">
-        Iscas de frango empanadas e crocantes, fritas na hora. Acompanha 2 molhos.
-      </p>
+  <p class="descricao">
+    Iscas de frango empanadas e crocantes, fritas na hora. Acompanha 2 molhos.
+  </p>
 
-      <div class="quantidade">
-        <button type="button" onclick="alterarQtd('iscaFrango', -1)">−</button>
-        <span id="qtd-iscaFrango">0</span>
-        <button type="button" onclick="alterarQtd('iscaFrango', 1)">+</button>
-      </div>
+  <div class="quantidade">
+    <button type="button" onclick="alterarQtd('iscaFrango250', -1)">−</button>
+    <span id="qtd-iscaFrango250">0</span>
+    <button type="button" onclick="alterarQtd('iscaFrango250', 1)">+</button>
+  </div>
+
+  <button
+    type="button"
+    class="btn-add"
+    onclick="addToCart('Isca de Frango 250g', 25, 'iscaFrango250')">
+    Adicionar
+  </button>
+</div>
+
 <div class="item">
-      <img src="imagens/isca.jpg" alt="Isca de Frango - 150G">
 
-      <p class="nome">Isca de Frango - R$17,00</p>
+<div class="item">
+  <img src="imagens/isca.jpg" alt="Isca de Frango 150g">
 
-      <p class="descricao">
-        Iscas de frango empanadas e crocantes, fritas na hora. Acompanha 1 molho da casa.
-      </p>
+  <p class="nome">Isca de Frango 150g - R$17,00</p>
 
-      <div class="quantidade">
-        <button type="button" onclick="alterarQtd('iscaFrango', -1)">−</button>
-        <span id="qtd-iscaFrango">0</span>
-        <button type="button" onclick="alterarQtd('iscaFrango', 1)">+</button>
-      </div>
-      <button
-        type="button"
-        class="btn-add"
-        onclick="addToCart('Isca de Frango', 17, 'iscaFrango')">
-        Adicionar
-      </button>
-    </div>
+  <p class="descricao">
+    Iscas de frango empanadas e crocantes, fritas na hora. Acompanha 1 molho da casa.
+  </p>
+
+  <div class="quantidade">
+    <button type="button" onclick="alterarQtd('iscaFrango150', -1)">−</button>
+    <span id="qtd-iscaFrango150">0</span>
+    <button type="button" onclick="alterarQtd('iscaFrango150', 1)">+</button>
+  </div>
+
+  <button
+    type="button"
+    class="btn-add"
+    onclick="addToCart('Isca de Frango 150g', 17, 'iscaFrango150')">
+    Adicionar
+  </button>
+</div>
 
     <div class="item">
       <img src="imagens/batatached.jpg" alt="Batata com Bacon e Cheddar">
@@ -343,7 +355,7 @@
       <button
         type="button"
         class="btn-add"
-        onclick="addToCart('Batata com Bacon e Cheddar', 23, 'batataBaconCheddar')">
+        onclick="addToCart('Batata com Bacon e Cheddar', 20, 'batataBaconCheddar')">
         Adicionar
       </button>
     </div>
