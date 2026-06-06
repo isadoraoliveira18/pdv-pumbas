@@ -943,26 +943,40 @@
     /* ================= ENVIAR WHATS ================= */
 
     document
-      .getElementById("btnEnviarWhats")
-      .addEventListener("click", () => {
+  .getElementById("btnEnviarWhats")
+  .addEventListener("click", () => {
 
-        if(carrinho.length === 0){
+    if (carrinho.length === 0) {
 
-          alert("Seu carrinho está vazio.");
+      alert("Seu carrinho está vazio.");
 
-          return;
-        }
+      return;
+    }
 
-        const mensagem =
-          gerarMensagemPedido();
+    const mensagem = gerarMensagemPedido();
 
-        const url =
-          `https://wa.me/${whatsNumber}?text=${mensagem}`;
+    const url =
+      `https://wa.me/${whatsNumber}?text=${encodeURIComponent(mensagem)}`;
 
-        window.open(url, "_blank");
+    // Abre WhatsApp
+    window.open(url, "_blank");
 
-      });
+    // Limpa carrinho
+    carrinho = [];
 
+    // Remove do navegador
+    localStorage.removeItem("carrinho");
+
+    // Atualiza interface
+    atualizarCarrinho();
+
+    // Opcional: volta para página inicial após 1 segundo
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 1000);
+
+  });
+     
   </script>
 
 </body>
