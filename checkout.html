@@ -942,27 +942,92 @@
 
     /* ================= ENVIAR WHATS ================= */
 
-    document
-      .getElementById("btnEnviarWhats")
-      .addEventListener("click", () => {
+   document
+  .getElementById("btnEnviarWhats")
+  .addEventListener("click", () => {
 
-        if(carrinho.length === 0){
+    if (carrinho.length === 0) {
 
-          alert("Seu carrinho está vazio.");
+      alert("Seu carrinho está vazio.");
 
-          return;
-        }
+      return;
+    }
 
-        const mensagem =
-          gerarMensagemPedido();
+    const mensagem = gerarMensagemPedido();
 
-        const url =
-          `https://wa.me/${whatsNumber}?text=${mensagem}`;
+    const url =
+      `https://wa.me/${whatsNumber}?text=${encodeURIComponent(mensagem)}`;
 
-        window.open(url, "_blank");
+    // Abre o WhatsApp
+    window.open(url, "_blank");
 
-      });
+    // Limpa o carrinho
+    carrinho = [];
+    localStorage.removeItem("carrinho");
 
+    // Tela de sucesso
+    document.body.innerHTML = `
+      <div style="
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:#111;
+        color:#fff;
+        text-align:center;
+        padding:20px;
+        font-family:Poppins,sans-serif;
+      ">
+        <div>
+
+          <h1 style="
+            font-size:42px;
+            margin-bottom:20px;
+          ">
+            ✅ Pedido Enviado!
+          </h1>
+
+          <p style="
+            font-size:22px;
+            margin-bottom:15px;
+          ">
+            Obrigado por escolher a Pumbas Burguer!
+          </p>
+
+          <p style="margin-bottom:10px;">
+            Seu pedido foi enviado com sucesso para nosso WhatsApp.
+          </p>
+
+          <p style="margin-bottom:10px;">
+            Todo o atendimento e acompanhamento serão realizados por lá.
+          </p>
+
+          <p style="
+            margin-top:25px;
+            font-size:18px;
+          ">
+            🍔 Estamos preparando tudo com muito carinho para você.
+          </p>
+
+          <button
+            onclick="location.href='index.html'"
+            style="
+              margin-top:30px;
+              padding:12px 25px;
+              border:none;
+              border-radius:10px;
+              cursor:pointer;
+              font-size:16px;
+              font-weight:bold;
+            "
+          >
+            Fazer Novo Pedido
+          </button>
+
+        </div>
+      </div>
+    `;
+  });
   </script>
 
 </body>
