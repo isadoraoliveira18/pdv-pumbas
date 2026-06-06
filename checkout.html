@@ -875,11 +875,11 @@
 
       if(nome){
 
-        mensagem += `👤 Nome: ${nome}%0A`;
+        mensagem += `👤 Nome: ${nome}\n`;
 
       }
 
-      mensagem += "📋 *ITENS:*%0A";
+      mensagem += "📋 *ITENS:*\n";
 
       let total = 0;
 
@@ -894,7 +894,7 @@
         total += subtotal;
 
         mensagem +=
-          `• ${item.nome} (${qtd}x) - R$ ${subtotal.toFixed(2)}%0A`;
+          `• ${item.nome} (${qtd}x) - R$ ${subtotal.toFixed(2)}\n`;
 
       });
 
@@ -905,37 +905,37 @@
 
         total += taxa;
 
-        mensagem += `%0A📦 Entrega: Sim%0A`;
+        mensagem += `\n📦 Entrega: Sim\n`;
 
-        mensagem += `🏠 Região: ${localEntrega}%0A`;
+        mensagem += `🏠 Região: ${localEntrega}\n`;
 
         if(endereco){
 
-          mensagem += `📍 Endereço: ${endereco}%0A`;
+          mensagem += `📍 Endereço: ${endereco}\n`;
 
         }
 
         if(taxa > 0){
 
-          mensagem += `🚚 Taxa: R$ ${taxa.toFixed(2)}%0A`;
+          mensagem += `🚚 Taxa: R$ ${taxa.toFixed(2)}\n`;
 
         }
 
       }else{
 
-        mensagem += `%0A📦 Retirada no local%0A`;
+        mensagem += `\n📦 Retirada no local\n`;
 
       }
 
-      mensagem += `%0A💳 Pagamento: ${pagamento}%0A`;
+      mensagem += `\n💳 Pagamento: ${pagamento}\n`;
 
       if(observacao){
 
-        mensagem += `📝 Observação: ${observacao}%0A`;
+        mensagem += `📝 Observação: ${observacao}\n`;
 
       }
 
-      mensagem += `%0A💰 *TOTAL: R$ ${total.toFixed(2)}*`;
+      mensagem += `\n💰 *TOTAL: R$ ${total.toFixed(2)}*`;
 
       return mensagem;
     }
