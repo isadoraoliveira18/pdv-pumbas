@@ -849,97 +849,67 @@
 
     /* ================= GERAR MENSAGEM ================= */
 
-    function gerarMensagemPedido(){
+ function gerarMensagemPedido(){
 
-      const nome =
-        document.getElementById("nomeCliente").value;
+  const nome = document.getElementById("nomeCliente").value;
+  const tipoEntrega = document.getElementById("tipoEntrega").value;
+  const localEntrega = document.getElementById("localEntrega").value;
+  const endereco = document.getElementById("endereco").value;
+  const observacao = document.getElementById("observacao").value;
+  const pagamento = document.getElementById("pagamentoSelect").value;
 
-      const tipoEntrega =
-        document.getElementById("tipoEntrega").value;
+  let mensagem = `🍔 *NOVO PEDIDO - PUMBAS BURGUER*\n\n`;
 
-      const localEntrega =
-        document.getElementById("localEntrega").value;
+  if(nome){
+    mensagem += `👤 Nome: ${nome}\n`;
+  }
 
-      const endereco =
-        document.getElementById("endereco").value;
+  mensagem += `\n📋 *ITENS:*\n`;
 
-      const observacao =
-        document.getElementById("observacao").value;
+  let total = 0;
 
-      const pagamento =
-        document.getElementById("pagamentoSelect").value;
+  carrinho.forEach(item => {
 
-      let mensagem = "";
+    const qtd = item.quantidade || 1;
+    const subtotal = item.preco * qtd;
 
-      mensagem += "🍔 *NOVO PEDIDO - PUMBA'S BURGUER*%0A%0A";
+    total += subtotal;
 
-      if(nome){
+    mensagem += `• ${item.nome} (${qtd}x) - R$ ${subtotal.toFixed(2)}\n`;
+  });
 
-        mensagem += `👤 Nome: ${nome}\n`;
+  if(tipoEntrega === "entrega"){
 
-      }
+    const taxa = obterValorEntrega(localEntrega);
 
-      mensagem += "📋 *ITENS:*\n";
+    total += taxa;
 
-      let total = 0;
+    mensagem += `\n📦 Entrega: Sim\n`;
+    mensagem += `📍 Região: ${localEntrega}\n`;
 
-      carrinho.forEach(item => {
-
-        const qtd =
-          item.quantidade || 1;
-
-        const subtotal =
-          item.preco * qtd;
-
-        total += subtotal;
-
-        mensagem +=
-          `• ${item.nome} (${qtd}x) - R$ ${subtotal.toFixed(2)}\n`;
-
-      });
-
-      if(tipoEntrega === "entrega"){
-
-        const taxa =
-          obterValorEntrega(localEntrega);
-
-        total += taxa;
-
-        mensagem += `\n📦 Entrega: Sim\n`;
-
-        mensagem += `🏠 Região: ${localEntrega}\n`;
-
-        if(endereco){
-
-          mensagem += `📍 Endereço: ${endereco}\n`;
-
-        }
-
-        if(taxa > 0){
-
-          mensagem += `🚚 Taxa: R$ ${taxa.toFixed(2)}\n`;
-
-        }
-
-      }else{
-
-        mensagem += `\n📦 Retirada no local\n`;
-
-      }
-
-      mensagem += `\n💳 Pagamento: ${pagamento}\n`;
-
-      if(observacao){
-
-        mensagem += `📝 Observação: ${observacao}\n`;
-
-      }
-
-      mensagem += `\n💰 *TOTAL: R$ ${total.toFixed(2)}*`;
-
-      return mensagem;
+    if(endereco){
+      mensagem += `🏠 Endereço: ${endereco}\n`;
     }
 
+    if(taxa > 0){
+      mensagem += `🚚 Taxa: R$ ${taxa.toFixed(2)}\n`;
+    }
+
+  } else {
+
+    mensagem += `\n📦 Retirada no local\n`;
+  }
+
+  mensagem += `\n💳 Pagamento: ${pagamento}\n`;
+
+  if(observacao){
+    mensagem += `\n📝 Observação: ${observacao}\n`;
+  }
+
+  mensagem += `\n💰 *TOTAL: R$ ${total.toFixed(2)}*`;
+
+  return mensagem;
+}
     /* ================= ENVIAR WHATS ================= */
 
    document
