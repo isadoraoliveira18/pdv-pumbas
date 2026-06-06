@@ -962,6 +962,58 @@
     window.open(url, "_blank");
 
     // Limpa carrinho
+carrinho = [];
+localStorage.removeItem("carrinho");
+
+// Tela de sucesso
+document.body.innerHTML = `
+<div style="
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:20px;
+  font-family:Poppins,sans-serif;
+">
+  <div>
+    <h1 style="font-size:40px;">✅ Pedido Enviado!</h1>
+
+    <p style="font-size:20px; margin-top:20px;">
+      Obrigado por escolher a Pumbas Burguer!
+    </p>
+
+    <p style="margin-top:15px;">
+      Seu pedido foi enviado para nosso WhatsApp.
+    </p>
+
+    <p>
+      Todo o atendimento e acompanhamento serão realizados por lá.
+    </p>
+
+    <p style="margin-top:25px;">
+      🍔 Estamos preparando tudo com muito carinho para você.
+    </p>
+
+    <button
+      onclick="location.href='index.html'"
+      style="
+        margin-top:30px;
+        padding:12px 25px;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+        font-size:16px;
+      ">
+      Fazer novo pedido
+    </button>
+  </div>
+</div>
+`;
+
+    // Limpa carrinho
     carrinho = [];
 
     // Remove do navegador
