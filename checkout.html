@@ -828,7 +828,7 @@
           entrega.className = "linha-entrega";
 
           entrega.innerHTML = `
-            <span>📦 Taxa de entrega</span>
+            <span> Taxa de entrega</span>
             <strong>
               R$ ${valorEntrega.toFixed(2)}
             </strong>
@@ -858,13 +858,13 @@
   const observacao = document.getElementById("observacao").value;
   const pagamento = document.getElementById("pagamentoSelect").value;
 
-  let mensagem = `🍔 *NOVO PEDIDO - PUMBAS BURGUER*\n\n`;
+  let mensagem = ` *NOVO PEDIDO - PUMBAS BURGUER*\n\n`;
 
   if(nome){
-    mensagem += `👤 Nome: ${nome}\n`;
+    mensagem += ` Nome: ${nome}\n`;
   }
 
-  mensagem += `\n📋 *ITENS:*\n`;
+  mensagem += `\n *ITENS:*\n`;
 
   let total = 0;
 
@@ -884,26 +884,26 @@
 
     total += taxa;
 
-    mensagem += `\n📦 Entrega: Sim\n`;
-    mensagem += `📍 Região: ${localEntrega}\n`;
+    mensagem += `\n Entrega: Sim\n`;
+    mensagem += ` Região: ${localEntrega}\n`;
 
     if(endereco){
-      mensagem += `🏠 Endereço: ${endereco}\n`;
+      mensagem += ` Endereço: ${endereco}\n`;
     }
 
     if(taxa > 0){
-      mensagem += `🚚 Taxa: R$ ${taxa.toFixed(2)}\n`;
+      mensagem += ` Taxa: R$ ${taxa.toFixed(2)}\n`;
     }
 
   } else {
 
-    mensagem += `\n📦 Retirada no local\n`;
+    mensagem += `\n Retirada no local\n`;
   }
 
-  mensagem += `\n💳 Pagamento: ${pagamento}\n`;
+  mensagem += `\n Pagamento: ${pagamento}\n`;
 
   if(observacao){
-    mensagem += `\n📝 Observação: ${observacao}\n`;
+    mensagem += `\n Observação: ${observacao}\n`;
   }
 
   mensagem += `\n💰 *TOTAL: R$ ${total.toFixed(2)}*`;
